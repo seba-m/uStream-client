@@ -1,0 +1,21 @@
+.streamCard {
+    list-style: none;
+    font-size: 1.5rem;
+    text-align: center;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.streamImage {
+    border-radius: 10px;
+    background-color: white;
+}
+
+@media (max-width: 560px) {
+    .streamImage {
+        width: 90%;
+        height: auto;
+    }
+}
