@@ -12,13 +12,13 @@ import {
 } from "react-router-dom";
 
 export function App() {
-    const [api, setApi] = useState("");
+    /* const [api, setApi] = useState("");
 
-    fetch("http://localhost:9000/testAPI")
-        .then(res => res.text())
+    fetch("http://localhost:9000/live/1234")
+        .then(res => res)
         .then(res => setApi(res))
         .then(res => console.log(res))
-        .catch(err => err);
+        .catch(err => err);*/
 
     return (
         <Router>
@@ -26,7 +26,6 @@ export function App() {
                 <Link to="/">
                     <h1 className={styles.title}>Streaming xd</h1>
                 </Link>
-                <h1 className={styles.title}>la respuesta es '{api}'</h1>
             </header>
             <main>
                 <Routes>
