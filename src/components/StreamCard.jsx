@@ -7,7 +7,7 @@ export function StreamCard({ stream }) {
 
     return (
         <li className={styles.streamCard}>
-            <Link to={`/streams/${stream.id}`}>
+            <Link to={`/stream/${stream.Name}`}>
                 <img
                     width={230}
                     height={345}
