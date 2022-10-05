@@ -26,7 +26,7 @@ export function StreamDetails() {
         return <Spinner />
     }
 
-    //if (!stream) return null;
+    if (!stream) return null;
 
     //const imgUrl = "https://image.tmdb.org/t/p/w500" + stream.poster_path;
 
