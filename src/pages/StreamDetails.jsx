@@ -8,19 +8,19 @@ import styles from './StreamDetails.module.scss';
 
 export function StreamDetails() {
 
-    const { streamName } = useParams();
+    const { streamerName } = useParams();
 
     const [isLoading, setIsLoading] = useState(true);
     const [stream, setStream] = useState(null);
 
     useEffect(() => {
         setIsLoading(true);
-        get(`/stream/${streamName}`)
+        get(`/stream/${streamerName}`)
             .then(data => {
                 setStream(data);
                 setIsLoading(false);
             })
-    }, [streamName]);
+    }, [streamerName]);
 
     if (isLoading) {
         return <Spinner />
