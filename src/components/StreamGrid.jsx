@@ -23,7 +23,7 @@ export function StreamGrid({ search }) {
             : `/discover/stream?page=${page}`;
 
         get(searchUrl).then((data) => {
-            setStreams(prevStreams => prevStreams.concat(data.results));
+            setStreams(prevStreams => prevStreams.concat(data.Streams));
             setHasMore(data.page < data.total_pages);
             setIsLoading(false);
         })
@@ -39,14 +39,14 @@ export function StreamGrid({ search }) {
             hasMore={hasMore}
             next={() => setPage((prevPage) => prevPage + 1)}
             loader={<Spinner />}
-            endMessage={<p className={styles.noMoreStreams}>- You have seen it all -</p>}
+            //endMessage={<p className={styles.noMoreStreams}>- You have seen it all -</p>}
         >
             <ul className={styles.streamsGrid}>
                 {streams.map((stream) => {
                     if (stream && stream.Username && stream.Title) {
-                        <StreamCard key={stream.Username} stream={stream} />
+                        return <StreamCard key={stream.Username} stream={stream} />;
                     } else if (stream && stream.Username) {
-                        <AboutCard key={stream.Username} stream={stream} />
+                        return <AboutCard key={stream.Username} stream={stream} />;
                     }
                     return null;
                 })}

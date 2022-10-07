@@ -1,7 +1,7 @@
 .streamCard {
     list-style: none;
-    font-size: 1.5rem;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
 
     &:hover {
         opacity: 0.8;
@@ -19,3 +19,37 @@
         height: auto;
     }
 }
+.streamUsername {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.streamInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem;
+}
+
+.streamTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.streamCategory {
+    font-size: 1rem;
+    color: #999;
+}
+
+.streamDescription {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+
