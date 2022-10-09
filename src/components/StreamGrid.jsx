@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { get } from '../utils/httpClient';
-import { StreamCard } from './StreamCard'
-import { AboutCard } from './AboutCard'
+import { OnlineStreamCard } from './OnlineStreamCard'
+import { OfflineStreamCard } from './OfflineStreamCard'
 
 import styles from './StreamGrid.module.scss';
 import { Spinner } from './Spinner';
@@ -44,9 +44,9 @@ export function StreamGrid({ search }) {
             <ul className={styles.streamsGrid}>
                 {streams.map((stream) => {
                     if (stream && stream.Username && stream.Title) {
-                        return <StreamCard key={stream.Username} stream={stream} />;
+                        return <OnlineStreamCard key={stream.Username} stream={stream} />;
                     } else if (stream && stream.Username) {
-                        return <AboutCard key={stream.Username} stream={stream} />;
+                        return <OfflineStreamCard key={stream.Username} stream={stream} />;
                     }
                     return null;
                 })}
