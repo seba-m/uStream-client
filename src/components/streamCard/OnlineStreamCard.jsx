@@ -1,6 +1,6 @@
 import styles from './OnlineStreamCard.module.scss';
 import { Link } from "react-router-dom";
-import { getStreamImg } from '../utils/getStreamImg';
+import { getStreamImg } from '../../utils/getStreamImg';
 
 export function OnlineStreamCard({ stream }) {
     const imgUrl = getStreamImg(stream.Username, 300);
@@ -9,10 +9,9 @@ export function OnlineStreamCard({ stream }) {
         <li className={styles.streamCard}>
             <div className={styles.streamImage}>
                 <Link to={`/stream/${stream.Username}`}>
-                    <img
-                        src={imgUrl}
-                        alt={stream.title}
-                    />
+                    <figure className={styles.imageBorder}>
+                        <img src={imgUrl} alt={stream.title} />
+                    </figure>
                 </Link>
             </div>
 

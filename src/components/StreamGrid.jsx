@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { get } from '../utils/httpClient';
-import { OnlineStreamCard } from './OnlineStreamCard'
-import { OfflineStreamCard } from './OfflineStreamCard'
+import { OnlineStreamCard } from './streamCard/OnlineStreamCard'
+import { OfflineStreamCard } from './streamCard/OfflineStreamCard'
 
 import styles from './StreamGrid.module.scss';
 import { Spinner } from './Spinner';

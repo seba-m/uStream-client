@@ -1,0 +1,133 @@
+/*stream image*/
+
+.streamImage {
+    height: 15rem;
+    width: 21.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 0rem;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.streamImage .imageBorder {
+    border-radius: 9000px;
+    overflow: hidden;
+    position: relative;
+    background-color: inherit;
+    width: 12rem;
+    height: 12rem;
+}
+
+.streamImage a {
+    display: inline-block;
+}
+
+.streamImage a img {
+    display: block;
+    border-radius: 9000px;
+    width: 100%;
+}
+
+/*stream information*/
+
+.streamInfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    justify-content: center;
+
+    & * {
+        margin-top: 0%;
+        margin-bottom: 0%;
+        font-size: 1.4rem;
+    }
+}
+
+.streamUsername {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(201, 201, 201);
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.streamCategory {
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.streamTags {
+    padding-top: 1rem;
+    display: flex;
+}
+
+.streamTags .tag {
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.streamTags .tagUrl {
+    display: inline-block;
+    border-radius: 9000px;
+    font-weight: 600;
+    color: #bec2c6;
+    background-color: #515c65;
+    border: 2px solid transparent;
+    height: 2.3rem;
+    max-width: 100%;
+}
+
+.streamTags span {
+    padding: 0px 0.8rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.streamCard {
+    list-style: none;
+
+    //align-items: center;
+    display: flex; //inline-flex
+    padding-bottom: 1rem;
+    margin-left: 0rem;
+    max-width: 90%;
+}
+
+@media (max-width: 768px) {
+    .streamCard {
+        flex-direction: column;
+    }
+
+    .streamImage {
+        //center image
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .streamInfo {
+        & * {
+            margin-top: 0%;
+            margin-bottom: 0%;
+            font-size: 1.4rem;
+        }
+    }
+}

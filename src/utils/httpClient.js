@@ -1,4 +1,4 @@
-const API = 'http://localhost:9000/apiv1';
+const API = 'http://192.168.1.92:9000/apiv1';
 
 export function get(url) {
     return fetch(API + url)
