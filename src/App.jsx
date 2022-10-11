@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 export function App() {
+
     return (
         <Router>
             <header>
@@ -20,6 +21,7 @@ export function App() {
             <main>
                 <Routes>
                     <Route exact path="/stream/:streamerName" element={<StreamDetails />}></Route>
+                    {/*<Route path="/search/:tag" element={<LandingPage />}></Route>*/}
                     <Route path="/" element={<LandingPage />}></Route>
                 </Routes>
             </main>

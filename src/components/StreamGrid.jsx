@@ -39,7 +39,7 @@ export function StreamGrid({ search }) {
             hasMore={hasMore}
             next={() => setPage((prevPage) => prevPage + 1)}
             loader={<Spinner />}
-            //endMessage={<p className={styles.noMoreStreams}>- You have seen it all -</p>}
+            endMessage={<p className={styles.noMoreStreams}>- You have seen it all -</p>}
         >
             <ul className={styles.streamsGrid}>
                 {streams.map((stream) => {
