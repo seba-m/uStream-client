@@ -1,5 +1,5 @@
-import mpegts from 'mpegts.js';
 import { useEffect } from 'react';
+import mpegts from 'mpegts.js';
 
 export function VideoPlayer({ streamUrl }) {
 
@@ -13,9 +13,10 @@ export function VideoPlayer({ streamUrl }) {
 			});
 			player.attachMediaElement(videoElement);
 			player.load();
+			//wait 1 second for player to finish
 			setTimeout(() => {
 				player.play();
-			}, 0);
+			}, 100);
 		}
 	};
 
@@ -24,6 +25,6 @@ export function VideoPlayer({ streamUrl }) {
 	}, [streamUrl]);
 
 	return (
-		<video id="videoElement"></video>
+		<video id="videoElement" controls></video>
 	)
 }

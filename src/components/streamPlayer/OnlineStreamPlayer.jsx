@@ -1,20 +1,43 @@
 import styles from './OnlineStreamPlayer.module.scss';
+import { Link } from "react-router-dom";
 import { VideoPlayer } from '../VideoPlayer';
+
+import { getStreamImg } from '../../utils/getStreamImg';
 
 export function OnlineStreamPlayer({ stream }) {
 
+    const imgUrl = getStreamImg(stream.Username, 300);
+
     return (
-        <div className={styles.detailsContainer}>
+        <div className={styles.streamRoot}>
+            <div className={styles.streamVideo}>
+                <VideoPlayer streamUrl={stream.URL} />
+            </div>
 
-            <VideoPlayer streamUrl={stream.Url} />
-            <div className={`${styles.col} ${styles.streamDetails}`}>
-                <p className={`${styles.firstItem}`}><strong>Title: </strong>{stream.title}</p>
-                <p>
-                    <strong>Genres: </strong>
-                    {/*stream.genres.map(genre => genre.name).join(', ')*/}
-                </p>
-                <p><strong>Overview: </strong>{stream.overview}</p>
-
+            <div className={styles.streamDetails}>
+                <div className={styles.streamImage}>
+                    <Link to={`/stream/${stream.Username}`}>
+                        <figure className={styles.imageBorder}>
+                            <img src={imgUrl} alt={stream.title} />
+                        </figure>
+                    </Link>
+                </div>
+                <div className={styles.streamInfo}>
+                    <p className={styles.streamUsername}>{stream.Username}</p>
+                    <p className={styles.streamTitle}>{stream.Title}</p>
+                    <div>
+                        <p className={`${styles.streamCategory}`}>{stream.Category}</p>
+                        <div className={styles.streamTags}>
+                            {stream.Tags.map((tag, index) =>
+                                <div className={styles.tag} key={index}>
+                                    <Link to={`/search/tag/${tag}`} className={styles.tagUrl}>
+                                        <span>{tag}</span>
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

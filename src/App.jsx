@@ -19,7 +19,7 @@ export function App() {
             </header>
             <main>
                 <Routes>
-                    <Route exact path="/stream/:streamerId" element={<StreamDetails />}></Route>
+                    <Route exact path="/stream/:streamerName" element={<StreamDetails />}></Route>
                     <Route path="/" element={<LandingPage />}></Route>
                 </Routes>
             </main>
