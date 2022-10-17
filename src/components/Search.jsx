@@ -5,7 +5,7 @@ import { useQuery } from '../hooks/useQuery';
 
 export function Search() {
     const query = useQuery();
-    const search = query.get('search');
+    const search = query.get('term');
 
     const navigate = useNavigate();
 
@@ -20,12 +20,12 @@ export function Search() {
                     className={styles.searchInput}
                     type="text"
                     value={search ?? ""}
-                    placeholder="Title"
+                    placeholder="Search"
                     autoFocus
                     aria-label='Search'
                     onChange={(e) => {
                         const value = e.target.value;
-                        navigate('/?search=' + value);
+                        navigate('search/?term=' + value);
                     }}
                 />
                 <FaSearch size={20} color="black" className={styles.searchButton} />

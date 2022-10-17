@@ -16,7 +16,7 @@ export function StreamDetails() {
 
     useEffect(() => {
         setIsLoading(true);
-        get(`/stream/${streamerName}`)
+        get(`/stream/view/${streamerName}`)
             .then(data => {
                 setStream(data);
                 setIsLoading(false);
