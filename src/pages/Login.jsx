@@ -1,73 +1,40 @@
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
+import { Spinner } from '../components/Spinner';
 
 import AuthService from "../services/AuthService";
 
 export function Login() {
-    const required = (value) => {
-        if (!value) {
-            return (
-                <div className="alert alert-danger" role="alert">
-                    This field is required!
-                </div>
-            );
-        }
-    };
-
     let navigate = useNavigate();
 
-    const form = useRef();
-    const checkBtn = useRef();
-
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
-    const onChangeUsername = (e) => {
-        const username = e.target.value;
-        setUsername(username);
-    };
-
-    const onChangePassword = (e) => {
-        const password = e.target.value;
-        setPassword(password);
-    };
-
-    const handleLogin = (e) => {
-        e.preventDefault();
+    const handleLogin = (data, formikHelpers) => {
+        formikHelpers.setSubmitting(true);
 
         setMessage("");
-        setLoading(true);
 
-        form.current.validateAll();
+        AuthService.login(data.email, data.password)
+        .then(
+            () => {
+                navigate("/profile");
+                window.location.reload();
+            },
+            (error) => {
+                const resMessage =
+                    (error.response && error.response.data && error.response.data.message) ||
+                    error.message ||
+                    error.toString();
 
-        if (checkBtn.current.context._errors.length === 0) {
-            AuthService.login(username, password).then(
-                () => {
-                    navigate("/profile");
-                    window.location.reload();
-                },
-                (error) => {
-                    const resMessage =
-                        (error.response &&
-                            error.response.data &&
-                            error.response.data.message) ||
-                        error.message ||
-                        error.toString();
-
-                    setLoading(false);
-                    setMessage(resMessage);
-                }
-            );
-        } else {
-            setLoading(false);
-        }
+                setMessage(resMessage);
+            }
+        ).finally(() => {
+            formikHelpers.setSubmitting(false);
+        });
     };
 
     return (
@@ -79,49 +46,46 @@ export function Login() {
                     className="profile-img-card"
                 />
 
-                <Form onSubmit={handleLogin} ref={form}>
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <Input
-                            type="text"
-                            className="form-control"
-                            name="username"
-                            value={username}
-                            onChange={onChangeUsername}
-                            validations={[required]}
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <Input
-                            type="password"
-                            className="form-control"
-                            name="password"
-                            value={password}
-                            onChange={onChangePassword}
-                            validations={[required]}
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <button className="btn btn-primary btn-block" disabled={loading}>
-                            {loading && (
-                                <span className="spinner-border spinner-border-sm"></span>
+                <Formik
+                    initialValues={{ email: '', password: '' }}
+                    validate={values => {
+                        const errors = {};
+                        if (!values.email) {
+                            errors.email = 'Required';
+                        } else if (
+                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                        ) {
+                            errors.email = 'Invalid email address';
+                        }
+                        return errors;
+                    }}
+                    onSubmit={handleLogin}
+                >
+                    {({ isSubmitting }) => (
+                        <Form>
+                            {message && (
+                                <div className="form-group">
+                                    <div className="alert alert-danger" role="alert">
+                                        {message}
+                                    </div>
+                                </div>
                             )}
-                            <span>Login</span>
-                        </button>
-                    </div>
 
-                    {message && (
-                        <div className="form-group">
-                            <div className="alert alert-danger" role="alert">
-                                {message}
+                            <Field type="email" name="email" />
+                            <ErrorMessage name="email" component="div" />
+                            <Field type="password" name="password" />
+                            <ErrorMessage name="password" component="div" />
+                            <div className="form-group">
+                                <button type="submit" disabled={isSubmitting}>
+                                    {isSubmitting && (
+                                        <Spinner />
+                                    )}
+                                    <span>Login</span>
+                                </button>
                             </div>
-                        </div>
+                        </Form>
                     )}
-                    <CheckButton style={{ display: "none" }} ref={checkBtn} />
-                </Form>
+                </Formik>
             </div>
         </div>
     );

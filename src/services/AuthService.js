@@ -2,11 +2,12 @@ import { post } from '../utils/httpClient';
 
 const API_URL = "/auth/";
 
-const register = (username, email, password) => {
+const register = (username, email, password, birthDate) => {
     return post(API_URL + "signup", {
         username,
         email,
         password,
+        birthDate,
     });
 };
 
@@ -16,11 +17,13 @@ const login = (username, password) => {
             password,
         })
         .then((response) => {
-            if (response.data.accessToken) {
-                localStorage.setItem("user", JSON.stringify(response.data));
+            console.log(response)
+
+            if (response.accessToken) {
+                localStorage.setItem("user", JSON.stringify(response));
             }
 
-            return response.data;
+            return response;
         });
 };
 

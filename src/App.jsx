@@ -74,7 +74,7 @@ export function App() {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route exact path="/login" element={<Login />}></Route>
-                    <Route exact path="/register" element={<Register />}></Route>
+                    <Route exact path="/signup" element={<Register />}></Route>
                     <Route exact path="/profile" element={<Profile />}></Route>
                     <Route exact path="/search" element={<SearchPage />}></Route>
                     <Route exact path="/search/tag/:tag" element={<SearchTag />}></Route>
