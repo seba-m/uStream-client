@@ -8,11 +8,12 @@ import { Register } from './pages/Register';
 import { Profile } from './pages/Profile';
 import { SearchTag } from './pages/SearchTag';
 import { SearchStream } from './pages/SearchStream';
+import { SearchCategory } from './pages/SearchCategory';
 
 import styles from './App.module.scss';
 import { Search } from './components/Search';
 
-import AuthService from "./services/AuthService";
+import AuthService from "./services/Auth.service";
 import LandingPage from './pages/LandingPage';
 
 export function App() {
@@ -51,10 +52,10 @@ export function App() {
                         (
                             <div className={styles.right}>
                                 <Link to="/profile">
-                                    <h1 className={styles.profile}>{currentUser.username}</h1>
+                                    <h1 className={styles.profile}>{currentUser.userName}</h1>
                                 </Link>
-                                <Link to="/logout" onClick={logOut}>
-                                    <h1 className={styles.signup}>Signup</h1>
+                                <Link to="/" onClick={logOut}>
+                                    <h1 className={styles.signup}>Logout</h1>
                                 </Link>
                             </div>
                         ) : (
@@ -78,6 +79,7 @@ export function App() {
                     <Route exact path="/profile" element={<Profile />}></Route>
                     <Route exact path="/search" element={<SearchPage />}></Route>
                     <Route exact path="/search/tag/:tag" element={<SearchTag />}></Route>
+                    <Route exact path="/search/category/:category" element={<SearchCategory />}></Route>
                     <Route exact path="/search/stream/:streamer" element={<SearchStream />}></Route>
                     <Route exact path="/stream/:streamerName" element={<StreamDetails />}></Route>
                 </Routes>

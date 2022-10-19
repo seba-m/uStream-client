@@ -6,7 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import { Spinner } from '../components/Spinner';
 
-import AuthService from "../services/AuthService";
+import AuthService from "../services/Auth.service";
 
 export function Register() {
     let navigate = useNavigate();
