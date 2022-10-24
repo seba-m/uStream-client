@@ -13,39 +13,33 @@ function authHeader() {
 }
 
 export function get(url) {
-
-    if (authHeader()) {
-        return axios.get(API + url, { headers: authHeader() })
-            .then(response => response.data);
-    } else {
-        return axios.get(API + url)
-            .then(response => response.data);
-    }
+    return axios.get(API + url, { headers: authHeader() })
+        .then(response => response.data);
 }
 
 export function post(url, data) {
-    if (authHeader())
-        return axios.post(API + url, data, { headers: authHeader() })
-            .then(response => response.data);
-    else
-        return axios.post(API + url, data)
-            .then(response => response.data);
+    return axios.post(API + url, data, { headers: authHeader() })
+        .then(response => response.data);
+}
+
+export function postImage(url, data) {
+    //se agrega el header de autentificación, mas el header del tipo imagen
+    return axios.post(API + url, data, 
+        { headers: 
+            {   ...authHeader(),
+                "Content-Type": "multipart/form-data" 
+            }
+        })
+        .then(response => response.data);
 }
 
 export function put(url, data) {
-    if (authHeader())
-        return axios.put(API + url, data, { headers: authHeader() })
-            .then(response => response.data);
-    else
-        return axios.put(API + url, data)
-            .then(response => response.data);
+    return axios.put(API + url, data, { headers: authHeader() })
+        .then(response => response.data);
+
 }
 
 export function del(url) {
-    if (authHeader())
-        return axios.delete(API + url, { headers: authHeader() })
-            .then(response => response.data);
-    else
-        return axios.delete(API + url)
-            .then(response => response.data);
+    return axios.delete(API + url, { headers: authHeader() })
+        .then(response => response.data);
 }

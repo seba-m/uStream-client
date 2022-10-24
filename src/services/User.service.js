@@ -10,8 +10,20 @@ const getStreamDetails = () => {
     return get(API_URL + "/stream");
 }
 
-const updateProfile = (data) => {
-    return post(API_URL + "/profile", data);
+const updateProfileSettings = (username, publicUsername, about) => {
+    return post(API_URL + "/profile", {
+        username,
+        publicUsername,
+        about
+    });
+}
+
+const updateProfileImage = (image) => {
+    return post(API_URL + "/profile/image", image);
+}
+
+const updateProfileBanner = (image) => {
+    return post(API_URL + "/profile/banner", image);
 }
 
 const updateStreamDetails = (data) => {
@@ -22,11 +34,25 @@ const deleteAccount = () => {
     return del(API_URL + "/delete");
 }
 
+const deleteProfileImage = () => {
+    return del(API_URL + "/profile/image");
+}
+
+const deleteProfileBanner = () => {
+    return del(API_URL + "/profile/banner");
+}
+
 const UserService = {
     getProfile,
     getStreamDetails,
-    updateProfile,
+
+    updateProfileSettings,
+    updateProfileImage,
+    updateProfileBanner,
     updateStreamDetails,
+
+    deleteProfileImage,
+    deleteProfileBanner,
     deleteAccount
 };
 

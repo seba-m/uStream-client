@@ -13,7 +13,7 @@ export function VideoPlayer({ streamUrl }) {
 			});
 			player.attachMediaElement(videoElement);
 			player.load();
-			//wait 1 second for player to finish
+			//wait 0.1 second for player to finish
 			setTimeout(() => {
 				player.play();
 			}, 100);
