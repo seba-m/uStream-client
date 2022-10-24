@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner } from '../components/Spinner';
+
 //import { getStreamImg } from '../utils/getStreamImg';
-import { get } from '../utils/httpClient';
+import  GeneralService  from '../services/General.service';
 
 import { OnlineStreamPlayer } from '../components/streamPlayer/OnlineStreamPlayer';
 import { OfflineStreamPlayer } from '../components/streamPlayer/OfflineStreamPlayer';
@@ -16,7 +17,7 @@ export function StreamDetails() {
 
     useEffect(() => {
         setIsLoading(true);
-        get(`/stream/view/${streamerName}`)
+        GeneralService.getStream(streamerName)
             .then(data => {
                 setStream(data);
                 setIsLoading(false);
