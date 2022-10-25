@@ -1,6 +1,14 @@
+import { StreamGrid } from '../components/search/StreamGrid'
+import { useDebounce } from '../hooks/useDebounce';
+import { useQuery } from '../hooks/useQuery';
+
 export function SearchStream() {
-    
+    const query = useQuery();
+    const search = query.get('term');
+
+    const debouncedSearch = useDebounce(search, 500);
+
     return (
-        <div>Search stream page</div>
+        <StreamGrid key={debouncedSearch} search={debouncedSearch} />
     )
 }

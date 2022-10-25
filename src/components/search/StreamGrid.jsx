@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import { OnlineStreamCard } from './streamCard/OnlineStreamCard'
-import { OfflineStreamCard } from './streamCard/OfflineStreamCard'
+import { OnlineStreamCard } from './OnlineStreamCard'
+import { OfflineStreamCard } from './OfflineStreamCard'
 
 import styles from './StreamGrid.module.scss';
-import { Spinner } from './Spinner';
+import { Spinner } from '../Spinner';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Empty } from './Empty';
+import { Empty } from '../Empty';
 
-import GeneralService from '../services/General.service'
+import GeneralService from '../../services/General.service'
 
 export function StreamGrid({ search }) {
     const [streams, setStreams] = useState([])
