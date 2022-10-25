@@ -19,7 +19,7 @@ export function CategoryGrid({ search }) {
     useEffect(() => {
         setIsLoading(true);
 
-        GeneralService.searchStream(search, page).then((data) => {
+        GeneralService.searchCategory(search, page).then((data) => {
             setCategory(prevStreams => prevStreams.concat(data.Streams));
             setHasMore(data.page < data.total_pages);
             setIsLoading(false);
@@ -38,10 +38,10 @@ export function CategoryGrid({ search }) {
             loader={<Spinner />}
             endMessage={<p className={styles.noMoreStreams}>- You have seen it all -</p>}
         >
-            <ul className={styles.streamsGrid}>
-                {category.map((stream) => {
-                    if (stream && stream.Username) {
-                        return <CategoryCard key={stream.Username} stream={stream} />;
+            <ul className={styles.CategoriesGrid}>
+                {category.map((category) => {
+                    if (category && category.Username) {
+                        return <CategoryCard key={category.Username} category={category} />;
                     }
                     return null;
                 })}

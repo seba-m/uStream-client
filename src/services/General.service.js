@@ -1,4 +1,4 @@
-import { get, post, del } from '../utils/httpClient';
+import { get } from '../utils/httpClient';
 
 const getTopStreamers = () => {
     return get("/stream/top");
@@ -6,6 +6,10 @@ const getTopStreamers = () => {
 
 const getStream = (streamerName) => {
     return get(`/stream/view/${streamerName}`);
+}
+
+const searchCategory = (categoryName, page) => {
+    return get(`/search/category?query=${categoryName}&page=${page}`);
 }
 
 const searchStream = (streamerName, page) => {
@@ -24,6 +28,7 @@ const GeneralService = {
     getTopStreamers,
     getStream,
 
+    searchCategory,
     searchStream,
     searchTag,
     search
