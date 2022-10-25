@@ -78,9 +78,9 @@ export function App() {
                     <Route exact path="/signup" element={<Register />}></Route>
                     <Route exact path="/profile" element={<Profile />}></Route>
                     <Route exact path="/search" element={<SearchPage />}></Route>
-                    <Route exact path="/search/tag/:tag" element={<SearchTag />}></Route>
-                    <Route exact path="/search/category/:category" element={<SearchCategory />}></Route>
-                    <Route exact path="/search/stream/:streamer" element={<SearchStream />}></Route>
+                    <Route exact path="/search/tag" element={<SearchTag />}></Route>
+                    <Route exact path="/search/category" element={<SearchCategory />}></Route>
+                    <Route exact path="/search/stream" element={<SearchStream />}></Route>
                     <Route exact path="/stream/:streamerName" element={<StreamDetails />}></Route>
                 </Routes>
             </main>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { get } from '../utils/httpClient';
 import { OnlineStreamCard } from './streamCard/OnlineStreamCard'
 import { OfflineStreamCard } from './streamCard/OfflineStreamCard'
 
@@ -8,6 +7,8 @@ import { Spinner } from './Spinner';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Empty } from './Empty';
+
+import GeneralService from '../services/General.service'
 
 export function StreamGrid({ search }) {
     const [streams, setStreams] = useState([])
@@ -18,11 +19,8 @@ export function StreamGrid({ search }) {
 
     useEffect(() => {
         setIsLoading(true);
-        const searchUrl = (search && search !== '')
-            ? `/search/stream?query=${search}&page=${page}`
-            : `/discover/stream?page=${page}`;
 
-        get(searchUrl).then((data) => {
+        GeneralService.searchStream(search, page).then((data) => {
             setStreams(prevStreams => prevStreams.concat(data.Streams));
             setHasMore(data.page < data.total_pages);
             setIsLoading(false);

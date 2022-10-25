@@ -12,7 +12,7 @@ export default function LandingPage() {
 	useEffect(() => {
 		GeneralService.getTopStreamers()
 			.then(data => {
-				setData(data);
+				setData(data.Streams);
 				setIsLoading(false);
 			})
 	},[]);
@@ -32,8 +32,8 @@ export default function LandingPage() {
 				<h2>Channels you might like</h2>
 				<div>
 					{data.map(stream => (
-						<div key={stream.StreamerName}>
-							{stream.StreamerName}
+						<div key={stream.Username}>
+							<p>{stream.Username}</p>
 						</div>
 					))}
 				</div>
