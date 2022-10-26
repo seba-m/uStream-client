@@ -16,7 +16,7 @@ export function SearchPage() {
     const query = useQuery();
     const search = query.get('term');
 
-    const debouncedSearch = useDebounce(search, 700);
+    const debouncedSearch = useDebounce(search, 500);
 
     const [streams, setStreams] = useState(null);
     const [categories, setCategories] = useState(null);
@@ -29,15 +29,23 @@ export function SearchPage() {
             //first page to get best results,
             const page = 1;
             
-            GeneralService.searchStream(debouncedSearch, page).then(setStreams).catch((err) => {
+            GeneralService.searchStream(debouncedSearch, page).then((data) => {
+                setStreams(data.streams)
+            }).catch((err) => {
                 setStreams(null);
             })
 
-            GeneralService.searchCategory(debouncedSearch, page).then(setCategories).catch((err) => {
+            GeneralService.searchCategory(debouncedSearch, page).then((data) => {
+                setCategories(data.categories)
+            }).catch((err) => {
                 setCategories(null);
             })
 
             setIsLoading(false);
+        } else {
+            setIsLoading(false)
+            setStreams(null)
+            setCategories(null)
         }
     }, [debouncedSearch]);
 
@@ -45,9 +53,9 @@ export function SearchPage() {
         return <Spinner />
     }
 
-    if (!search) {
+    /*if (!search) {
         return null;
-    }
+    }*/
 
     return (
         <>
@@ -57,14 +65,21 @@ export function SearchPage() {
                 <h2>Channels</h2>
                 <div>
                     {(streams && streams.length > 0) ? 
-                        streams.map((stream) => {
-                            if (stream && stream.Username && stream.Title) {
-                                return <OnlineStreamCard key={stream.Username} stream={stream} />;
-                            } else if (stream && stream.Username) {
-                                return <OfflineStreamCard key={stream.Username} stream={stream} />;
-                            }
-                            return null;
-                        }) 
+                        <div>
+                            <div>
+                                {streams.map((stream) => {
+                                    if (stream && stream.Username && stream.Title) {
+                                        return <OnlineStreamCard key={stream.Username} stream={stream} />;
+                                    } else if (stream && stream.Username) {
+                                        return <OfflineStreamCard key={stream.Username} stream={stream} />;
+                                    }
+                                    return null;
+                                })}
+                            </div>
+                            <div>
+                                <a href={`/search/stream?query=${search}`}>Show all</a>
+                            </div>
+                        </div>
                         : 
                         <div>
                             <h3>No channels found.</h3>
@@ -75,13 +90,20 @@ export function SearchPage() {
             <div>
                 <h2>Categories</h2>
                 <div>
-                    {(streams && streams.length > 0) ?
-                        categories.map((category) => {
-                            if (category && category.Username) {
-                                return <CategoryCard key={category.Username} category={category} />;
-                            }
-                            return null;
-                        })
+                    {(categories && categories.length > 0) ?
+                        <div>
+                            <div>
+                                {categories.map((category) => {
+                                    if (category && category.name) {
+                                        return <CategoryCard key={category.name} category={category} />;
+                                    }
+                                    return null;
+                                })}
+                            </div>
+                            <div>
+                                <a href={`/search/category?query=${search}`}>Show all</a>
+                            </div>
+                        </div>
                         :
                         <div>
                             <h3>No categories found.</h3>

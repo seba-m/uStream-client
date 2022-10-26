@@ -1,6 +1,6 @@
 import styles from './Search.module.scss';
 import { FaSearch } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '../hooks/useQuery';
 
 export function Search() {
@@ -8,10 +8,15 @@ export function Search() {
     const search = query.get('term');
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
     };
+
+    const pathName = () => {
+        return location.pathname;
+    }
 
     return (
         <form className={styles.searchContainer} onSubmit={handleSubmit}>
@@ -25,7 +30,15 @@ export function Search() {
                     aria-label='Search'
                     onChange={(e) => {
                         const value = e.target.value;
-                        navigate('search/?term=' + value);
+                        const currentPath = pathName();
+
+                        console.log(currentPath)
+
+                        if (!currentPath.startsWith("/search")) {
+                            navigate('search/?term=' + value);
+                        } else {
+                            navigate(currentPath + '?term=' + value);
+                        }
                     }}
                 />
                 <FaSearch size={20} color="black" className={styles.searchButton} />

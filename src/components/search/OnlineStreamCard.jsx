@@ -19,7 +19,7 @@ export function OnlineStreamCard({ stream }) {
                 <Link to={`/stream/${stream.Username}`}>
                     <h1 className={styles.streamUsername}>{stream.Username}</h1>
                 </Link>
-                <Link to={`/search/category/${stream.Category}`} className={styles.tagUrl}>
+                <Link to={`/search/category?term=${stream.Category}`} className={styles.tagUrl}>
                     <p className={styles.streamCategory}>{stream.Category}</p>
                 </Link>
                 <p className={styles.streamViews}>{stream.Views} spectators</p>
@@ -27,9 +27,10 @@ export function OnlineStreamCard({ stream }) {
                 <div className={styles.streamTags}>
                     {stream.Tags.map((tag, index) => 
                         <div className={styles.tag}>
-                            <Link to={`/search/tag/${tag}`} className={styles.tagUrl}>
+                            {/*<Link to={`/search/tag?term=${tag}`} className={styles.tagUrl}></Link>*/}
+                            <div className={styles.tagUrl}>
                                 <span key={index}>{tag}</span>
-                            </Link>
+                            </div>
                         </div> 
                     )}
                 </div>

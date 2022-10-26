@@ -4,7 +4,7 @@ import { useQuery } from '../hooks/useQuery';
 
 export function SearchStream() {
     const query = useQuery();
-    const search = query.get('term');
+    const search = query.get('query');
 
     const debouncedSearch = useDebounce(search, 500);
 
