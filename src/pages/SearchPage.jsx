@@ -4,9 +4,10 @@ import { useDebounce } from '../hooks/useDebounce';
 import { useQuery } from '../hooks/useQuery';
 
 import { CategoryCard } from '../components/search/CategoryCard';
-import { TagCard } from '../components/search/TagCard';
 import { OnlineStreamCard } from '../components/search/OnlineStreamCard';
 import { OfflineStreamCard } from '../components/search/OfflineStreamCard';
+
+import { Spinner } from '../components/Spinner';
 
 import GeneralService from '../services/General.service'
 
@@ -15,34 +16,45 @@ export function SearchPage() {
     const query = useQuery();
     const search = query.get('term');
 
-    const debouncedSearch = useDebounce(search, 500);
+    const debouncedSearch = useDebounce(search, 700);
 
     const [streams, setStreams] = useState(null);
-    const [tags, setTags] = useState(null);
     const [categories, setCategories] = useState(null);
+
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         if (debouncedSearch) {
-            GeneralService.searchStream(debouncedSearch).then((data) => {
-                setStreams(data.Streams);
-            });
 
-            GeneralService.searchTag(debouncedSearch).then((data) => {
-                setTags(data.Tags);
-            });
+            //first page to get best results,
+            const page = 1;
+            
+            GeneralService.searchStream(debouncedSearch, page).then(setStreams).catch((err) => {
+                setStreams(null);
+            })
 
-            GeneralService.searchCategory(debouncedSearch).then((data) => {
-                setCategories(data.Categories);
-            });
+            GeneralService.searchCategory(debouncedSearch, page).then(setCategories).catch((err) => {
+                setCategories(null);
+            })
+
+            setIsLoading(false);
         }
     }, [debouncedSearch]);
+
+    if (isLoading) {
+        return <Spinner />
+    }
+
+    if (!search) {
+        return null;
+    }
 
     return (
         <>
             <h1>Search results for {search}</h1>
 
             <div>
-                <h2>Cannels</h2>
+                <h2>Channels</h2>
                 <div>
                     {(streams && streams.length > 0) ? 
                         streams.map((stream) => {
@@ -63,23 +75,6 @@ export function SearchPage() {
             <div>
                 <h2>Categories</h2>
                 <div>
-                    {(tags && tags.length > 0) ?
-                        tags.map((tag) => {
-                            if (tag && tag.name) {
-                                return <TagCard key={tag.Username} tag={tag} />;
-                            }
-                            return null;
-                        })
-                        :
-                        <div>
-                            <h3>No tags found.</h3>
-                        </div>
-                    }
-                </div>
-            </div>
-            <div>
-                <h2>Tags</h2>
-                <div>
                     {(streams && streams.length > 0) ?
                         categories.map((category) => {
                             if (category && category.Username) {
@@ -89,7 +84,7 @@ export function SearchPage() {
                         })
                         :
                         <div>
-                            <h3>No channels found.</h3>
+                            <h3>No categories found.</h3>
                         </div>
                     }
                 </div>

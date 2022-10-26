@@ -16,10 +16,6 @@ const searchStream = (streamerName, page) => {
     return get(`/search/stream?query=${streamerName}&page=${page}`);
 }
 
-const searchTag = (tagName, page) => {
-    return get(`/search/tag?query=${tagName}&page=${page}`);
-}
-
 const search = (searchText) => {
     return get(`/search/?query=${searchText}`);
 }
@@ -30,10 +26,7 @@ const GeneralService = {
 
     searchCategory,
     searchStream,
-    searchTag,
     search
-
-
 };
 
 export default GeneralService;
