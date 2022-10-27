@@ -29,7 +29,7 @@ export function TagGrid({ search }) {
     }, [search, page]);
 
     if (!isLoading && tags.length === 0) {
-        return <Empty />
+        return <Empty search={search} />
     } 
 
     return (

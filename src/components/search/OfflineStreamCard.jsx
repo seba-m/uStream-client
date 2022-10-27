@@ -18,7 +18,7 @@ export function OfflineStreamCard({ stream }) {
                 <Link to={`/stream/${stream.username}`}>
                     <h1 className={styles.streamUsername}>{stream.username}</h1>
                 </Link>
-                <p>{stream.Followers} followers</p>
+                <p>{stream.followers} followers</p>
                 <p className={styles.streamAbout}>{stream.about}</p>
             </div>
 

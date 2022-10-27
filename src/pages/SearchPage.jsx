@@ -31,6 +31,7 @@ export function SearchPage() {
             const page = 1;
             
             GeneralService.searchStream(debouncedSearch, page).then((data) => {
+                console.log(data.streams);
                 setStreams(data.streams)
             }).catch((err) => {
                 setStreams(null);
@@ -68,8 +69,8 @@ export function SearchPage() {
                     {(streams && streams.length > 0) ? 
                         <div>
                             <div>
-                                {streams.map((stream) => {
-                                    if (stream && stream.username && stream.title) {
+                                {streams.slice(0,5).map((stream) => {
+                                    if (stream && stream.islive) {
                                         return <OnlineStreamCard key={stream.username} stream={stream} />;
                                     } else if (stream && stream.username) {
                                         return <OfflineStreamCard key={stream.username} stream={stream} />;
@@ -77,9 +78,12 @@ export function SearchPage() {
                                     return null;
                                 })}
                             </div>
-                            <div>
-                                <Link to={`/search/stream?query=${search}`}>Show all</Link>
-                            </div>
+                            {streams.length > 5 && (
+                                <div>
+                                    <Link to={`/search/stream?query=${search}`}>Show all</Link>
+                                </div>
+                            )}
+
                         </div>
                         : 
                         <div>
@@ -94,16 +98,18 @@ export function SearchPage() {
                     {(categories && categories.length > 0) ?
                         <div>
                             <div>
-                                {categories.map((category) => {
+                                {categories.slice(0, 5).map((category) => {
                                     if (category && category.name) {
                                         return <CategoryCard key={category.name} category={category} />;
                                     }
                                     return null;
                                 })}
                             </div>
-                            <div>
-                                <Link to={`/search/category?query=${search}`}>Show all</Link>
-                            </div>
+                            {categories.length > 5 && (
+                                <div>
+                                    <Link to={`/search/category?query=${search}`}>Show all</Link>
+                                </div>
+                            )}
                         </div>
                         :
                         <div>

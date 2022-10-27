@@ -30,7 +30,7 @@ export function StreamGrid({ search }) {
     }, [search, page]);
 
     if (!isLoading && streams.length === 0) {
-        return <Empty />
+        return <Empty search={search} />
     } 
 
     return (
@@ -47,7 +47,7 @@ export function StreamGrid({ search }) {
             >
                 <ul className={styles.streamsGrid}>
                     {streams.map((stream) => {
-                        if (stream && stream.username && stream.title) {
+                        if (stream && stream.islive) {
                             return <OnlineStreamCard key={stream.username} stream={stream} />;
                         } else if (stream && stream.username) {
                             return <OfflineStreamCard key={stream.username} stream={stream} />;
