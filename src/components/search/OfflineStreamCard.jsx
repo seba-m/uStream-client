@@ -7,7 +7,7 @@ export function OfflineStreamCard({ stream }) {
     return (
         <li className={styles.streamCard}>
             <div className={styles.streamImage}>
-                <Link to={`/stream/${stream.Username}`}>
+                <Link to={`/stream/${stream.username}`}>
                     <figure className={styles.imageBorder}>
                         <img src={imgUrl} alt={stream.title} />
                     </figure>
@@ -15,11 +15,11 @@ export function OfflineStreamCard({ stream }) {
             </div>
 
             <div className={styles.streamInfo}>
-                <Link to={`/stream/${stream.Username}`}>
-                    <h1 className={styles.streamUsername}>{stream.Username}</h1>
+                <Link to={`/stream/${stream.username}`}>
+                    <h1 className={styles.streamUsername}>{stream.username}</h1>
                 </Link>
                 <p>{stream.Followers} followers</p>
-                <p className={styles.streamAbout}>{stream.About}</p>
+                <p className={styles.streamAbout}>{stream.about}</p>
             </div>
 
             

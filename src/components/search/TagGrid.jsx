@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './TagGrid.module.scss';
 import { Spinner } from '../Spinner';
@@ -21,7 +22,7 @@ export function TagGrid({ search }) {
         setIsLoading(true);
 
         GeneralService.searchTag(search, page).then((data) => {
-            setTags(prevTags => prevTags.concat(data.Tags));
+            setTags(prevTags => prevTags.concat(data.tags));
             setHasMore(data.page < data.total_pages);
             setIsLoading(false);
         })
@@ -32,21 +33,26 @@ export function TagGrid({ search }) {
     } 
 
     return (
-        <InfiniteScroll
-            dataLength={tags.length}
-            hasMore={hasMore}
-            next={() => setPage((prevPage) => prevPage + 1)}
-            loader={<Spinner />}
-            endMessage={<p className={styles.noMoreTags}>- You have seen it all -</p>}
-        >
-            <ul className={styles.tagsGrid}>
-                {tags.map((tag) => {
-                    if (tag && tag.Username) {
-                        return <TagCard key={tag.Username} tag={tag} />;
-                    }
-                    return null;
-                })}
-            </ul>
-        </InfiniteScroll>
+        <>
+            <div>
+                <h2>Go back to <Link to={`/search/?term=${search}`}><b>search page</b></Link></h2>
+            </div>
+            <InfiniteScroll
+                dataLength={tags.length}
+                hasMore={hasMore}
+                next={() => setPage((prevPage) => prevPage + 1)}
+                loader={<Spinner />}
+                endMessage={<p className={styles.noMoreTags}>- You have seen it all -</p>}
+            >
+                <ul className={styles.tagsGrid}>
+                    {tags.map((tag) => {
+                        if (tag && tag.Username) {
+                            return <TagCard key={tag.Username} tag={tag} />;
+                        }
+                        return null;
+                    })}
+                </ul>
+            </InfiniteScroll>
+        </>
     )
 }

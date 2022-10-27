@@ -5,6 +5,8 @@ import { LandingCard } from '../components/LandingCard';
 
 import GeneralService from '../services/General.service';
 
+import styles from './LandingPage.module.scss';
+
 export default function LandingPage() {
 
 	const [data, setData] = useState(null);
@@ -13,7 +15,7 @@ export default function LandingPage() {
 	useEffect(() => {
 		GeneralService.getTopStreamers()
 			.then(data => {
-				setData(data.Streams);
+				setData(data.streamers);
 				setIsLoading(false);
 			})
 	},[]);
@@ -31,7 +33,7 @@ export default function LandingPage() {
 			</div>
 			<div>
 				<h2>Channels you might like</h2>
-				<div>
+				<div className={styles.streamsContainer}>
 					{data.map(stream => (
 						<LandingCard key={stream.username} stream={stream} />
 					))}

@@ -1,19 +1,19 @@
-.empty {
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    margin: 40px;
-}
-
-.options {
+.streamerCard {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;    
-}
-
-.options li {
-    list-style: none;
-    margin: 0 10px;
-    font-size: 2.2rem;
+    justify-content: flex-end;
+    padding: 0.5rem;
+    color: white;
+    text-shadow: 0 0 0.5rem black;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.05);
+    }
+    
 }

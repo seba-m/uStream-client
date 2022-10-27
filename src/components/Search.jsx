@@ -33,8 +33,6 @@ export function Search() {
                         const value = e.target.value;
                         const currentPath = pathName();
 
-                        console.log(currentPath)
-
                         if (!currentPath.startsWith("/search")) {
                             navigate('search/?term=' + value);
                         } else {

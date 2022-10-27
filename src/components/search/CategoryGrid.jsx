@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './CategoryGrid.module.scss';
 import { Spinner } from '../Spinner';
@@ -28,24 +29,29 @@ export function CategoryGrid({ search }) {
 
     if (!isLoading && category.length === 0) {
         return <Empty search={search} />
-    } 
+    }
 
     return (
-        <InfiniteScroll
-            dataLength={category.length}
-            hasMore={hasMore}
-            next={() => setPage((prevPage) => prevPage + 1)}
-            loader={<Spinner />}
-            endMessage={<p className={styles.noMoreStreams}>- You have seen it all -</p>}
-        >
-            <ul className={styles.CategoriesGrid}>
-                {category.map((category) => {
-                    if (category && category.name) {
-                        return <CategoryCard key={category.name} category={category} />;
-                    }
-                    return null;
-                })}
-            </ul>
-        </InfiniteScroll>
+        <>
+            <div>
+                <h2>Go back to <Link to={`/search/?term=${search}`}><b>search page</b></Link></h2>
+            </div>
+            <InfiniteScroll
+                dataLength={category.length}
+                hasMore={hasMore}
+                next={() => setPage((prevPage) => prevPage + 1)}
+                loader={<Spinner />}
+                endMessage={<p className={styles.noMoreStreams}>- You have seen it all -</p>}
+            >
+                <ul className={styles.CategoriesGrid}>
+                    {category.map((category) => {
+                        if (category && category.name) {
+                            return <CategoryCard key={category.name} category={category} />;
+                        }
+                        return null;
+                    })}
+                </ul>
+            </InfiniteScroll>
+        </>
     )
 }

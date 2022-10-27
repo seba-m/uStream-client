@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { useDebounce } from '../hooks/useDebounce';
 import { useQuery } from '../hooks/useQuery';
@@ -68,16 +69,16 @@ export function SearchPage() {
                         <div>
                             <div>
                                 {streams.map((stream) => {
-                                    if (stream && stream.Username && stream.Title) {
-                                        return <OnlineStreamCard key={stream.Username} stream={stream} />;
-                                    } else if (stream && stream.Username) {
-                                        return <OfflineStreamCard key={stream.Username} stream={stream} />;
+                                    if (stream && stream.username && stream.title) {
+                                        return <OnlineStreamCard key={stream.username} stream={stream} />;
+                                    } else if (stream && stream.username) {
+                                        return <OfflineStreamCard key={stream.username} stream={stream} />;
                                     }
                                     return null;
                                 })}
                             </div>
                             <div>
-                                <a href={`/search/stream?query=${search}`}>Show all</a>
+                                <Link to={`/search/stream?query=${search}`}>Show all</Link>
                             </div>
                         </div>
                         : 
@@ -101,7 +102,7 @@ export function SearchPage() {
                                 })}
                             </div>
                             <div>
-                                <a href={`/search/category?query=${search}`}>Show all</a>
+                                <Link to={`/search/category?query=${search}`}>Show all</Link>
                             </div>
                         </div>
                         :

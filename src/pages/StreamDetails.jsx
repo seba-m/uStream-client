@@ -30,7 +30,7 @@ export function StreamDetails() {
 
     if (!stream) return null;
 
-    if (stream.IsLive) {
+    if (stream.islive) {
         return <OnlineStreamPlayer stream={stream} />;
     } else {
         return <OfflineStreamPlayer stream={stream} />;
