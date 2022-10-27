@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { Spinner } from '../components/Spinner';
+import { LandingCard } from '../components/LandingCard';
 
 import GeneralService from '../services/General.service';
 
@@ -32,9 +33,7 @@ export default function LandingPage() {
 				<h2>Channels you might like</h2>
 				<div>
 					{data.map(stream => (
-						<div key={stream.Username}>
-							<p>{stream.Username}</p>
-						</div>
+						<LandingCard key={stream.username} stream={stream} />
 					))}
 				</div>
 			</div>

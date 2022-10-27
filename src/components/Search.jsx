@@ -22,6 +22,7 @@ export function Search() {
         <form className={styles.searchContainer} onSubmit={handleSubmit}>
             <div className={styles.searchBox}>
                 <input
+                    id='search'
                     className={styles.searchInput}
                     type="text"
                     value={search ?? ""}

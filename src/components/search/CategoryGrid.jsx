@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import styles from './StreamGrid.module.scss';
+import styles from './CategoryGrid.module.scss';
 import { Spinner } from '../Spinner';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -20,14 +20,14 @@ export function CategoryGrid({ search }) {
         setIsLoading(true);
 
         GeneralService.searchCategory(search, page).then((data) => {
-            setCategory(prevStreams => prevStreams.concat(data.Streams));
+            setCategory(prevStreams => prevStreams.concat(data.categories));
             setHasMore(data.page < data.total_pages);
             setIsLoading(false);
         })
     }, [search, page]);
 
     if (!isLoading && category.length === 0) {
-        return <Empty />
+        return <Empty search={search} />
     } 
 
     return (
@@ -40,8 +40,8 @@ export function CategoryGrid({ search }) {
         >
             <ul className={styles.CategoriesGrid}>
                 {category.map((category) => {
-                    if (category && category.Username) {
-                        return <CategoryCard key={category.Username} category={category} />;
+                    if (category && category.name) {
+                        return <CategoryCard key={category.name} category={category} />;
                     }
                     return null;
                 })}
