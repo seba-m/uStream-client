@@ -9,6 +9,7 @@ import { Profile } from './pages/Profile';
 import { SearchTag } from './pages/SearchTag';
 import { SearchStream } from './pages/SearchStream';
 import { SearchCategory } from './pages/SearchCategory';
+import { NotFound } from './pages/NotFound';
 
 import styles from './App.module.scss';
 import { Search } from './components/Search';
@@ -85,6 +86,7 @@ export function App() {
                     <Route exact path="/search/category" element={<SearchCategory />}></Route>
                     <Route exact path="/search/stream" element={<SearchStream />}></Route>
                     <Route exact path="/stream/:streamerName" element={<StreamDetails />}></Route>
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
         </Router>

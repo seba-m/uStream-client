@@ -31,7 +31,6 @@ export function SearchPage() {
             const page = 1;
             
             GeneralService.searchStream(debouncedSearch, page).then((data) => {
-                console.log(data.streams);
                 setStreams(data.streams)
             }).catch((err) => {
                 setStreams(null);

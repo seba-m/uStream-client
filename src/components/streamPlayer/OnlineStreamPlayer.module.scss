@@ -19,12 +19,12 @@
 
 
 /*tags*/
-.streamTags {
+.tagsContainer {
     padding-top: 1rem;
     display: flex;
 }
 
-.streamTags .tag {
+.tagsContainer .tag {
     font-size: 1.2rem;
     display: inline-block;
     margin-bottom: 0.5rem;
@@ -36,7 +36,7 @@
     }
 }
 
-.streamTags .tagUrl {
+.tagsContainer .tagUrl {
     display: inline-block;
     border-radius: 9000px;
     font-weight: 600;
@@ -47,7 +47,7 @@
     max-width: 100%;
 }
 
-.streamTags span {
+.tagsContainer span {
     padding: 0px 0.8rem;
     white-space: nowrap;
     text-overflow: ellipsis;

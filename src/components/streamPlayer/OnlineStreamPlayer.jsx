@@ -28,7 +28,7 @@ export function OnlineStreamPlayer({ stream }) {
                     <div>
                         <p className={`${styles.streamCategory}`}>{stream.category}</p>
                         {stream.tags.length > 0 && (
-                            <div className={styles.streamTags}>
+                            <div className={styles.tagsContainer}>
                                 {stream.tags.map((tag, index) =>
                                     <div className={styles.tag} key={index}>
                                         <Link to={`/search/tag/${tag}`} className={styles.tagUrl}>
