@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = 'http://localhost:9000/api';
+const API = process.env.REACT_APP_API_URL;
 
 function authHeader() {
     const user = JSON.parse(localStorage.getItem('user'));
