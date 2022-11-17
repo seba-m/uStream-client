@@ -20,8 +20,7 @@ export function Search() {
 
     return (
         <form className={styles.searchContainer} onSubmit={handleSubmit}>
-            <div className={styles.searchBox}>
-                <input
+            <input
                     id='search'
                     className={styles.searchInput}
                     type="text"
@@ -40,8 +39,7 @@ export function Search() {
                         }
                     }}
                 />
-                <FaSearch size={20} color="black" className={styles.searchButton} />
-            </div>
+                <button className={styles.searchButton} type="submit"><FaSearch size={20} className={styles.icon}/></button>
         </form>
     )
 }

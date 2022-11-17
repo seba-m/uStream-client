@@ -1,41 +1,120 @@
-.title {
-    font-size: 3rem;
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 70px #e60073;
+.container {
+    height: 100vh;
+    width: 100vw;
+
+    display: grid;
+    overflow: hidden;
+
+    grid-template-areas: 
+    "navbar navbar"
+    "sidebar content";
+    grid-template-columns: var(--sidebar-width) auto;
+    grid-template-rows: var(--navbar-height) auto;
+    
 }
 
-.container {
+header {
+
+    
+}
+
+.navContainer {
+    grid-area: navbar; 
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: row;
     align-items: center;
     text-align: center;
-    padding-left: 1rem;
+    background: #18181B;
+    border-bottom: 2px solid #050506;
     gap: 3rem;
 }
 
 .left {
     display: flex;
-    flex-direction: row;
+    flex: 1;
     align-items: center;
-    justify-content: center;
-    gap: 4rem;
 }
 
-.centre {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+.center {
+    flex: 1;
 }
 
 .right {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+    margin-right: 3rem;
+}
+
+.logoBox {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
+
+.textNav {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 20px;
+}
+
+h1.textNav:hover, h2.textNav:hover{
+    color: var(--primary-color);
+}
+
+.buttonText {   
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    
+    text-align: center;
+    font-feature-settings: 'salt' on, 'liga' off;
+    
+    color: #FFFFFF;
+}
+
+.loginBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+
+    width: 77px;
+    height: 34px;
+
+    background: #464649;
+    border-radius: 6px;
+}
+
+.signupBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+
+    width: 91px;
+    height: 34px;
+
+    /* Brand / Turquoise */
+
+    background: #2EC5CE;
+    border-radius: 6px;
+
+}
+
 
 @media (max-width: 768px) {
     .container {
@@ -54,5 +133,55 @@
         flex-direction: column;
         gap: 1rem;
     }
+}
+
+
+.sideMenu {
+    grid-area: sidebar;
+    background: #1F1F23;
+    width: 310px;
+    height: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    
+}
+
+.sideMenu h2 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    
+    color: #FFFFFF;
+}
+
+.sideMenuBox {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    width: 100%;
+    padding: .1rem;
+    margin-bottom: 2.2rem;
+
+}
+
+.menuText {
+    display: flex;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentContainer {
+    overflow-y: auto;
+    grid-area: content;
+    background:#0e0e10;;
+
+}
+
+.contentContainer .content{
+    
 }
 

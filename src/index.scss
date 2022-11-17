@@ -1,6 +1,23 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #4a4a4c;
+    border-radius: 10px;
+}
+
+:root {
+    --primary-color: #22949b;
+    --navbar-height: 50px;
+    --sidebar-width: 310px;
+}
+
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+
 }
 
 *,
@@ -11,10 +28,11 @@ html {
 
 body {
     margin: 0;
+    
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: black;
+    background-color: #18181B;
     color: white;
     font-size: 1.6rem;
 }

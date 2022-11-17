@@ -1,5 +1,116 @@
+$size: 10.5rem;
+
+.landingContainer {
+      
+}
+
+.heroContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:#18181B;
+    
+
+}
+
+.slogan {
+    margin: 0;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 98px;
+
+}
+.heroContentLeft{
+    padding-left: 15rem;
+}
+
+.heroContentLeft h3 {
+    margin: 0;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 3.2rem;  
+    margin-bottom: 3.2rem;
+}
+
+.heroContentLeft button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+    text-align: center;
+    font-feature-settings: 'salt' on, 'liga' off;
+
+    color: #FFFFFF;
+    padding: 1.2rem 3.2rem;
+
+    background: #2EC5CE;
+    border-radius: 6px;
+}
+
+.heroContentRight {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.logoBox {
+
+}
+
+.logo {
+    width: 49.4rem;
+    height: 49.4rem;
+    margin-right: 9rem;
+}
+
+/*.decoration {
+    background: #FFFFFF;
+    margin: 0 1em 1em 0;
+}
+
+.top,
+.bottom {
+    height: $size;
+    width: $size * 2;
+}
+
+.left {
+    height: $size * 2;
+    width: $size;
+}
+
+div.decoration.top{
+    border-top-left-radius: $size * 2;
+    border-top-right-radius: $size * 2;
+    top:-60rem;
+    right: 10rem;    
+
+}
+
+div.decoration.bottom{
+    border-bottom-left-radius: $size * 2;
+    border-bottom-right-radius: $size * 2;
+    top: -45rem;
+    left: 50rem;
+}
+
+div.decoration.left{
+    border-bottom-left-radius: $size * 2;
+    border-top-left-radius: $size * 2;
+    top: -45rem;
+}*/
+
+
+
 .streamsContainer {
     display: grid;
+    
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-gap: 1rem;
     margin: 1rem;
