@@ -22,7 +22,7 @@ export default function LandingPage() {
     return <Spinner />;
   }
 
-  if (!data) return null;
+  //if (!data) return null;
 
   return (
     <div className={styles.landingContainer}>
