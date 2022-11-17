@@ -82,6 +82,7 @@ export default function LandingPage() {
         <h2>Channels you might like</h2>
         <div className={styles.streamsContainer}>
           {/*data.map((stream) => (
+            
             <LandingCard key={stream.username} stream={stream} />
           ))*/}
         </div>
