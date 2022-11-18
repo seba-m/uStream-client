@@ -107,11 +107,21 @@ div.decoration.left{
 }*/
 
 
+.content {
+    padding: 3.5rem 7.8rem;
+    
+    h2 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 20px;
+        margin-bottom: 3.9rem;
+    }
+}
 
 .streamsContainer {
     display: grid;
-    
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-gap: 1rem;
-    margin: 1rem;
 }

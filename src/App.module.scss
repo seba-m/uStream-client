@@ -13,11 +13,6 @@
     
 }
 
-header {
-
-    
-}
-
 .navContainer {
     grid-area: navbar; 
     width: 100%;
@@ -64,10 +59,10 @@ header {
     font-weight: 700;
     font-size: 2rem;
     line-height: 20px;
-}
-
-h1.textNav:hover, h2.textNav:hover{
-    color: var(--primary-color);
+    margin: 0;
+    &:hover {
+        color: var(--primary-color);
+    }
 }
 
 .buttonText {   
@@ -76,6 +71,7 @@ h1.textNav:hover, h2.textNav:hover{
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
+    margin: 0;
     /* identical to box height, or 143% */
     
     text-align: center;
@@ -116,22 +112,24 @@ h1.textNav:hover, h2.textNav:hover{
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .container {
-        flex-direction: column;
-        gap: 1rem;
+        /*flex-direction: column;
+        gap: 1rem;*/
+        grid-template-columns: 0 auto;
+        
     }
     .left {
-        flex-direction: column;
-        gap: 1rem;
+        //flex-direction: column;
+        //gap: 1rem;
     }
     .centre {
-        flex-direction: column;
-        gap: 1rem;
+        //flex-direction: column;
+        //gap: 1rem;
     }
     .right {
-        flex-direction: column;
-        gap: 1rem;
+        //flex-direction: column;
+        //gap: 1rem;
     }
 }
 
@@ -141,8 +139,8 @@ h1.textNav:hover, h2.textNav:hover{
     background: #1F1F23;
     width: 310px;
     height: 100%;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 1.7rem 2rem;
+    
     
 }
 
@@ -151,8 +149,14 @@ h1.textNav:hover, h2.textNav:hover{
     font-style: normal;
     font-weight: 700;
     font-size: 2rem;
+    margin: 0;
     
     color: #FFFFFF;
+    padding-bottom: 2rem;
+}
+
+.sideMenu h3 {
+    margin: 0;
 }
 
 .sideMenuBox {
@@ -161,6 +165,8 @@ h1.textNav:hover, h2.textNav:hover{
     width: 100%;
     padding: .1rem;
     margin-bottom: 2.2rem;
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
 
 }
 

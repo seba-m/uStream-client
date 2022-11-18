@@ -12,8 +12,8 @@ export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    GeneralService.getTopStreamers().then((data) => {
-      setData(data.streamers);
+    GeneralService.getTopStreamers().then((result) => {
+      setData(result);
       setIsLoading(false);
     });
   }, []);
@@ -71,20 +71,18 @@ export default function LandingPage() {
                 </defs>
               </svg>
             </div>
-			<div className={`${styles.decoration} ${styles.top}`}></div>
-			<div className={`${styles.decoration} ${styles.bottom}`}></div>
-			<div className={`${styles.decoration} ${styles.left}`}></div>
-
+            <div className={`${styles.decoration} ${styles.top}`}></div>
+            <div className={`${styles.decoration} ${styles.bottom}`}></div>
+            <div className={`${styles.decoration} ${styles.left}`}></div>
           </div>
         </div>
       </div>
-      <div>
+      <div className={styles.content}>
         <h2>Channels you might like</h2>
         <div className={styles.streamsContainer}>
-          {/*data.map((stream) => (
-            
+          {data.map((stream) => (
             <LandingCard key={stream.username} stream={stream} />
-          ))*/}
+          ))}
         </div>
       </div>
     </div>

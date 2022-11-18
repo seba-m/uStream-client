@@ -1,4 +1,5 @@
 .streamerCard {
+    position: relative;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -11,9 +12,48 @@
     color: white;
     text-shadow: 0 0 0.5rem black;
     transition: all 0.2s ease-in-out;
+    align-items:center ;
     cursor: pointer;
     &:hover {
         transform: scale(1.05);
     }
     
+}
+
+.streamImage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    align-self: center;
+    margin-top: 0rem;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.streamImage .imageBorder {
+    border-radius: 9000px;
+    overflow: hidden;
+    position: relative;
+    background-color: inherit;
+    width: 12rem;
+    height: 12rem;
+}
+
+.streamImage a {
+    display: inline-block;
+}
+
+.streamImage a img {
+    display: block;
+    border-radius: 9000px;
+    width: 100%;
+}
+
+.streamerBackgroundImage {
+    height:100%;
+    width:100%;
+  
 }

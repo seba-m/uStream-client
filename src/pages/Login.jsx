@@ -40,56 +40,51 @@ export function Login() {
   };
 
   return (
-    <div className="container">
-      <div className=" row">
-        <div className="col-4">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
-        </div>
-        <div className="col-6">
-          <Formik
-            initialValues={{ email: "", password: "" }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.email) {
-                errors.email = "Required";
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = "Invalid email address";
-              }
-              return errors;
-            }}
-            onSubmit={handleLogin}
-          >
-            {({ isSubmitting }) => (
-              <Form>
-                {message && (
-                  <div className="form-group">
-                    <div className="alert alert-danger" role="alert">
-                      {message}
-                    </div>
-                  </div>
-                )}
+    <div >
+      <img
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        alt="profile-img"
+        className="profile-img-card"
+      />
 
-                <Field type="email" name="email" />
-                <ErrorMessage name="email" component="div" />
-                <Field type="password" name="password" />
-                <ErrorMessage name="password" component="div" />
-                <div className="form-group">
-                  <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting && <Spinner />}
-                    <span>Login</span>
-                  </button>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.email) {
+            errors.email = "Required";
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+          ) {
+            errors.email = "Invalid email address";
+          }
+          return errors;
+        }}
+        onSubmit={handleLogin}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            {message && (
+              <div className="form-group">
+                <div className="alert alert-danger" role="alert">
+                  {message}
                 </div>
-              </Form>
+              </div>
             )}
-          </Formik>
-        </div>
-      </div>
+
+            <Field type="email" name="email" />
+            <ErrorMessage name="email" component="div" />
+            <Field type="password" name="password" />
+            <ErrorMessage name="password" component="div" />
+            <div className="form-group">
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting && <Spinner />}
+                <span>Login</span>
+              </button>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 }
