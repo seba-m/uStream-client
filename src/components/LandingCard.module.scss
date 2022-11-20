@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0.5rem;
+    padding: 0 0.5rem 0 0.5rem;
     color: white;
     text-shadow: 0 0 0.5rem black;
     transition: all 0.2s ease-in-out;
@@ -27,6 +27,8 @@
     flex-shrink: 0;
     align-self: center;
     margin-top: 0rem;
+    position: absolute;
+    top: 25%;
 
     &:hover {
         opacity: 0.8;
@@ -53,7 +55,22 @@
 }
 
 .streamerBackgroundImage {
-    height:100%;
-    width:100%;
+    display: flex;
+    justify-content: center;
+    height:36.2rem;
+    width:23.7rem;
+    position: relative;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+
+    h3 {
+      
+        position: absolute;
+        top: 65%;
+       
+    }
   
 }
