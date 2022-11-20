@@ -26,11 +26,7 @@
     align-self: center;
     margin-top: 0rem;
     position: absolute;
-    top: 25%;
-
-    &:hover {
-        opacity: 0.8;
-    }
+    top: 20%;
 }
 
 .streamImage .imageBorder {
@@ -38,8 +34,8 @@
     overflow: hidden;
     position: relative;
     background-color: inherit;
-    width: 12rem;
-    height: 12rem;
+    width: 13.5rem;
+    height: 13.5rem;
 }
 
 .streamImage a {
@@ -50,25 +46,53 @@
     display: block;
     border-radius: 9000px;
     width: 100%;
+    border: 6px solid #24B2FF;
 }
 
 .streamerBackgroundImage {
+
     display: flex;
     justify-content: center;
     height:36.2rem;
     width:23.7rem;
     position: relative;
+    
 
     img {
         height: 100%;
         width: 100%;
+        object-fit: cover;
     }
 
     h3 {
       
         position: absolute;
-        top: 65%;
+        top: 70%;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 20px;
        
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: #000;
+        opacity: 0.4;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 0;
+            transition: opacity 0.4s, visibility 0.4s;
+        }
     }
   
 }

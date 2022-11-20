@@ -124,7 +124,7 @@ div.decoration.left{
 .streamsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-    grid-gap: 1rem;
+    grid-gap: 4rem;
 }
 
 @media (max-width: 480px) {
