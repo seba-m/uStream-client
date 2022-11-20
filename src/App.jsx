@@ -48,7 +48,7 @@ export function App() {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g clip-path="url(#clip0_2_80)">
+                    <g clipPath="url(#clip0_2_80)">
                       <path
                         d="M0.575317 28H10.0685C14.57 28 18.2192 24.3508 18.2192 19.8493H8.726C4.2245 19.8493 0.575317 23.4985 0.575317 28Z"
                         fill="#2EC5CE"
