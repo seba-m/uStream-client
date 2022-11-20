@@ -5,7 +5,7 @@ export function ImageUpload({ defaultImage, onUpload, onDelete }) {
     const [message, setMessage] = useState("");
 
     //only for dev
-    defaultImage = "https://static-cdn.jtvnw.net/jtv_user_pictures/74aca484-10fe-4a74-b5ed-bb4a5414c1bb-profile_image-300x300.png";
+    //defaultImage = "https://static-cdn.jtvnw.net/jtv_user_pictures/74aca484-10fe-4a74-b5ed-bb4a5414c1bb-profile_image-300x300.png";
 
     const removeImage = () => {
         if (!selectedImage) {
@@ -16,16 +16,20 @@ export function ImageUpload({ defaultImage, onUpload, onDelete }) {
     };
 
     const saveChanges = () => {
-        onUpload(selectedImage).then(
-            (error) => {
-                const resMessage =
-                    (error.response && error.response.data && error.response.data.message) ||
-                    error.message ||
-                    error.toString();
+        if (selectedImage) {
+            onUpload(selectedImage).then(
+                (error) => {
+                    const resMessage =
+                        (error.response && error.response.data && error.response.data.message) ||
+                        error.message ||
+                        error.toString();
 
-                setMessage(resMessage);
-            }
-        );
+                    setMessage(resMessage);
+                }
+            );
+        } else {
+            setMessage("No image selected");
+        }
     };
 
     return (
@@ -47,8 +51,8 @@ export function ImageUpload({ defaultImage, onUpload, onDelete }) {
             <br />
             <input
                 type="file"
-                name="myImage"
-                accept="image/png, image/gif, image/jpeg"
+                name="photo"
+                accept="image/*"
                 onChange={(event) => {
                     setSelectedImage(event.target.files[0]);
                 }}

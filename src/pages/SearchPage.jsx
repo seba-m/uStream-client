@@ -31,13 +31,21 @@ export function SearchPage() {
             const page = 1;
             
             GeneralService.searchStream(debouncedSearch, page).then((data) => {
-                setStreams(data.streams)
+                if (data?.streams) {
+                    setStreams(data.streams);
+                } else {
+                    setStreams([]);
+                }
             }).catch((err) => {
                 setStreams(null);
             })
 
             GeneralService.searchCategory(debouncedSearch, page).then((data) => {
-                setCategories(data.categories)
+                if (data?.categories) {
+                    setCategories(data.categories);
+                } else {
+                    setCategories([]);
+                }
             }).catch((err) => {
                 setCategories(null);
             })

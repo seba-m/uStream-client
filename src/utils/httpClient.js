@@ -5,7 +5,7 @@ const API = process.env.REACT_APP_API_URL;
 function authHeader() {
     const user = JSON.parse(localStorage.getItem('user'));
 
-    if (user && user.accessToken) {
+    if (user?.accessToken) {
         return { 'x-access-token': user.accessToken };
     } else {
         return {};
@@ -19,17 +19,6 @@ export function get(url) {
 
 export function post(url, data) {
     return axios.post(API + url, data, { headers: authHeader() })
-        .then(response => response.data);
-}
-
-export function postImage(url, data) {
-    //se agrega el header de autentificación, mas el header del tipo imagen
-    return axios.post(API + url, data, 
-        { headers: 
-            {   ...authHeader(),
-                "Content-Type": "multipart/form-data" 
-            }
-        })
         .then(response => response.data);
 }
 
