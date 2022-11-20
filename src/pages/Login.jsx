@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 import { useNavigate } from "react-router-dom";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -7,8 +10,10 @@ import { Spinner } from "../components/Spinner";
 
 import AuthService from "../services/Auth.service";
 
-export function Login() {
+export function Login({show, handleClose}) {
   let navigate = useNavigate();
+
+  
 
   const [message, setMessage] = useState("");
 
@@ -40,52 +45,24 @@ export function Login() {
   };
 
   return (
-    <div >
-      <img
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        alt="profile-img"
-        className="profile-img-card"
-      />
-
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.email) {
-            errors.email = "Required";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = "Invalid email address";
-          }
-          return errors;
-        }}
-        onSubmit={handleLogin}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            {message && (
-              <div className="form-group">
-                <div className="alert alert-danger" role="alert">
-                  {message}
-                </div>
-              </div>
-            )}
-
-            <Field type="email" name="email" />
-            <ErrorMessage name="email" component="div" />
-            <Field type="password" name="password" />
-            <ErrorMessage name="password" component="div" />
-            <div className="form-group">
-              <button type="submit" disabled={isSubmitting}>
-                {isSubmitting && <Spinner />}
-                <span>Login</span>
-              </button>
-            </div>
-          </Form>
-        )}
-      </Formik>
-    </div>
+    <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <h2 style={{color: '#000'}}>Login</h2>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
 

@@ -1,3 +1,7 @@
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
@@ -19,6 +23,11 @@ import LandingPage from "./pages/LandingPage";
 
 export function App() {
   const [currentUser, setCurrentUser] = useState(false);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -97,11 +106,16 @@ export function App() {
             </div>
           ) : (
             <div className={styles.right}>
-              <Link to="/login">
+              {/*<Link to="/login">
                 <div className={styles.loginBox}>
                   <h2 className={styles.buttonText}>Login</h2>
                 </div>
-              </Link>
+              </Link>*/}
+              
+                <button className={styles.loginBox} onClick={handleShow}>
+                  <h2 className={styles.buttonText}>Login</h2>
+                </button>
+              
               <Link to="/signup">
                 <div className={styles.signupBox}>
                   <h2 className={styles.buttonText}>Sign up</h2>
@@ -154,7 +168,7 @@ export function App() {
           <div className={styles.content}>
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route exact path="/login" element={<Login />}></Route>
+              {/*<Route exact path="/login" element={<Login />}></Route>*/}
               <Route exact path="/signup" element={<Register />}></Route>
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route exact path="/search" element={<SearchPage />}></Route>
@@ -178,6 +192,7 @@ export function App() {
             </Routes>
           </div>
         </section>
+        <Login show={show} handleClose={handleClose}/>
       </div>
     </Router>
   );
