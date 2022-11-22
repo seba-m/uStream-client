@@ -1,6 +1,6 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -24,10 +24,12 @@ import LandingPage from "./pages/LandingPage";
 export function App() {
   const [currentUser, setCurrentUser] = useState(false);
 
-  const [show, setShow] = useState(false);
+  //const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [modalShow, setModalShow] = React.useState(false);
+
+  //const handleClose = () => setShow(false);
+  //const handleShow = () => setShow(true);
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -111,11 +113,14 @@ export function App() {
                   <h2 className={styles.buttonText}>Login</h2>
                 </div>
               </Link>*/}
-              
-                <button className={styles.loginBox} onClick={handleShow}>
+
+              {/*<button className={styles.loginBox} onClick={handleShow}>
                   <h2 className={styles.buttonText}>Login</h2>
-                </button>
-              
+            </button>*/}
+              <a className={styles.loginBox} onClick={() => setModalShow(true)}>
+                <h2 className={styles.buttonText}>Login</h2>
+              </a>
+
               <Link to="/signup">
                 <div className={styles.signupBox}>
                   <h2 className={styles.buttonText}>Sign up</h2>
@@ -192,7 +197,11 @@ export function App() {
             </Routes>
           </div>
         </section>
-        <Login show={show} handleClose={handleClose}/>
+        {/*<Login show={show} handleClose={handleClose} />*/}
+        <Login
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
       </div>
     </Router>
   );
