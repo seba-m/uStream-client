@@ -55,7 +55,7 @@ export function Login(/*{ show, handleClose }*/ props) {
       >
         <div className={styles.loginContainer}>
           <div className={styles.logoModal}>
-            LOGO
+            ESTO ES UN LOGO
           </div>
           <div className={styles.loginContent}>
             <h4>Centered Modal</h4>
