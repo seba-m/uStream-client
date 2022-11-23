@@ -1,9 +1,38 @@
 .modalContainer {
-    color: white;
+  color: white;
+  justify-content: center;
 }
 
 .modalContainer .loginContainer {
+  display: flex;
+  padding: 2rem;
+  background: #18181b;
+}
+
+.logoModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 2rem;
+}
+
+.logoModal h1 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 24px;
+  
+  color: #B3BEBD;
+}
+
+.logo {
+    padding-bottom: 1.2rem;
+}
+
+.loginContent {
     display: flex;
-    padding: 2rem;
-    background: #18181B;;
+    flex-direction: column;
+    justify-content: center;
+    
 }
