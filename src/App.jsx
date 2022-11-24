@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -14,6 +12,7 @@ import { SearchTag } from "./pages/SearchTag";
 import { SearchStream } from "./pages/SearchStream";
 import { SearchCategory } from "./pages/SearchCategory";
 import { NotFound } from "./pages/NotFound";
+import { Credentials } from "./pages/Credentials";
 
 import styles from "./App.module.scss";
 import { Search } from "./components/Search";
@@ -24,12 +23,9 @@ import LandingPage from "./pages/LandingPage";
 export function App() {
   const [currentUser, setCurrentUser] = useState(false);
 
-  //const [show, setShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
-  const [modalShow, setModalShow] = React.useState(false);
-
-  //const handleClose = () => setShow(false);
-  //const handleShow = () => setShow(true);
+  const [tipo, setTipo] = useState(null);
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -117,15 +113,13 @@ export function App() {
               {/*<button className={styles.loginBox} onClick={handleShow}>
                   <h2 className={styles.buttonText}>Login</h2>
             </button>*/}
-              <a className={styles.loginBox} onClick={() => setModalShow(true)}>
+              <button className={styles.loginBox} onClick={() => {setModalShow(true); setTipo("login");}}>
                 <h2 className={styles.buttonText}>Login</h2>
-              </a>
+              </button>
 
-              <Link to="/signup">
-                <div className={styles.signupBox}>
-                  <h2 className={styles.buttonText}>Sign up</h2>
-                </div>
-              </Link>
+              <button className={styles.signupBox} onClick={() => {setModalShow(true); setTipo("register")}}>
+                <h2 className={styles.buttonText}>Sign up</h2>
+              </button>
             </div>
           )}
         </nav>
@@ -174,7 +168,7 @@ export function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               {/*<Route exact path="/login" element={<Login />}></Route>*/}
-              <Route exact path="/signup" element={<Register />}></Route>
+              {/*<Route exact path="/signup" element={<Register />}></Route>*/}
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route exact path="/search" element={<SearchPage />}></Route>
               <Route exact path="/search/tag" element={<SearchTag />}></Route>
@@ -197,11 +191,7 @@ export function App() {
             </Routes>
           </div>
         </section>
-        {/*<Login show={show} handleClose={handleClose} />*/}
-        <Login
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
+        <Credentials tipo={tipo} show={modalShow} onHide={() => setModalShow(false)} />
       </div>
     </Router>
   );
