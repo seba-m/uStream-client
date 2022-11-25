@@ -1,29 +1,8 @@
-import { useState, useEffect } from "react";
-
-import { Spinner } from "../components/Spinner";
-import { LandingCard } from "../components/LandingCard";
-
-import GeneralService from "../services/General.service";
+import { LandingGrid } from "../components/landing/LandingGrid";
 
 import styles from "./LandingPage.module.scss";
 
 export default function LandingPage() {
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    GeneralService.getTopStreamers().then((result) => {
-      setData(result);
-      setIsLoading(false);
-    });
-  }, []);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
-
-  //if (!data) return null;
-
   return (
     <div className={styles.landingContainer}>
       <div className={styles.heroContainer}>
@@ -80,9 +59,7 @@ export default function LandingPage() {
       <div className={styles.content}>
         <h2>Channels you might like</h2>
         <div className={styles.streamsContainer}>
-          {data.map((stream) => (
-            <LandingCard key={stream.username} stream={stream} />
-          ))}
+          <LandingGrid />
         </div>
       </div>
     </div>
