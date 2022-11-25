@@ -61,8 +61,9 @@ export function Credentials(props) {
           </div>
           <div className={styles.credentialsContent}>
             <ul className={styles.buttonSelector}>
-              <li onClick={() => setTipo("login")}>
+              <li onClick={() => setTipo("login")} className={styles.active}>
                 <span className={styles.textNav}>Login</span>
+                <div className={styles.underline}></div>
               </li>
               <li onClick={() => setTipo("register")}>
                 <span className={styles.textNav}>Sign up</span>
