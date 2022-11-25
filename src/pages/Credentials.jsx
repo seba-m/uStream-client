@@ -7,11 +7,9 @@ import { Login } from "./Login";
 import { Register } from "./Register";
 
 export function Credentials(props) {
-  const [tipo, setTipo] = useState();
+  const [tipo, setTipo] = useState("login");
   
-  useEffect(() => {
-    setTipo(props.tipo)
-  }, [props.tipo]);
+
 
   return (
     <>
@@ -19,6 +17,7 @@ export function Credentials(props) {
         {...props}
         dialogClassName={styles.modalContainer}
         aria-labelledby="contained-modal-title-vcenter"
+        animation={false}
         centered
       >
         <div className={styles.credentialsContainer}>
@@ -61,16 +60,16 @@ export function Credentials(props) {
             <h1 className={styles.textNav}>uStream</h1>
           </div>
           <div className={styles.credentialsContent}>
-            <div>
-              <button onClick={() => setTipo("login")}>
-                <h2 className={styles.textNav}>login</h2>
-              </button>
-              <button onClick={() => setTipo("register")}>
-                <h2 className={styles.textNav}>sign up</h2>
-              </button>
-            </div>
+            <ul className={styles.buttonSelector}>
+              <li onClick={() => setTipo("login")}>
+                <span className={styles.textNav}>Login</span>
+              </li>
+              <li onClick={() => setTipo("register")}>
+                <span className={styles.textNav}>Sign up</span>
+              </li>
+            </ul>
             <div className={styles.forms}>
-              {(props.show && tipo==="login")? <Login /> : <Register />}
+              {(props.show && tipo==="login")? <Login /> : <Register/>}
             </div>
           </div>
         </div>

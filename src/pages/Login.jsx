@@ -43,13 +43,7 @@ export function Login() {
 
   return (
     <div className={styles.loginContent}>
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
-
+      <div>
         <Formik
           initialValues={{ email: "", password: "" }}
           validate={(values) => {

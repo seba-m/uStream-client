@@ -104,21 +104,12 @@ export function App() {
             </div>
           ) : (
             <div className={styles.right}>
-              {/*<Link to="/login">
-                <div className={styles.loginBox}>
-                  <h2 className={styles.buttonText}>Login</h2>
-                </div>
-              </Link>*/}
-
-              {/*<button className={styles.loginBox} onClick={handleShow}>
-                  <h2 className={styles.buttonText}>Login</h2>
-            </button>*/}
-              <button className={styles.loginBox} onClick={() => {setModalShow(true); setTipo("login");}}>
+              {/*<button className={styles.loginBox}onClick={() => {setModalShow(true); setTipo("login");}}>
                 <h2 className={styles.buttonText}>Login</h2>
-              </button>
+              </button>*/}
 
-              <button className={styles.signupBox} onClick={() => {setModalShow(true); setTipo("register")}}>
-                <h2 className={styles.buttonText}>Sign up</h2>
+              <button className={styles.signupBox} onClick={() => {setModalShow(true)}}>
+                <h2 className={styles.buttonText}>Login / Sign up</h2>
               </button>
             </div>
           )}
@@ -167,8 +158,6 @@ export function App() {
           <div className={styles.content}>
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              {/*<Route exact path="/login" element={<Login />}></Route>*/}
-              {/*<Route exact path="/signup" element={<Register />}></Route>*/}
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route exact path="/search" element={<SearchPage />}></Route>
               <Route exact path="/search/tag" element={<SearchTag />}></Route>
@@ -191,7 +180,7 @@ export function App() {
             </Routes>
           </div>
         </section>
-        <Credentials tipo={tipo} show={modalShow} onHide={() => setModalShow(false)} />
+        <Credentials show={modalShow} onHide={() => setModalShow(false)}/>
       </div>
     </Router>
   );
