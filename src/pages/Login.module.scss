@@ -1,40 +1,77 @@
-.modalContainer {
-  color: white;
-  justify-content: center;
-}
-
-.modalContainer .loginContainer {
-  display: flex;
- 
-  background: #18181b;
-}
-
-.logoModal {
+.loginContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  background-image: url("patronLogo.svg");
-  object-fit: cover;
 }
 
-.logoModal h1 {
+.inputsFields {
+  width: 35rem;
+}
+
+.inputsFields input {
+  width: 100%;
+  height: 4rem;
+  outline: none;
+  color: #fff;
+
+  background-color: #18181b;
+  border: 2px solid #18181b;
+}
+
+.inputsFields div span {
   font-family: "Inter";
   font-style: normal;
-  font-weight: 700;
-  font-size: 30px;
+  font-weight: 400;
+  font-size: 14px;
   line-height: 24px;
+  color: #b3bebd;
+}
+
+.emailInput {
+  margin-bottom: 4rem;
+}
+
+
+
+.passwordInput {
+  margin-bottom: 1rem;
+}
+
+.errorText {
+  color: #df4545;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.underline {
+  background: #969bab;
+  height: 0.2rem;
+}
+
+.forgotPassword {
+  margin: 0;
+}
+
+.forgotPassword span{
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #2EC5CE !important;
+}
+
+.inputsFields button {
+  width: 100%;
+  height: 4rem;
+  background-color: #2EC5CE;
+  border: none;
+  border-radius: 4px;
+  margin-top: 3rem;
+
   
-  color: #B3BEBD;
-}
-
-.logo {
-    padding-bottom: 1.2rem;
-}
-
-.loginContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
+  span {
+    color: white;
+  }
 }
