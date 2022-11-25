@@ -9,7 +9,7 @@ import { Register } from "./Register";
 export function Credentials(props) {
   const [tipo, setTipo] = useState("login");
   
-  const [currentSelected, setCurrentSelected] = useState();
+  const [currentSelected, setCurrentSelected] = useState(true);
 
   const handleTabClick = (e) => {
     setCurrentSelected(e);
