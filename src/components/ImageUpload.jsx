@@ -3,10 +3,7 @@ import { useState } from 'react';
 export function ImageUpload({ defaultImage, onUpload, onDelete }) {
     const [selectedImage, setSelectedImage] = useState(null);
     const [message, setMessage] = useState("");
-
-    //only for dev
-    //defaultImage = "https://static-cdn.jtvnw.net/jtv_user_pictures/74aca484-10fe-4a74-b5ed-bb4a5414c1bb-profile_image-300x300.png";
-
+    
     const removeImage = () => {
         if (!selectedImage) {
             onDelete();
@@ -17,7 +14,10 @@ export function ImageUpload({ defaultImage, onUpload, onDelete }) {
 
     const saveChanges = () => {
         if (selectedImage) {
-            onUpload(selectedImage).then(
+            let data = new FormData();
+            data.append("photo", selectedImage);
+
+            onUpload(data).then(
                 (error) => {
                     const resMessage =
                         (error.response && error.response.data && error.response.data.message) ||

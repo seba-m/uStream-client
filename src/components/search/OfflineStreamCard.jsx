@@ -1,15 +1,15 @@
 import styles from './OfflineStreamCard.module.scss';
 import { Link } from "react-router-dom";
-import { getStreamImg } from '../../utils/getStreamImg';
+import { getImg } from '../../utils/httpClient';
 
 export function OfflineStreamCard({ stream }) {
-    const imgUrl = getStreamImg(stream.poster_path, 300);
+    const avatar = getImg("avatar",stream.username);
     return (
         <li className={styles.streamCard}>
             <div className={styles.streamImage}>
                 <Link to={`/stream/${stream.username}`}>
                     <figure className={styles.imageBorder}>
-                        <img src={imgUrl} alt={stream.title} />
+                        <img src={avatar} alt={stream.title} />
                     </figure>
                 </Link>
             </div>

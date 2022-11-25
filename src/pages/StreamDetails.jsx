@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner } from '../components/Spinner';
 
-//import { getStreamImg } from '../utils/getStreamImg';
 import  GeneralService  from '../services/General.service';
 
 import { OnlineStreamPlayer } from '../components/streamPlayer/OnlineStreamPlayer';

@@ -2,11 +2,11 @@ import styles from './OnlineStreamPlayer.module.scss';
 import { Link } from "react-router-dom";
 import { VideoPlayer } from '../VideoPlayer';
 
-import { getStreamImg } from '../../utils/getStreamImg';
+import { getImg } from '../../utils/httpClient';
 
 export function OnlineStreamPlayer({ stream }) {
 
-    const imgUrl = getStreamImg(stream.username, 300);
+    const avatar = getImg("avatar", stream.username);
 
     return (
         <div className={styles.streamRoot}>
@@ -18,7 +18,7 @@ export function OnlineStreamPlayer({ stream }) {
                 <div className={styles.streamImage}>
                     <Link to={`/stream/${stream.username}`}>
                         <figure className={styles.imageBorder}>
-                            <img src={imgUrl} alt={stream.title} />
+                            <img src={avatar} alt={stream.title} />
                         </figure>
                     </Link>
                 </div>
