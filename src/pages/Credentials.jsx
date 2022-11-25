@@ -9,7 +9,11 @@ import { Register } from "./Register";
 export function Credentials(props) {
   const [tipo, setTipo] = useState("login");
   
+  const [currentSelected, setCurrentSelected] = useState();
 
+  const handleTabClick = (e) => {
+    setCurrentSelected(e);
+  }
 
   return (
     <>
@@ -61,12 +65,14 @@ export function Credentials(props) {
           </div>
           <div className={styles.credentialsContent}>
             <ul className={styles.buttonSelector}>
-              <li onClick={() => setTipo("login")} className={styles.active}>
+              <li onClick={() => {setTipo("login"); handleTabClick(true)}} className={currentSelected? styles.active : null}>
                 <span className={styles.textNav}>Login</span>
-                <div className={styles.underline}></div>
+                {currentSelected? <div className={styles.underline}></div> : null}
               </li>
-              <li onClick={() => setTipo("register")}>
+
+              <li onClick={() => {setTipo("register"); handleTabClick(false)}} className={!currentSelected? styles.active : null}>
                 <span className={styles.textNav}>Sign up</span>
+                {!currentSelected? <div className={styles.underline}></div> : null}
               </li>
             </ul>
             <div className={styles.forms}>

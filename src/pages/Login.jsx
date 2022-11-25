@@ -6,7 +6,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Spinner } from "../components/Spinner";
 import styles from "./Login.module.scss";
 
-
 import AuthService from "../services/Auth.service";
 
 export function Login() {

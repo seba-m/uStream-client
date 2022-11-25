@@ -15,15 +15,12 @@ export function LandingCard({ stream }) {
       <div className={styles.streamerBackgroundImage}>
         <img src={banner} alt={username} />
         <div className={styles.streamImage}>
-          <Link to={`/stream/${stream.username}`}>
-            <figure className={styles.imageBorder}>
-              <img src={avatar} alt={username} />
-            </figure>
-          </Link>
+          <figure className={styles.imageBorder}>
+            <img src={avatar} alt={username} />
+          </figure>
         </div>
         <h3>{username}</h3>
       </div>
-      
     </Link>
   );
 }
