@@ -8,7 +8,14 @@
   width: 35rem;
 }
 
-.inputsFields input {
+.formGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.formInput {
+  position: relative;
   width: 100%;
   height: 4rem;
   outline: none;
@@ -16,26 +23,35 @@
   border: 0 !important;
   padding: 0;
 
+ 
   font-size: 1.8rem;
 
   background-color: #18181b;
   border: 2px solid #18181b;
 }
 
-.inputsFields div span {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 24px;
+.formLabel {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(0, .7rem) scale(1) !important;
+  transform-origin: top left;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms !important;
+  font-size: 1.8rem;
   color: #b3bebd;
+}
+
+.formGroup:focus-within .formLabel {
+  transform: translate(0, -1.5rem) scale(.8) !important;
+
+}
+
+.formGroup .filled {
+  transform: translate(0, -1.5rem) scale(.8) !important;
 }
 
 .emailInput {
   margin-bottom: 3rem;
 }
-
-
 
 .passwordInput {
   margin-bottom: 1rem;
@@ -56,26 +72,27 @@
   margin: 0;
 }
 
-.forgotPassword span{
+.forgotPassword span {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
 
-  color: #2EC5CE !important;
+  color: #2ec5ce !important;
 }
 
 .inputsFields button {
   width: 100%;
   height: 4rem;
-  background-color: #2EC5CE;
+  background-color: #2ec5ce;
   border: none;
   border-radius: 4px;
   margin-top: 3rem;
 
-  
   span {
+    font-size: 1.8rem;
+    font-weight: 600;
     color: white;
   }
 }

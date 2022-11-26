@@ -13,6 +13,10 @@
   height: 4rem;
   outline: none;
   color: #fff;
+  border: 0 !important;
+  padding: 0;
+
+  font-size: 1.8rem;
 
   background-color: #18181b;
   border: 2px solid #18181b;
@@ -22,17 +26,23 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 1.3rem;
   line-height: 24px;
   color: #b3bebd;
 }
 
 .containerInput {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .finalInput {
   margin-bottom: 1rem;
+}
+
+.errorText {
+  color: #df4545;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
 }
 
 .underline {
@@ -44,7 +54,11 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 13px;
+  font-size: 1.2rem;
+}
+
+.termsAndConditions a {
+  color: #2ec5ce !important;
 }
 
 .inputsFields button {
@@ -53,9 +67,12 @@
   background-color: #2ec5ce;
   border: none;
   border-radius: 4px;
-  margin-top: 3rem;
+  margin-top: 1rem;
+  font-size: 1.8rem;
 
   span {
+    font-size: 1.8rem;
+    font-weight: 600;
     color: white;
   }
 }

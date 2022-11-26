@@ -14,6 +14,19 @@ export function Login() {
 
   const [message, setMessage] = useState("");
 
+  const [mail, setMail] = useState();
+  const [password, setPassword] = useState();
+
+  function handleMailChange(e) {
+    console.log(e.target.value);
+    setMail(e.target.value);
+    console.log("esto es "+ mail);
+  }
+
+  function handlePassChange(e) {
+    setPassword(e.target.value);
+  }
+
   const handleLogin = (data, formikHelpers) => {
     formikHelpers.setSubmitting(true);
 
@@ -41,6 +54,8 @@ export function Login() {
       });
   };
 
+
+
   return (
     <div className={styles.loginContent}>
       <div>
@@ -48,10 +63,11 @@ export function Login() {
           initialValues={{ email: "", password: "" }}
           validate={(values) => {
             const errors = {};
-            if (!values.email) {
+            console.log("otro mail "+ mail);
+            if (!mail) {
               errors.email = "Required";
             } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(mail)
             ) {
               errors.email = "Invalid email address";
             }
@@ -68,24 +84,20 @@ export function Login() {
                   </div>
                 </div>
               )}
-              <div className={styles.emailInput}>
-                <span>Email</span>
-                <Field type="email" name="email" />
+              <div className={`${styles.emailInput} ${styles.formGroup}`}>
+                
+                <Field className={styles.formInput} value={mail} type="email" name="email" onChange={handleMailChange} />
+                <span className={`${styles.formLabel} ${mail && styles.filled}`}>Email</span>
                 <div className={styles.underline}></div>
-                <ErrorMessage
-                  className={styles.errorText}
-                  name="email"
-                  component="div"
+                <ErrorMessage className={styles.errorText} name="email" component="div"
                 />
               </div>
-              <div className={styles.passwordInput}>
-                <span>Password</span>
-                <Field type="password" name="password" />
+              <div className={`${styles.passwordInput} ${styles.formGroup}`}>
+                <Field className={styles.formInput} value={password} type="password" name="password" onChange={handlePassChange}/>
+                <span className={`${styles.formLabel} ${password && styles.filled}`}>Password</span>
+                
                 <div className={styles.underline}></div>
-                <ErrorMessage
-                  className={styles.errorText}
-                  name="password"
-                  component="div"
+                <ErrorMessage className={styles.errorText} name="password" component="div"
                 />
               </div>
               <p className={styles.forgotPassword}>

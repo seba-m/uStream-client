@@ -2,6 +2,8 @@ import React, { useState, useEffect} from "react";
 
 import Modal from "react-bootstrap/Modal";
 
+import Background from '../resources/patronLogo.svg'
+
 import styles from "./Credentials.module.scss";
 import { Login } from "./Login";
 import { Register } from "./Register";
@@ -25,7 +27,7 @@ export function Credentials(props) {
         centered
       >
         <div className={styles.credentialsContainer}>
-          <div className={styles.logoModal}>
+          <div className={styles.logoModal} style={{  backgroundImage: `url(${Background})`}}>
             <div className={styles.logo}>
               <svg
                 viewBox="0 0 28 28"
