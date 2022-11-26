@@ -61,7 +61,7 @@ export function Credentials(props) {
                 </defs>
               </svg>
             </div>
-            <h1 className={styles.textNav}>uStream</h1>
+            <span className={styles.textNav}>uStream</span>
           </div>
           <div className={styles.credentialsContent}>
             <ul className={styles.buttonSelector}>

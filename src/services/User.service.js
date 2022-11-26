@@ -19,7 +19,7 @@ const updateProfileSettings = (username, publicUsername, about) => {
 }
 
 const updateProfileImage = (image) => {
-    return post(API_URL + "/profile/image", image);
+    return post(API_URL + "/profile/avatar", image);
 }
 
 const updateProfileBanner = (image) => {
@@ -35,7 +35,7 @@ const deleteAccount = () => {
 }
 
 const deleteProfileImage = () => {
-    return del(API_URL + "/profile/image");
+    return del(API_URL + "/profile/avatar");
 }
 
 const deleteProfileBanner = () => {

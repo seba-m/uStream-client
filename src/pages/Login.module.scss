@@ -13,6 +13,10 @@
   height: 4rem;
   outline: none;
   color: #fff;
+  border: 0 !important;
+  padding: 0;
+
+  font-size: 1.8rem;
 
   background-color: #18181b;
   border: 2px solid #18181b;
@@ -22,13 +26,13 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 24px;
   color: #b3bebd;
 }
 
 .emailInput {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 
