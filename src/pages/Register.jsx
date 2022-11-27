@@ -36,9 +36,9 @@ export function Register() {
     setMessage("");
 
     AuthService.register(
-      data.username,
-      data.email,
-      data.password,
+      username,
+      mail,
+      password,
       data.birthDate
     )
       .then(
