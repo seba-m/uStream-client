@@ -14,6 +14,22 @@ export function Register() {
 
   const [message, setMessage] = useState("");
 
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [mail, setMail] = useState();
+
+  function handleUsernameChange(e) {
+    setUsername(e.target.value);
+  }
+  
+  function handleMailChange(e) {
+    setMail(e.target.value);
+  }
+
+  function handlePassChange(e) {
+    setPassword(e.target.value);
+  }
+
   const handleLogin = (data, formikHelpers) => {
     formikHelpers.setSubmitting(true);
 
@@ -59,38 +75,38 @@ export function Register() {
           validate={(values) => {
             const errors = {};
 
-            if (!values.email) {
+            if (!mail) {
               errors.email = "Required";
             } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(mail)
             ) {
               errors.email = "Invalid email address";
             }
 
-            if (!values.password) {
+            if (!password) {
               errors.password = "Required";
             } else if (
-              values.password.length < 6 ||
-              values.password.length > 40
+              password.length < 6 ||
+              password.length > 40
             ) {
               errors.password = "Password must be between 6 and 40 characters";
             } else if (
               !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/.test(
-                values.password
+                password
               )
             ) {
               errors.password =
                 "Password must contain at least one uppercase letter, one lowercase letter, and one number";
             }
 
-            if (!values.username) {
+            if (!username) {
               errors.username = "Required";
             } else if (
-              values.username.length < 3 ||
-              values.username.length > 20
+              username.length < 3 ||
+              username.length > 20
             ) {
               errors.username = "Username must be between 3 and 20 characters";
-            } else if (!/^[a-zA-Z0-9]+$/.test(values.username)) {
+            } else if (!/^[a-zA-Z0-9]+$/.test(username)) {
               errors.username =
                 "Username must contain only letters and numbers";
             }
@@ -127,9 +143,10 @@ export function Register() {
                   </div>
                 </div>
               )}
-              <div className={styles.containerInput}>
-                <span>Username</span>
-                <Field type="text" name="username" />
+              <div className={`${styles.containerInput} ${styles.formGroup}`}>
+                
+                <Field className={styles.formInput} value={username} type="text" name="username" onChange={handleUsernameChange} />
+                <span className={`${styles.formLabel} ${username && styles.filled}`}>Username</span>
                 <div className={styles.underline}></div>
                 <ErrorMessage
                   className={styles.errorText}
@@ -138,9 +155,10 @@ export function Register() {
                 />
               </div>
 
-              <div className={styles.containerInput}>
-                <span>Password</span>
-                <Field type="password" name="password" />
+              <div className={`${styles.containerInput} ${styles.formGroup}`}>
+                
+                <Field className={styles.formInput} value={password} type="password" name="password" onChange={handlePassChange} />
+                <span className={`${styles.formLabel} ${password && styles.filled}`}>Password</span>
                 <div className={styles.underline}></div>
                 <ErrorMessage
                   className={styles.errorText}
@@ -149,8 +167,8 @@ export function Register() {
                 />
               </div>
               <div className={styles.containerInput}>
-                <span>Date of Birth</span>
-                <Field type="date" name="birthDate" />
+                <span className={styles.dateBirth}>Date of Birth</span>
+                <Field className={styles.formInput} type="date" name="birthDate" />
                 <div className={styles.underline}></div>
                 <ErrorMessage
                   className={styles.errorText}
@@ -159,9 +177,10 @@ export function Register() {
                 />
               </div>
 
-              <div className={styles.finalInput}>
-                <span>Email</span>
-                <Field type="email" name="email" />
+              <div className={`${styles.finalInput} ${styles.formGroup}`}>
+                
+                <Field className={styles.formInput} value={mail} type="email" name="email" onChange={handleMailChange}/>
+                <span className={`${styles.formLabel} ${mail && styles.filled}`}>Email</span>
                 <div className={styles.underline}></div>
                 <ErrorMessage
                   className={styles.errorText}

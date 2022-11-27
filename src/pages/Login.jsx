@@ -18,9 +18,7 @@ export function Login() {
   const [password, setPassword] = useState();
 
   function handleMailChange(e) {
-    console.log(e.target.value);
     setMail(e.target.value);
-    console.log("esto es "+ mail);
   }
 
   function handlePassChange(e) {
