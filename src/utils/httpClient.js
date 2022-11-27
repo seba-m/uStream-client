@@ -1,3 +1,4 @@
+import axios from 'axios';
 import placeholder from '../placeholder.jpg';
 
 const API = process.env.REACT_APP_API_URL;
@@ -12,11 +13,10 @@ function authHeader() {
     }
 }
 
+
 export function get(url) {
-    return fetch(API + url, {
-        headers: authHeader()
-    })
-        .then(response => response.json());
+    return axios.get(API + url, { headers: authHeader() })
+        .then(response => response.data);
 }
 
 export function getImg(type, username) {
@@ -34,6 +34,11 @@ export function getImg(type, username) {
 }
 
 export function post(url, data) {
+    return axios.post(API + url, data, { headers: authHeader() })
+        .then(response => response.data);
+}
+
+export function postImage(url, data) {
     return fetch(API + url, {
         method: 'POST',
         headers: authHeader(),
@@ -43,17 +48,12 @@ export function post(url, data) {
 }
 
 export function put(url, data) {
-    return fetch(API + url, {
-        method: 'PUT',
-        headers: authHeader(),
-        body: data
-    })
-        .then(response => response.json());
+    return axios.put(API + url, data, { headers: authHeader() })
+        .then(response => response.data);
+
 }
 
 export function del(url) {
-    return fetch(API + url, {
-        method: 'DELETE',
-        headers: authHeader()
-    })
+    return axios.delete(API + url, { headers: authHeader() })
+        .then(response => response.data);
 }
