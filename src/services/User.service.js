@@ -1,4 +1,4 @@
-import { get, post, postImage, del } from '../utils/httpClient';
+import { get, getImg, post, postImage, del } from '../utils/httpClient';
 
 const API_URL = "/user";
 
@@ -8,6 +8,14 @@ const getProfile = () => {
 
 const getStreamDetails = () => {
     return get(API_URL + "/stream");
+}
+
+const getUserAvatar = (username) => {
+    return getImg(API_URL + "/avatar/" + username);
+}
+
+const getUserBanner = (username) => {
+    return getImg(API_URL + "/banner/" + username);
 }
 
 const updateProfileSettings = (username, publicUsername, about) => {
@@ -45,6 +53,8 @@ const deleteProfileBanner = () => {
 const UserService = {
     getProfile,
     getStreamDetails,
+    getUserAvatar,
+    getUserBanner,
 
     updateProfileSettings,
     updateProfileImage,

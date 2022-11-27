@@ -13,20 +13,19 @@ function authHeader() {
     }
 }
 
-
 export function get(url) {
     return axios.get(API + url, { headers: authHeader() })
         .then(response => response.data);
 }
 
-export function getImg(type, username) {
-    const path = `/user/${type}/${username}`;
-    return get(API + path)
+export function getImg(url) {
+    return get(API + url)
         .then(response => {
-            if (response)
-                return response.blob();
-            else
+            if (response){
+                return URL.createObjectURL(response.blob());
+            } else {
                 return placeholder;
+            }
         })
         .catch(error => {
             return placeholder;
