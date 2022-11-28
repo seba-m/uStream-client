@@ -9,7 +9,7 @@ export function StreamSettings({ user }) {
     const [showPassword, setShowPassword] = useState(false);
 
     const generateNewKey = () => {
-        UserService.generateNewKey(user.id).then(
+        UserService.updateStreamKey(user.id).then(
             (response) => {
                 setKey(response);
             });

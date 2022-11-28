@@ -23,13 +23,16 @@ const getColor = (username) => {
 }
 
 const updateProfileSettings = (username, publicUsername, about) => {
-    return post(API_URL + "/profile", {
+    return post(API_URL + "/profile/settings", {
         username,
         publicUsername,
         about
     });
 }
 
+const updateStreamKey = () => {
+    return post(API_URL + "/profile/key");
+}
 
 const updateProfileImage = (image) => {
     return postImage(API_URL + "/profile/avatar", image);
@@ -44,11 +47,15 @@ const updateChannelColor = (color) => {
 }
 
 const updateStreamDetails = (data) => {
-    return post(API_URL + "/stream", data);
+    return post(API_URL + "/profile/stream", data);
+}
+
+const updateContactSettings = (data) => {
+    return post(API_URL + "/profile/contact", data);
 }
 
 const deleteAccount = () => {
-    return del(API_URL + "/delete");
+    return del(API_URL + "/profile/delete");
 }
 
 const deleteProfileImage = () => {
@@ -71,6 +78,8 @@ const UserService = {
     updateProfileBanner,
     updateStreamDetails,
     updateChannelColor,
+    updateStreamKey,
+    updateContactSettings,
 
     deleteProfileImage,
     deleteProfileBanner,
