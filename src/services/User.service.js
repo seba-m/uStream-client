@@ -18,6 +18,10 @@ const getUserBanner = (username) => {
     return getImg(API_URL + "/banner/" + username);
 }
 
+const getColor = (username) => {
+    return get(API_URL + "/color/" + username);
+}
+
 const updateProfileSettings = (username, publicUsername, about) => {
     return post(API_URL + "/profile", {
         username,
@@ -26,12 +30,17 @@ const updateProfileSettings = (username, publicUsername, about) => {
     });
 }
 
+
 const updateProfileImage = (image) => {
     return postImage(API_URL + "/profile/avatar", image);
 }
 
 const updateProfileBanner = (image) => {
     return postImage(API_URL + "/profile/banner", image);
+}
+
+const updateChannelColor = (color) => {
+    return post(API_URL + "/profile/color", color);
 }
 
 const updateStreamDetails = (data) => {
@@ -55,11 +64,13 @@ const UserService = {
     getStreamDetails,
     getUserAvatar,
     getUserBanner,
+    getColor,
 
     updateProfileSettings,
     updateProfileImage,
     updateProfileBanner,
     updateStreamDetails,
+    updateChannelColor,
 
     deleteProfileImage,
     deleteProfileBanner,

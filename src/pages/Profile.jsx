@@ -10,6 +10,7 @@ import { ContactProfile } from '../components/profile/ContactProfile';
 import { StreamSettings } from '../components/profile/StreamSettings';
 import { ImageSettings } from '../components/profile/ImageSettings';
 import { DeleteAccount } from '../components/profile/DeleteAccount';
+import { ChannelColorIdentity } from '../components/profile/ChannelColorIdentity';
 
 export function Profile() {
 
@@ -51,6 +52,9 @@ export function Profile() {
                 </div>
                 <div>
                     <ImageSettings user={user} />
+                </div>
+                <div>
+                    <ChannelColorIdentity user={user} />
                 </div>
                 <div>
                     <StreamSettings user={user} />

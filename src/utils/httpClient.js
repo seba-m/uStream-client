@@ -19,7 +19,7 @@ export function get(url) {
 }
 
 export function getImg(url) {
-    return get(API + url)
+    return fetch(API + url)
         .then(response => {
             if (response){
                 return URL.createObjectURL(response.blob());

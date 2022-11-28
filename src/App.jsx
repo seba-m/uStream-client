@@ -17,6 +17,10 @@ import { Credentials } from "./pages/Credentials";
 import styles from "./App.module.scss";
 import { Search } from "./components/Search";
 
+import { getImg } from './utils/httpClient';
+
+import UserService from "./services/User.service";
+
 import AuthService from "./services/Auth.service";
 import LandingPage from "./pages/LandingPage";
 
@@ -34,6 +38,15 @@ export function App() {
       setCurrentUser(user);
     }
   }, []);
+
+  const [avatar, setAvatar] = useState(null);
+
+  useEffect(() => {
+    UserService.getUserAvatar( currentUser.userName)
+      .then(data => {
+        setAvatar(data);
+      })
+  }, [currentUser.userName]);
 
   const logOut = () => {
     AuthService.logout();
@@ -96,7 +109,10 @@ export function App() {
           {currentUser ? (
             <div className={styles.right}>
               <Link to="/profile">
-                <h2 className={styles.textNav}>{currentUser.userName}</h2>
+                <div className={styles.profileBox}>
+                  <img className={styles.profilePhoto} src={avatar} alt="user-img"/>
+                  <h2 className={styles.textNav}>{currentUser.userName}</h2>
+                </div>
               </Link>
               <Link to="/" onClick={logOut}>
                 <h2 className={styles.textNav}>Logout</h2>
@@ -104,10 +120,6 @@ export function App() {
             </div>
           ) : (
             <div className={styles.right}>
-              {/*<button className={styles.loginBox}onClick={() => {setModalShow(true); setTipo("login");}}>
-                <h2 className={styles.buttonText}>Login</h2>
-              </button>*/}
-
               <button className={styles.signupBox} onClick={() => {setModalShow(true)}}>
                 <h2 className={styles.buttonText}>Login / Sign up</h2>
               </button>

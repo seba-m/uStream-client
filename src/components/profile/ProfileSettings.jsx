@@ -12,8 +12,10 @@ export function ProfileSettings({ user }) {
         formikHelpers.setSubmitting(true);
 
         setMessage("");
+        
+        console.log(data.name+" "+data.publicName+" "+data.about);
 
-        UserService.updateProfileSettings(data.email, data.password)
+        UserService.updateProfileSettings(data.name, data.publicName, data.about)
             .then(
                 (error) => {
                     const resMessage =
