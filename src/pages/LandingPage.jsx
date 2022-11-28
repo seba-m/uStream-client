@@ -52,7 +52,11 @@ export default function LandingPage() {
             </div>
             <div className={`${styles.decoration} ${styles.top}`}></div>
             <div className={`${styles.decoration} ${styles.bottom}`}></div>
-            <div className={`${styles.decoration} ${styles.left}`}></div>
+            <img className={styles.img1} src="https://i.imgur.com/XDd7ETN.jpeg" alt="" />
+            <img className={styles.img2} src="https://i.imgur.com/GNDLT01.jpeg" alt="" />
+            <img className={styles.img3} src="https://i.imgur.com/3KBKfgn.jpeg" alt="" />
+            <img className={styles.img4} src="https://i.imgur.com/YXciMAe.jpeg" alt="" />
+            {/*<div className={`${styles.decoration} ${styles.left}`}></div>*/}
           </div>
         </div>
       </div>
