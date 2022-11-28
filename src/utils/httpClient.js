@@ -21,13 +21,15 @@ export function get(url) {
 export function getImg(url) {
     return fetch(API + url)
         .then(response => {
-            if (response){
-                return URL.createObjectURL(response.blob());
+            if (response.ok) {
+                return response.json();
             } else {
                 return placeholder;
             }
         })
+        .then(response => response.data)
         .catch(error => {
+            console.log(error);
             return placeholder;
         });
 }

@@ -21,7 +21,7 @@ export function StreamSettings({ user }) {
 
     return (
         <>
-            <h1>Stream Settings</h1>
+            <h2>Stream Settings</h2>
             <div>
                 <p>Stream Key</p>
                 <div>

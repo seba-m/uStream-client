@@ -2,6 +2,13 @@ import React from "react";
 
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Dropdown from "react-bootstrap/Dropdown";
 
 import { StreamDetails } from "./pages/StreamDetails";
 import { SearchPage } from "./pages/SearchPage";
@@ -16,8 +23,6 @@ import { Credentials } from "./pages/Credentials";
 
 import styles from "./App.module.scss";
 import { Search } from "./components/Search";
-
-import { getImg } from './utils/httpClient';
 
 import UserService from "./services/User.service";
 
@@ -42,16 +47,17 @@ export function App() {
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
-    UserService.getUserAvatar( currentUser.userName)
-      .then(data => {
-        setAvatar(data);
-      })
+    UserService.getUserAvatar(currentUser.userName).then((data) => {
+      setAvatar(data);
+    });
   }, [currentUser.userName]);
 
   const logOut = () => {
     AuthService.logout();
     setCurrentUser(undefined);
   };
+
+
 
   return (
     <Router>
@@ -110,17 +116,40 @@ export function App() {
             <div className={styles.right}>
               <Link to="/profile">
                 <div className={styles.profileBox}>
-                  <img className={styles.profilePhoto} src={avatar} alt="user-img"/>
+                  <img
+                    className={styles.profilePhoto}
+                    src={avatar}
+                    alt="user-img"
+                  />
                   <h2 className={styles.textNav}>{currentUser.userName}</h2>
                 </div>
               </Link>
               <Link to="/" onClick={logOut}>
                 <h2 className={styles.textNav}>Logout</h2>
               </Link>
+              <Dropdown as={ButtonGroup}>                
+                <Dropdown.Toggle  id="dropdown-basic" className={styles.dropdownButon}>
+                  <FontAwesomeIcon icon={faBars} className={styles.dropdownIcon}/>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">
+                    Another action
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">
+                    Something else
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           ) : (
             <div className={styles.right}>
-              <button className={styles.signupBox} onClick={() => {setModalShow(true)}}>
+              <button
+                className={styles.signupBox}
+                onClick={() => {
+                  setModalShow(true);
+                }}
+              >
                 <h2 className={styles.buttonText}>Login / Sign up</h2>
               </button>
             </div>
@@ -192,8 +221,9 @@ export function App() {
             </Routes>
           </div>
         </section>
-        <Credentials show={modalShow} onHide={() => setModalShow(false)}/>
+        <Credentials show={modalShow} onHide={() => setModalShow(false)} />
       </div>
     </Router>
+
   );
 }

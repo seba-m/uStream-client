@@ -46,7 +46,7 @@ code {
 
 a {
     text-decoration: none !important;
-    color: white !important;
+    color: white;
     margin: 0;
 }
 
@@ -76,4 +76,7 @@ select:-webkit-autofill:focus {
     width: auto;
 }
 
+.dropdown-toggle::after {
+    display: none;
+}
 

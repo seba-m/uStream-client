@@ -16,17 +16,25 @@ export function ChannelColorIdentity({ user }) {
   };
 
   const handleProfile = () => {
-    UserService.updateChannelColor(currentColor)
-      .then((error) => {
-        const resMessage =
-          (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-        setMessage(resMessage);
-      })
+    UserService.updateChannelColor(currentColor).then((error) => {
+      const resMessage =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      setMessage(resMessage);
+    });
   };
 
   return (
     <div>
-      <SketchPicker disableAlpha color={currentColor} onChange={handleOnChange} />
+      <h2>Your Color Identity</h2>
+      <SketchPicker
+        disableAlpha
+        color={currentColor}
+        onChange={handleOnChange}
+      />
       <div className="form-group">
         <button type="submit" onClick={handleProfile}>
           <span>Save Changes</span>
