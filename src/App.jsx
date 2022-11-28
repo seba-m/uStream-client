@@ -2,10 +2,13 @@ import React from "react";
 
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faBars,
+  faGear,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -56,8 +59,6 @@ export function App() {
     AuthService.logout();
     setCurrentUser(undefined);
   };
-
-
 
   return (
     <Router>
@@ -124,21 +125,36 @@ export function App() {
                   <h2 className={styles.textNav}>{currentUser.userName}</h2>
                 </div>
               </Link>
-              <Link to="/" onClick={logOut}>
-                <h2 className={styles.textNav}>Logout</h2>
-              </Link>
-              <Dropdown as={ButtonGroup}>                
-                <Dropdown.Toggle  id="dropdown-basic" className={styles.dropdownButon}>
-                  <FontAwesomeIcon icon={faBars} className={styles.dropdownIcon}/>
+              <Dropdown as={ButtonGroup}>
+                <Dropdown.Toggle
+                  id="dropdown-basic"
+                  className={styles.dropdownButon}
+                >
+                  <FontAwesomeIcon
+                    icon={faBars}
+                    className={styles.dropdownIcon}
+                  />
                 </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
-                    Another action
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    Something else
-                  </Dropdown.Item>
+                <Dropdown.Menu className={styles.dropdownOptions}>
+                  <Link className={styles.dropdownLink} to="/profile">
+                    <div className={styles.dropdownItem}>
+                      <FontAwesomeIcon
+                        icon={faGear}
+                        className={styles.dropdownOptionIcon}
+                      />
+                      <span>Configuration</span>
+                    </div>
+                  </Link>
+                  <Dropdown.Divider className={styles.dividerLine} />
+                  <Link className={styles.dropdownLink} to="/" onClick={logOut}>
+                    <div className={styles.dropdownItem}>
+                      <FontAwesomeIcon
+                        icon={faRightFromBracket}
+                        className={styles.dropdownOptionIcon}
+                      />
+                      <span>Logout</span>
+                    </div>
+                  </Link>
                 </Dropdown.Menu>
               </Dropdown>
             </div>
@@ -224,6 +240,5 @@ export function App() {
         <Credentials show={modalShow} onHide={() => setModalShow(false)} />
       </div>
     </Router>
-
   );
 }
