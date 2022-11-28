@@ -115,7 +115,7 @@ export function App() {
 
           {currentUser ? (
             <div className={styles.right}>
-              <Link to="/profile">
+              <Link to={`/stream/${currentUser.userName}`}>
                 <div className={styles.profileBox}>
                   <img
                     className={styles.profilePhoto}

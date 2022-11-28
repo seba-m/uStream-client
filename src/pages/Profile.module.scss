@@ -1,0 +1,33 @@
+.containerSettings {
+  padding: 3.9rem 6.5rem;
+
+  .tittle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    border-bottom: .1rem solid #272728;
+    margin-bottom: 2rem;
+    
+    li {
+        border : 0;
+        padding-right: 2rem;
+
+        button { 
+            background-color: transparent !important;
+            border: 0 !important;
+            padding: .5rem 0;
+        }
+    }    
+  }
+}
+
+
+
