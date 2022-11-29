@@ -15,7 +15,37 @@
     object-fit: cover;
 }
 
+.streamTitle{
+    vertical-align: middle;
+    justify-content: center;
+    display: flex
+    
+}
 
+.streamImage {
+    height: 5rem;
+    width: 8.4rem;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-left: 3rem;
+    display: flex;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.streamImage .imageBorder {
+    border-radius: 9000px;
+    overflow: hidden;
+    position: relative;
+    background-color: inherit;
+    width: 12rem;
+    height: 12rem;
+    display: flex;
+}
 
 
 /*tags*/
@@ -86,4 +116,80 @@
     display: block;
     border-radius: 9000px;
     width: 100%;
+}
+
+.heroContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.heroContentRight {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    margin-right: 5rem;
+}
+
+.heroContentLeft{
+    padding-left: 15rem;
+    align-items: center;
+}
+
+.buttonText {   
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    /* identical to box height, or 143% */
+    
+    text-align: center;
+    font-feature-settings: 'salt' on, 'liga' off;
+    
+    color: #FFFFFF;
+}
+
+.signupBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+
+    width: 91px;
+    height: 34px;
+
+    /* Brand / Turquoise */
+
+    background: #2EC5CE;
+    border-radius: 6px;
+
+}
+
+.streamAbout {
+    margin-top: 10rem;
+    margin-left: 3rem;
+}
+.streamDescriptionAbout {
+    margin-top: 1rem;
+    padding-left: 10rem;
+}
+
+.streamUsername {
+    font-size: 2rem;
+    height: 7rem;
+    width: 10.4rem;
+    font-weight: bold;
+    color: rgb(201, 201, 201);
+    height: 7rem;
+    width: 10.4rem;
+    vertical-align: middle;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-left: 2rem;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }

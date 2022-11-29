@@ -1,14 +1,14 @@
 /*stream image*/
 
 .streamImage {
-    height: 15rem;
-    width: 21.4rem;
-    display: flex;
+    height: 7rem;
+    width: 10.4rem;
     justify-content: center;
     align-items: flex-start;
     flex-shrink: 0;
     align-self: flex-start;
-    margin-top: 0rem;
+    margin-left: 10rem;
+    display: flex;
 
     &:hover {
         opacity: 0.8;
@@ -22,17 +22,22 @@
     background-color: inherit;
     width: 12rem;
     height: 12rem;
+    display: flex;
 }
 
-.streamImage a {
-    display: inline-block;
+
+
+.streamFrontPageImage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    height: 90px;
+    
+
 }
 
-.streamImage a img {
-    display: block;
-    border-radius: 9000px;
-    width: 100%;
-}
+
 
 /*stream information*/
 
@@ -51,8 +56,16 @@
 
 .streamUsername {
     font-size: 2rem;
+    height: 7rem;
+    width: 10.4rem;
     font-weight: bold;
     color: rgb(201, 201, 201);
+    height: 7rem;
+    width: 10.4rem;
+    vertical-align: middle;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-left: 2rem;
 
     &:hover {
         opacity: 0.8;
@@ -60,7 +73,13 @@
 }
 
 .streamAbout {
+    margin-top: 10rem;
+    margin-left: 3rem;
+}
+
+.streamDescriptionAbout {
     margin-top: 1rem;
+    padding-left: 10rem;
 }
 
 .streamCard {
@@ -95,3 +114,15 @@
         }
     }
 }
+
+
+
+.heroContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30rem;
+}
+
+
+
