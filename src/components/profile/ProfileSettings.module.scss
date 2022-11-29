@@ -1,0 +1,28 @@
+.aboutSection {
+}
+
+.aboutSection .aboutTittle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 20px;
+}
+
+.aboutSection .followers {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.aboutSection .text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+
+  font-feature-settings: 'salt' on, 'liga' off;
+}

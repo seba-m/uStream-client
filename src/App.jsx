@@ -2,11 +2,18 @@ import React from "react";
 
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faGear,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
+
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Dropdown from "react-bootstrap/Dropdown";
 
 import { StreamDetails } from "./pages/StreamDetails";
 import { SearchPage } from "./pages/SearchPage";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
 import { Profile } from "./pages/Profile";
 import { SearchTag } from "./pages/SearchTag";
 import { SearchStream } from "./pages/SearchStream";
@@ -17,15 +24,17 @@ import { Credentials } from "./pages/Credentials";
 import styles from "./App.module.scss";
 import { Search } from "./components/Search";
 
+import UserService from "./services/User.service";
+
 import AuthService from "./services/Auth.service";
 import LandingPage from "./pages/LandingPage";
+
+import PlaceHolder from "./placeholder.jpg";
 
 export function App() {
   const [currentUser, setCurrentUser] = useState(false);
 
   const [modalShow, setModalShow] = useState(false);
-
-  const [tipo, setTipo] = useState(null);
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -35,9 +44,24 @@ export function App() {
     }
   }, []);
 
+  const [avatar, setAvatar] = useState(PlaceHolder);
+
+  useEffect(() => {
+    if (currentUser?.userName) {
+      UserService.getUserAvatar(currentUser?.userName).then((data) => {
+        if (data) {
+          setAvatar(data);
+        } else {
+          setAvatar(PlaceHolder);
+        }
+      });
+    }
+  }, [currentUser?.userName]);
+
   const logOut = () => {
     AuthService.logout();
     setCurrentUser(undefined);
+    window.location.href = "/";
   };
 
   return (
@@ -95,20 +119,57 @@ export function App() {
 
           {currentUser ? (
             <div className={styles.right}>
-              <Link to="/profile">
-                <h2 className={styles.textNav}>{currentUser.userName}</h2>
+              <Link to={`/stream/${currentUser.userName}`}>
+                <div className={styles.profileBox}>
+                  <img
+                    className={styles.profilePhoto}
+                    src={avatar}
+                    alt="user-img"
+                  />
+                  <h2 className={styles.textNav}>{currentUser.userName}</h2>
+                </div>
               </Link>
-              <Link to="/" onClick={logOut}>
-                <h2 className={styles.textNav}>Logout</h2>
-              </Link>
+              <Dropdown as={ButtonGroup}>
+                <Dropdown.Toggle
+                  id="dropdown-basic"
+                  className={styles.dropdownButon}
+                >
+                  <FontAwesomeIcon
+                    icon={faBars}
+                    className={styles.dropdownIcon}
+                  />
+                </Dropdown.Toggle>
+                <Dropdown.Menu className={styles.dropdownOptions}>
+                  <Link className={styles.dropdownLink} to="/profile">
+                    <div className={styles.dropdownItem}>
+                      <FontAwesomeIcon
+                        icon={faGear}
+                        className={styles.dropdownOptionIcon}
+                      />
+                      <span>Configuration</span>
+                    </div>
+                  </Link>
+                  <Dropdown.Divider className={styles.dividerLine} />
+                  <Link className={styles.dropdownLink} to="/" onClick={logOut}>
+                    <div className={styles.dropdownItem}>
+                      <FontAwesomeIcon
+                        icon={faRightFromBracket}
+                        className={styles.dropdownOptionIcon}
+                      />
+                      <span>Logout</span>
+                    </div>
+                  </Link>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           ) : (
             <div className={styles.right}>
-              {/*<button className={styles.loginBox}onClick={() => {setModalShow(true); setTipo("login");}}>
-                <h2 className={styles.buttonText}>Login</h2>
-              </button>*/}
-
-              <button className={styles.signupBox} onClick={() => {setModalShow(true)}}>
+              <button
+                className={styles.signupBox}
+                onClick={() => {
+                  setModalShow(true);
+                }}
+              >
                 <h2 className={styles.buttonText}>Login / Sign up</h2>
               </button>
             </div>
@@ -180,7 +241,7 @@ export function App() {
             </Routes>
           </div>
         </section>
-        <Credentials show={modalShow} onHide={() => setModalShow(false)}/>
+        <Credentials show={modalShow} onHide={() => setModalShow(false)} />
       </div>
     </Router>
   );

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Spinner } from '../Spinner';
 
+import styles from './ProfileSettings.module.scss';
+
 import UserService from '../../services/User.service';
 
 export function ProfileSettings({ user }) {
@@ -12,8 +14,10 @@ export function ProfileSettings({ user }) {
         formikHelpers.setSubmitting(true);
 
         setMessage("");
+        
+        console.log(data.name+" "+data.publicName+" "+data.about);
 
-        UserService.updateProfileSettings(data.email, data.password)
+        UserService.updateProfileSettings(data.name, data.publicName, data.about)
             .then(
                 (error) => {
                     const resMessage =
@@ -64,14 +68,14 @@ export function ProfileSettings({ user }) {
                             </div>
                         )}
 
-                        <h2>Preview</h2>
-                        <div>
-                            <p>About {values.publicName}</p>
-                            <p>{user.followers} followers</p>
+                        
+                        <div className={styles.aboutSection}>
+                            <h2 className={styles.aboutTittle}>About {values.publicName}</h2>
+                            <p><span className={styles.followers}>{user.followers}</span><span className={styles.text}> followers</span></p>
                             {values.about && values.about.trim() !== "" ? // if user.about is not empty
-                                <p>{values.about}</p>
+                                <p className={styles.textAbout}>{values.about}</p>
                                 :
-                                <p>Hello world!, im {values.publicName}.</p>
+                                <p className={styles.textAbout}>Hello world!, im {values.publicName}.</p>
                             }
                         </div>
 

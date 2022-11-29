@@ -5,11 +5,11 @@ import { useFormikContext, Formik, Form, Field, ErrorMessage } from "formik";
 
 import { Spinner } from "../components/Spinner";
 
-import styles from "./Login.module.scss";
+import styles from "./ForgotPassword.module.scss";
 
 import AuthService from "../services/Auth.service";
 
-export function Login( {showForgot} ) {
+export function ForgotPassword({ showForgot }) {
   let navigate = useNavigate();
 
   const [message, setMessage] = useState("");
@@ -26,10 +26,10 @@ export function Login( {showForgot} ) {
   }
 
   const handleShowForgotPass = (e) => {
-    showForgot(true);
-  }
+    showForgot(false);
+  };
 
-  const handleLogin = (data, formikHelpers) => {
+  const handleEmail = (data, formikHelpers) => {
     formikHelpers.setSubmitting(true);
 
     setMessage("");
@@ -79,7 +79,7 @@ export function Login( {showForgot} ) {
             }
             return errors;
           }}
-          onSubmit={handleLogin}
+          onSubmit={handleEmail}
         >
           {({
             values,
@@ -100,7 +100,13 @@ export function Login( {showForgot} ) {
                 </div>
               )}
               <div className={`${styles.emailInput} ${styles.formGroup}`}>
-                <Field className={styles.formInput} value={mail} type="email" name="email" onChange={ handleMailChange}/>
+                <Field
+                  className={styles.formInput}
+                  value={mail}
+                  type="email"
+                  name="email"
+                  onChange={handleMailChange}
+                />
                 <span
                   className={`${styles.formLabel} ${mail && styles.filled}`}
                 >
@@ -134,9 +140,6 @@ export function Login( {showForgot} ) {
                   component="div"
                 />
               </div>
-              <p className={styles.forgotPassword}>
-                <a role="button" onClick={handleShowForgotPass}>Forgot password?</a>
-              </p>
 
               <button type="submit" disabled={isSubmitting}>
                 <span>Login</span>
@@ -144,9 +147,12 @@ export function Login( {showForgot} ) {
             </Form>
           )}
         </Formik>
+        <button onClick={handleShowForgotPass}>
+          <span>close</span>
+        </button>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default ForgotPassword;

@@ -12,7 +12,7 @@
 }
 
 :root {
-    --primary-color: #22949b;
+    --primary-color: #2ec5ce;
     --navbar-height: 50px;
     --sidebar-width: 310px;
 }
@@ -46,7 +46,7 @@ code {
 
 a {
     text-decoration: none !important;
-    color: white !important;
+    color: white;
     margin: 0;
 }
 
@@ -74,6 +74,29 @@ select:-webkit-autofill:focus {
 .modal-content { 
     border-radius: 0;
     width: auto;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: .1rem solid var(--primary-color) !important;
+}
+
+.nav-link {
+    color: white;
+
+    &:hover {
+        color: var(--primary-color);
+        border-bottom: .1rem solid var(--primary-color) !important;
+    }
+}
+
+.nav {
+    --bs-nav-link-color: white;
+    --bs-nav-link-hover-color: white;
 }
 
 
