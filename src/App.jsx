@@ -3,7 +3,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faBars,
   faGear,
@@ -15,8 +14,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 import { StreamDetails } from "./pages/StreamDetails";
 import { SearchPage } from "./pages/SearchPage";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
 import { Profile } from "./pages/Profile";
 import { SearchTag } from "./pages/SearchTag";
 import { SearchStream } from "./pages/SearchStream";
@@ -32,12 +29,12 @@ import UserService from "./services/User.service";
 import AuthService from "./services/Auth.service";
 import LandingPage from "./pages/LandingPage";
 
+import PlaceHolder from "./placeholder.jpg";
+
 export function App() {
   const [currentUser, setCurrentUser] = useState(false);
 
   const [modalShow, setModalShow] = useState(false);
-
-  const [tipo, setTipo] = useState(null);
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -47,17 +44,24 @@ export function App() {
     }
   }, []);
 
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState(PlaceHolder);
 
   useEffect(() => {
-    UserService.getUserAvatar(currentUser.userName).then((data) => {
-      setAvatar(data);
-    });
-  }, [currentUser.userName]);
+    if (currentUser?.userName) {
+      UserService.getUserAvatar(currentUser?.userName).then((data) => {
+        if (data) {
+          setAvatar(data);
+        } else {
+          setAvatar(PlaceHolder);
+        }
+      });
+    }
+  }, [currentUser?.userName]);
 
   const logOut = () => {
     AuthService.logout();
     setCurrentUser(undefined);
+    window.location.href = "/";
   };
 
   return (

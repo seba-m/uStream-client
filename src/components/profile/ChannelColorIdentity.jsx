@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { SketchPicker } from "react-color";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Spinner } from "../Spinner";
 
 import UserService from "../../services/User.service";
 
-export function ChannelColorIdentity({ user }) {
+export function ChannelColorIdentity() {
   const [message, setMessage] = useState("");
 
   const [currentColor, setCurrentColor] = useState("");
@@ -16,7 +15,9 @@ export function ChannelColorIdentity({ user }) {
   };
 
   const handleProfile = () => {
-    UserService.updateChannelColor(currentColor).then((error) => {
+    UserService.updateChannelColor({
+      color: currentColor,
+    }).then((error) => {
       const resMessage =
         (error.response &&
           error.response.data &&
