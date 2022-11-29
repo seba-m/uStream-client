@@ -47,8 +47,8 @@ export function App() {
   const [avatar, setAvatar] = useState(PlaceHolder);
 
   useEffect(() => {
-    if (currentUser.userName) {
-      UserService.getUserAvatar(currentUser.userName).then((data) => {
+    if (currentUser?.userName) {
+      UserService.getUserAvatar(currentUser?.userName).then((data) => {
         if (data) {
           setAvatar(data);
         } else {
@@ -56,11 +56,12 @@ export function App() {
         }
       });
     }
-  }, [currentUser.userName]);
+  }, [currentUser?.userName]);
 
   const logOut = () => {
     AuthService.logout();
     setCurrentUser(undefined);
+    window.location.href = "/";
   };
 
   return (
