@@ -7,15 +7,32 @@ import Background from '../resources/patronLogo.svg'
 import styles from "./Credentials.module.scss";
 import { Login } from "./Login";
 import { Register } from "./Register";
+import { ForgotPassword } from "./ForgotPassword";
 
 export function Credentials(props) {
   const [tipo, setTipo] = useState("login");
   
   const [currentSelected, setCurrentSelected] = useState(true);
 
+  const [showForgotPass, setShowForgotPass] = useState(false);
+
   const handleTabClick = (e) => {
     setCurrentSelected(e);
   }
+
+  
+
+  //print showForgotPass with useEffect
+  useEffect(() => {
+    console.log("showForgotPass", showForgotPass);
+  }, [showForgotPass]);
+
+
+  
+  
+    
+
+  console.log(showForgotPass);
 
   return (
     <>
@@ -34,7 +51,7 @@ export function Credentials(props) {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clippath="url(#clip0_2_80)">
+                <g clipPath="url(#clip0_2_80)">
                   <path
                     d="M0.575317 28H10.0685C14.57 28 18.2192 24.3508 18.2192 19.8493H8.726C4.2245 19.8493 0.575317 23.4985 0.575317 28Z"
                     style={{ strokeWidth: "1.6rem" }}
@@ -65,7 +82,7 @@ export function Credentials(props) {
             </div>
             <span className={styles.textNav}>uStream</span>
           </div>
-          <div className={styles.credentialsContent}>
+          {showForgotPass? <ForgotPassword showForgot={setShowForgotPass}/> : <div className={styles.credentialsContent}>
             <ul className={styles.buttonSelector}>
               <li onClick={() => {setTipo("login"); handleTabClick(true)}} className={currentSelected? styles.active : null}>
                 <span className={styles.textNav}>Login</span>
@@ -78,9 +95,9 @@ export function Credentials(props) {
               </li>
             </ul>
             <div className={styles.forms}>
-              {(props.show && tipo==="login")? <Login /> : <Register/>}
+              {(props.show && tipo==="login")? <Login showForgot={setShowForgotPass}/> : <Register/>}
             </div>
-          </div>
+          </div>}
         </div>
       </Modal>
     </>

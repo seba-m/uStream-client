@@ -9,7 +9,7 @@ import styles from "./Login.module.scss";
 
 import AuthService from "../services/Auth.service";
 
-export function Login() {
+export function Login( {showForgot} ) {
   let navigate = useNavigate();
 
   const [message, setMessage] = useState("");
@@ -23,6 +23,10 @@ export function Login() {
 
   function handlePassChange(e) {
     setPassword(e.target.value);
+  }
+
+  const handleShowForgotPass = (e) => {
+    showForgot(true);
   }
 
   const handleLogin = (data, formikHelpers) => {
@@ -131,7 +135,7 @@ export function Login() {
                 />
               </div>
               <p className={styles.forgotPassword}>
-                <span>Forgot password?</span>
+                <a role="button" onClick={handleShowForgotPass}>Forgot password?</a>
               </p>
 
               <button type="submit" disabled={isSubmitting}>
