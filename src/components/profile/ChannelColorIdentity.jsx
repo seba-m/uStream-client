@@ -16,7 +16,10 @@ export function ChannelColorIdentity({ user }) {
   };
 
   const handleProfile = () => {
-    UserService.updateChannelColor(currentColor).then((error) => {
+    console.log("currentColor " + currentColor);
+    UserService.updateChannelColor({
+      color: currentColor,
+    }).then((error) => {
       const resMessage =
         (error.response &&
           error.response.data &&
