@@ -28,13 +28,13 @@
 
 
 .streamFrontPageImage {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1rem;
-    height: 90px;
-    
+   object-fit:cover;
+}
 
+.streamFrontPageImage .streamBorderFrontPageImage {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
 }
 
 
@@ -121,8 +121,4 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 30rem;
 }
-
-
-
