@@ -56,13 +56,6 @@ export function Login( {showForgot} ) {
       });
   };
 
-  const FormObserver = () => {
-    const { values } = useFormikContext();
-    useEffect(() => {
-      console.log("FormObserver::values", values);
-    }, [values]);
-    return null;
-  };
 
   return (
     <div className={styles.loginContent}>
