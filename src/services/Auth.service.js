@@ -25,6 +25,12 @@ const login = (username, password) => {
         });
 };
 
+const recovery = (email) => {
+    return post(API_URL + "recover", {
+            email
+        });
+}
+
 const logout = () => {
     localStorage.removeItem("user");
 };
@@ -36,6 +42,7 @@ const getCurrentUser = () => {
 const AuthService = {
     register,
     login,
+    recovery,
     logout,
     getCurrentUser,
 };

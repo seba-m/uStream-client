@@ -29,6 +29,8 @@
   display: flex;
   flex: 1;
   align-items: center;
+  gap: 3rem;
+  margin-left: 3rem;
 
   a:hover .textNav {
     color: var(--primary-color);
@@ -58,8 +60,6 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
 }
 
 .textNav {
@@ -192,7 +192,7 @@
 .sideMenu {
   grid-area: sidebar;
   background: #1f1f23;
-  width: 310px;
+  width: var(--sidebar-width);
   height: 100%;
   padding: 1.7rem 2rem;
 
@@ -238,6 +238,7 @@
 
 .contentContainer {
   overflow-y: auto;
+  overflow-x: hidden;
   grid-area: content;
   background: #0e0e10;
 }

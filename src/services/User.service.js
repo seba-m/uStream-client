@@ -22,10 +22,9 @@ const getColor = (username) => {
     return get(API_URL + "/color/" + username);
 }
 
-const updateProfileSettings = (username, publicUsername, about) => {
+const updateProfileSettings = (name, about) => {
     return post(API_URL + "/profile/settings", {
-        username,
-        publicUsername,
+        name,
         about
     });
 }

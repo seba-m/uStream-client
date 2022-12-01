@@ -20,20 +20,6 @@ export function Credentials(props) {
     setCurrentSelected(e);
   }
 
-  
-
-  //print showForgotPass with useEffect
-  useEffect(() => {
-    console.log("showForgotPass", showForgotPass);
-  }, [showForgotPass]);
-
-
-  
-  
-    
-
-  console.log(showForgotPass);
-
   return (
     <>
       <Modal

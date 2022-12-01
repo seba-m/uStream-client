@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { useFormikContext, Formik, Form, Field, ErrorMessage } from "formik";
 
-import { Spinner } from "../components/Spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./ForgotPassword.module.scss";
 
@@ -15,29 +17,24 @@ export function ForgotPassword({ showForgot }) {
   const [message, setMessage] = useState("");
 
   const [mail, setMail] = useState();
-  const [password, setPassword] = useState();
-
+  
   function handleMailChange(e) {
     setMail(e.target.value);
-  }
-
-  function handlePassChange(e) {
-    setPassword(e.target.value);
   }
 
   const handleShowForgotPass = (e) => {
     showForgot(false);
   };
 
-  const handleEmail = (data, formikHelpers) => {
+  const handleEmailForgot = (data, formikHelpers) => {
     formikHelpers.setSubmitting(true);
 
     setMessage("");
 
-    AuthService.login(mail, password)
+    AuthService.recovery(mail)
       .then(
         () => {
-          navigate("/profile");
+          navigate("/");
           window.location.reload();
         },
         (error) => {
@@ -56,19 +53,17 @@ export function ForgotPassword({ showForgot }) {
       });
   };
 
-  const FormObserver = () => {
-    const { values } = useFormikContext();
-    useEffect(() => {
-      console.log("FormObserver::values", values);
-    }, [values]);
-    return null;
-  };
 
   return (
-    <div className={styles.loginContent}>
+    <div className={styles.forgotContent}>
       <div>
+        <button className={styles.closeForgot} onClick={handleShowForgotPass}>
+          <FontAwesomeIcon icon={faArrowLeft} className={styles.dropdownOptionIcon} />
+        </button>
+        <h2 className={styles.tittleWindow}>Account Recovery</h2>
+        <p className={styles.textInformation}>Tell us some information about your account.</p>
         <Formik
-          initialValues={{ email: "", password: "" }}
+          initialValues={{ email: "" }}
           validate={(values) => {
             const errors = {};
             console.log("otro mail " + mail);
@@ -79,7 +74,7 @@ export function ForgotPassword({ showForgot }) {
             }
             return errors;
           }}
-          onSubmit={handleEmail}
+          onSubmit={handleEmailForgot}
         >
           {({
             values,
@@ -119,37 +114,13 @@ export function ForgotPassword({ showForgot }) {
                   component="div"
                 />
               </div>
-              <div className={`${styles.passwordInput} ${styles.formGroup}`}>
-                <Field
-                  className={styles.formInput}
-                  value={password}
-                  type="password"
-                  name="password"
-                  onChange={handlePassChange}
-                />
-                <span
-                  className={`${styles.formLabel} ${password && styles.filled}`}
-                >
-                  Password
-                </span>
 
-                <div className={styles.underline}></div>
-                <ErrorMessage
-                  className={styles.errorText}
-                  name="password"
-                  component="div"
-                />
-              </div>
-
-              <button type="submit" disabled={isSubmitting}>
-                <span>Login</span>
+              <button type="submit">
+                <span>Sent me a code</span>
               </button>
             </Form>
           )}
         </Formik>
-        <button onClick={handleShowForgotPass}>
-          <span>close</span>
-        </button>
       </div>
     </div>
   );
