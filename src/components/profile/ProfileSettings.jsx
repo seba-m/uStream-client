@@ -14,10 +14,8 @@ export function ProfileSettings({ user }) {
         formikHelpers.setSubmitting(true);
 
         setMessage("");
-        
-        console.log(data.name+" "+data.publicName+" "+data.about);
 
-        UserService.updateProfileSettings(data.name, data.publicName, data.about)
+        UserService.updateProfileSettings(data.publicName, data.about)
             .then(
                 (error) => {
                     const resMessage =
@@ -35,20 +33,17 @@ export function ProfileSettings({ user }) {
     return (
         <div>
             <Formik
-                initialValues={{ name: user.userName, publicName: user.streamData.name, about: user.about }}
+                initialValues={{ publicName: user.streamData.name, about: user.about }}
                 onSubmit={handleProfile}
                 validate={values => {
                     const errors = {};
-                    if (!values.name) {
-                        errors.name = 'Required';
-                    } else if (!/^[a-zA-Z0-9]+$/.test(values.name)) {
-                        errors.name = 'Invalid Name';
-                    }
 
                     if (!values.publicName) {
                         errors.publicName = 'Required';
                     } else if (!/^[a-zA-Z0-9]+$/.test(values.publicName)) {
                         errors.publicName = 'Invalid Name';
+                    } else if (user.userName.toLowerCase() !== values.publicName.toLowerCase()) {
+                        errors.publicName = 'You cannot change your public name, only the use of capital letters.';
                     }
 
                     if (values.about && values.about.length > 200) {
@@ -72,38 +67,44 @@ export function ProfileSettings({ user }) {
                         <div className={styles.aboutSection}>
                             <h2 className={styles.aboutTittle}>About {values.publicName}</h2>
                             <p><span className={styles.followers}>{user.followers}</span><span className={styles.text}> followers</span></p>
-                            {values.about && values.about.trim() !== "" ? // if user.about is not empty
-                                <p className={styles.textAbout}>{values.about}</p>
-                                :
-                                <p className={styles.textAbout}>Hello world!, im {values.publicName}.</p>
-                            }
+                            <div className={styles.aboutBox}>
+                                {values.about && values.about.trim() !== "" ? // if user.about is not empty
+                                    <span className={styles.textAbout}>{values.about}</span>
+                                    :
+                                    <span className={styles.textAbout}>Hello world!, im {values.publicName}.</span>
+                                }
+                            </div>
                         </div>
 
-                        <h2>Profile Settings</h2>
-                        <div>
-                            <p>Username:</p>
-                            <Field type="text" name="name" />
-                            <ErrorMessage name="name" component="div" />
-                        </div>
-                        <div>
-                            <p>Public username:</p>
-                            <Field type="text" name="publicName" />
-                            <ErrorMessage name="publicName" component="div" />
-                        </div>
-                        <div>
-                            <p>About Me:</p>
-                            <Field name="about" as="textarea" />
-                            <ErrorMessage name="about" component="div" />
-                        </div>
+                        <h2 className={styles.profileEditTittle}>Profile Settings</h2>
+                        <span className={styles.profileEditSubtittle}>Change your account identification data</span>
+                        <div className={styles.profileEditBox}>
+                            <div>
+                                <p>Username:</p>
+                                <Field type="text" name="name" disabled/>
+                                <ErrorMessage name="name" component="div" />
+                            </div>
+                            <div>
+                                <p>Public username:</p>
+                                <Field type="text" name="publicName" />
+                                <ErrorMessage name="publicName" component="div" />
+                            </div>
+                            <div>
+                                <p>About Me:</p>
+                                <Field name="about" as="textarea"  />
+                                <ErrorMessage name="about" component="div" />
+                            </div>
 
-                        <div className="form-group">
-                            <button type="submit" disabled={isSubmitting}>
-                                {isSubmitting && (
-                                    <Spinner />
-                                )}
-                                <span>Save Changes</span>
-                            </button>
+                            <div className="form-group">
+                                <button type="submit" disabled={isSubmitting}>
+                                    {isSubmitting && (
+                                        <Spinner />
+                                    )}
+                                    <span>Save Changes</span>
+                                </button>
+                            </div>
                         </div>
+                        
                     </Form>
                 )}
             </Formik>
