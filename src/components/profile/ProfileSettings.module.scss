@@ -1,4 +1,11 @@
 .aboutSection {
+  width: 60%;
+  background: #18181b;
+  border-radius: 2px;
+  padding: 3.2rem;
+  word-wrap: break-word;
+  overflow: auto;
+  margin-bottom: 5rem;
 }
 
 .aboutSection .aboutTittle {
@@ -24,5 +31,39 @@
   font-size: 16px;
   line-height: 20px;
 
-  font-feature-settings: 'salt' on, 'liga' off;
+  font-feature-settings: "salt" on, "liga" off;
+}
+
+.aboutSection .aboutBox {
+  overflow: auto;
+}
+
+.aboutSection .textAbout {
+  width: auto;
+}
+
+.profileEditTittle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 20px;
+}
+
+.profileEditSubtittle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.profileEditBox {
+  width: 60%;
+  background: #18181b;
+  border-radius: 2px;
+  padding: 3.2rem;
+  word-wrap: break-word;
+  overflow: auto;
+  margin-bottom: 5rem;
 }
