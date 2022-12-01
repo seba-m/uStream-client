@@ -10,14 +10,28 @@ export function ProfileSettings({ user }) {
 
     const [message, setMessage] = useState("");
 
+    const [changePublicName, setChangePublicName] = useState(user.streamData.name);
+
+    const [changeAbout, setChangeAbout] = useState(user.about);
+
+    const handlePublicName = (e) => {
+        setChangePublicName(e.target.value);
+    }
+
+    const handleAbout = (e) => {
+        setChangeAbout(e.target.value);
+    }
+
     const handleProfile = (data, formikHelpers) => {
+
+
         formikHelpers.setSubmitting(true);
 
         setMessage("");
-
-        UserService.updateProfileSettings(data.publicName, data.about)
+        console.log(data.publicName)
+        UserService.updateProfileSettings(changePublicName, changeAbout)
             .then(
-                (error) => {
+                (error) => {   
                     const resMessage =
                         (error.response && error.response.data && error.response.data.message) ||
                         error.message ||
@@ -33,20 +47,20 @@ export function ProfileSettings({ user }) {
     return (
         <div>
             <Formik
-                initialValues={{ publicName: user.streamData.name, about: user.about }}
+                initialValues={{ name:user.userName, publicName: user.streamData.name, about: user.about }}
                 onSubmit={handleProfile}
                 validate={values => {
                     const errors = {};
 
                     if (!values.publicName) {
                         errors.publicName = 'Required';
-                    } else if (!/^[a-zA-Z0-9]+$/.test(values.publicName)) {
+                    } else if (!/^[a-zA-Z0-9]+$/.test(changePublicName)) {
                         errors.publicName = 'Invalid Name';
-                    } else if (user.userName.toLowerCase() !== values.publicName.toLowerCase()) {
+                    } else if (user.userName.toLowerCase() !== changePublicName.toLowerCase()) {
                         errors.publicName = 'You cannot change your public name, only the use of capital letters.';
                     }
 
-                    if (values.about && values.about.length > 200) {
+                    if (changeAbout && changeAbout.length > 300) {
                         errors.about = 'Must be 200 characters or less';
                     }
 
@@ -63,48 +77,65 @@ export function ProfileSettings({ user }) {
                             </div>
                         )}
 
-                        
-                        <div className={styles.aboutSection}>
-                            <h2 className={styles.aboutTittle}>About {values.publicName}</h2>
-                            <p><span className={styles.followers}>{user.followers}</span><span className={styles.text}> followers</span></p>
-                            <div className={styles.aboutBox}>
-                                {values.about && values.about.trim() !== "" ? // if user.about is not empty
-                                    <span className={styles.textAbout}>{values.about}</span>
-                                    :
-                                    <span className={styles.textAbout}>Hello world!, im {values.publicName}.</span>
-                                }
-                            </div>
-                        </div>
-
-                        <h2 className={styles.profileEditTittle}>Profile Settings</h2>
-                        <span className={styles.profileEditSubtittle}>Change your account identification data</span>
-                        <div className={styles.profileEditBox}>
-                            <div>
-                                <p>Username:</p>
-                                <Field type="text" name="name" disabled/>
-                                <ErrorMessage name="name" component="div" />
-                            </div>
-                            <div>
-                                <p>Public username:</p>
-                                <Field type="text" name="publicName" />
-                                <ErrorMessage name="publicName" component="div" />
-                            </div>
-                            <div>
-                                <p>About Me:</p>
-                                <Field name="about" as="textarea"  />
-                                <ErrorMessage name="about" component="div" />
+                        <div className={styles.profileEditContainer}>
+                            <div className={styles.aboutSection}>
+                                <h2 className={styles.aboutTittle}>About {values.publicName}</h2>
+                                <p><span className={styles.followers}>{user.followers}</span><span className={styles.text}> followers</span></p>
+                                <div className={styles.aboutBox}>
+                                    {values.about && values.about.trim() !== "" ? // if user.about is not empty
+                                        <span className={styles.textAbout}>{values.about}</span>
+                                        :
+                                        <span className={styles.textAbout}>Hello world!, im {values.publicName}.</span>
+                                    }
+                                </div>
                             </div>
 
-                            <div className="form-group">
-                                <button type="submit" disabled={isSubmitting}>
-                                    {isSubmitting && (
-                                        <Spinner />
-                                    )}
-                                    <span>Save Changes</span>
-                                </button>
+                            <h2 className={styles.profileEditTittle}>Profile Settings</h2>
+                            <p className={styles.profileEditSubtittle}>Change your account identification data</p>
+                            <div className={styles.profileEditBox}>
+                                <div className={styles.profileEditSubBox}>
+                                    <div className={styles.editFieltTittle}>
+                                        <p>Username</p>
+                                    </div>
+                                    <div className={styles.profileEditField}>
+                                        <Field className={`${styles.fieldInput} ${styles.disabledField}`} type="text" name="name" disabled/>
+                                    </div>
+                                </div>
+                                <div className={styles.profileEditSubBox}>
+                                    <div className={styles.editFieltTittle}>
+                                        <p>Public username</p>
+                                    </div>
+                                    <div className={styles.profileEditField}>
+                                        <Field className={styles.fieldInput} value={changePublicName} type="text" name="publicName" onChange={handlePublicName}/>
+                                        <span className={styles.helpField}>Customize the use of capital letters in your user name.</span>
+                                        <ErrorMessage className={styles.errorField} name="publicName" component="div" />
+                                    </div>
+                                </div>
+                                <div className={styles.profileEditSubBox}>
+                                    <div className={styles.editFieltTittle}>
+                                        <p>About Me</p> 
+                                    </div>
+                                    <div className={styles.profileEditField}>
+                                        <Field className={`${styles.fieldInput} ${styles.textAreaResize}`} value={changeAbout} name="about" as="textarea" maxlength="300" onChange={handleAbout} />
+                                        <span className={styles.helpField}>The description in the "About" panel of your channel must be less than 300 characters.</span>
+                                        <ErrorMessage className={styles.errorField} name="about" component="div" /> 
+                                    </div>
+                                </div>
+
+                                <div className={`${styles.profileEditSubBox} ${styles.profileEditButton}`}>
+                                    {changeAbout !== user.about || changePublicName !== user.streamData.name? 
+                                    <button type="submit">
+                                        <span>Save Changes</span>
+                                    </button>
+                                     : 
+                                    <button type="submit" disabled>
+                                        <span>Save Changes</span>
+                                    </button>
+                                    }
+                                    
+                                </div>
                             </div>
-                        </div>
-                        
+                        </div> 
                     </Form>
                 )}
             </Formik>
