@@ -25,9 +25,11 @@
 }
 
 .streamBanner {
-    object-fit: cover;
+    //object-fit: cover;
     max-width: 1300px;
     max-height: 360px;
+    min-width: 1300px;
+    min-height: 360px;
     overflow:hidden;
 }
 
