@@ -4,7 +4,6 @@
     height: 7rem;
     width: 10.4rem;
     justify-content: center;
-    align-items: flex-start;
     flex-shrink: 0;
     align-self: flex-start;
     margin-left: 10rem;
@@ -25,19 +24,12 @@
     display: flex;
 }
 
-
-
-.streamFrontPageImage {
-   object-fit:cover;
+.streamBanner {
+    object-fit: cover;
+    max-width: 1250px;
+    max-height: 360px;
+    overflow:hidden;
 }
-
-.streamFrontPageImage .streamBorderFrontPageImage {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
-}
-
-
 
 /*stream information*/
 

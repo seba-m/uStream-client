@@ -27,33 +27,30 @@ export function OfflineStreamPlayer({ stream }) {
 
 
     return (
-        <div className={styles.streamRoot}>
-            <div className={styles.streamFrontPageImage}>
+        <div>
+            <div className={styles.streamBanner}>
                 <Link to={`/stream/${stream.username}`}>
-                    <figure className={styles.imageBorderFrontPage}>
-                        <img src={banner} alt={stream.title} />
+                    <figure>
+                        <img className={styles.streamFrontPageImage} src={banner} alt={stream.title} />
                     </figure>
                 </Link>
             </div>
             <div className={styles.heroContainer}>
-                <div className={styles.streamDetails}>
-                    <div className={styles.streamImage}>
-                        <Link to={`/stream/${stream.username}`}>
-                            <figure className={styles.imageBorder}>
-                                <img src={avatar} alt={stream.title} />
-                            </figure>
-                        </Link>
-                        <div className={styles.streamUsername}>
-                            <h1 >{stream.username}</h1>
-                            <h4 >Followers {stream.followers}</h4>
-                        </div>
+                <div className={styles.streamImage}>
+                    <Link to={`/stream/${stream.username}`}>
+                        <figure className={styles.imageBorder}>
+                            <img src={avatar} alt={stream.title} />
+                        </figure>
+                    </Link>
+                    <div className={styles.streamUsername}>
+                        <h1 >{stream.username}</h1>
+                        <h4 >Followers {stream.followers}</h4>
                     </div>
-                    <div>
-                        <h2 className={styles.streamAbout}>About {stream.username}</h2>
-                        <p className={styles.streamDescriptionAbout}>{stream.about}</p>
-                    </div>
-
                 </div>
+            </div>
+            <div>
+                <h2 className={styles.streamAbout}>About {stream.username}</h2>
+                <p className={styles.streamDescriptionAbout}>{stream.about}</p>
             </div>
         </div>
     )
