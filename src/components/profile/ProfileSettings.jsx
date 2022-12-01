@@ -17,7 +17,7 @@ export function ProfileSettings({ user }) {
     const handlePublicName = (e) => {
         setChangePublicName(e.target.value);
     }
-
+    
     const handleAbout = (e) => {
         setChangeAbout(e.target.value);
     }

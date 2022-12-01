@@ -37,7 +37,7 @@ export function Login( {showForgot} ) {
     AuthService.login(mail, password)
       .then(
         () => {
-          navigate("/profile");
+          navigate("/");
           window.location.reload();
         },
         (error) => {
