@@ -59,12 +59,12 @@
 }
 
 /*tags*/
-.streamTags {
+.categoryTags {
     padding-top: 1rem;
     display: flex;
 }
 
-.streamTags .tag {
+.categoryTags .tag {
     font-size: 1.2rem;
     display: inline-block;
     margin-bottom: 0.5rem;
@@ -76,7 +76,7 @@
     }
 }
 
-.streamTags .tagUrl {
+.categoryTags .tagUrl {
     display: inline-block;
     border-radius: 9000px;
     font-weight: 600;
@@ -87,7 +87,7 @@
     max-width: 100%;
 }
 
-.streamTags span {
+.categoryTags span {
     padding: 0px 0.8rem;
     white-space: nowrap;
     text-overflow: ellipsis;

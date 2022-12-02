@@ -20,11 +20,12 @@ export function CategoryGrid({ search }) {
     useEffect(() => {
         setIsLoading(true);
 
-        GeneralService.searchCategory(search, page).then((data) => {
-            setCategory(prevStreams => prevStreams.concat(data.categories));
-            setHasMore(data.page < data.total_pages);
-            setIsLoading(false);
-        })
+        GeneralService.searchCategory(search, page)
+            .then((data) => {
+                setCategory(prevCategories => prevCategories.concat(data.categories));
+                setHasMore(data.currentPage < data.totalPages);
+                setIsLoading(false);
+            })
     }, [search, page]);
 
     if (!isLoading && category.length === 0) {
@@ -37,11 +38,12 @@ export function CategoryGrid({ search }) {
                 <h2>Go back to <Link to={`/search/?term=${search}`}><b>search page</b></Link></h2>
             </div>
             <InfiniteScroll
-                dataLength={category.length}
+                dataLength={ category.length }
                 hasMore={hasMore}
                 next={() => setPage((prevPage) => prevPage + 1)}
                 loader={<Spinner />}
-                endMessage={<p className={styles.noMoreStreams}>- You have seen it all -</p>}
+                height={"calc(100vh - 10rem)"}
+                endMessage={<p className={styles.noMoreCategories}>- You have seen it all -</p>}
             >
                 <ul className={styles.CategoriesGrid}>
                     {category.map((category) => {

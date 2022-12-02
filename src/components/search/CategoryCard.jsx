@@ -9,10 +9,10 @@ export function CategoryCard({ category }) {
 			</div>
 			<div className={styles.informationContainer}>
 				<h1 className={styles.categoryName}>{category.name}</h1>
-				<h2 className={styles.categorySpectators}>{category.spectators}</h2>
+				<h2 className={styles.categorySpectators}>{category.spectators} spectators</h2>
 
 				{category.tags && (
-					<div className={styles.streamTags}>
+					<div className={styles.categoryTags}>
 						{category.tags.map((tag) =>
 							<div key={tag} className={styles.tag}>
 								<div className={styles.tagUrl}>

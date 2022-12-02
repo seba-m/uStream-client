@@ -87,7 +87,7 @@ export function SearchPage() {
                             </div>
                             {streams.length > 5 && (
                                 <div>
-                                    <Link to={`/search/stream?query=${search}`}>Show all</Link>
+                                    <Link to={`/search/stream?term=${search}`}>Show all</Link>
                                 </div>
                             )}
 
@@ -114,7 +114,7 @@ export function SearchPage() {
                             </div>
                             {categories.length > 5 && (
                                 <div>
-                                    <Link to={`/search/category?query=${search}`}>Show all</Link>
+                                    <Link to={`/search/category?term=${search}`}>Show all</Link>
                                 </div>
                             )}
                         </div>
