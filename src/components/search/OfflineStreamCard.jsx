@@ -1,9 +1,19 @@
+import { useEffect, useState } from 'react';
 import styles from './OfflineStreamCard.module.scss';
 import { Link } from "react-router-dom";
-import { getImg } from '../../utils/httpClient';
+
+import UserService from '../../services/User.service'
 
 export function OfflineStreamCard({ stream }) {
-    const avatar = getImg("avatar",stream.username);
+    const [avatar, setAvatar] = useState(null);
+
+    useEffect(() => {
+        UserService.getUserAvatar(stream.username)
+            .then(data => {
+                setAvatar(data);
+            })
+    }, [stream.username]);
+
     return (
         <li className={styles.streamCard}>
             <div className={styles.streamImage}>
