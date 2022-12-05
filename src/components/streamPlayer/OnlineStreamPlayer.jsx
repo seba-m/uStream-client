@@ -54,7 +54,7 @@ export function OnlineStreamPlayer({ stream }) {
                     </div>
                 </div>
                 <div className={styles.heroContainerRight}>
-                    <div className={styles.signupBox}>
+                    <div className={styles.followBox}>
                         <h2 className={styles.buttonText}>Follow</h2>
                     </div>
                 </div>
