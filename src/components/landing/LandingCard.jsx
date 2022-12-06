@@ -1,25 +1,45 @@
+import { useEffect, useState } from "react";
 import styles from "./LandingCard.module.scss";
+
+import UserService from "../../services/User.service";
+import PlaceHolder from "../../placeholder.jpg";
 
 import { Link } from "react-router-dom";
 
 export function LandingCard({ stream }) {
-  const { username, avatar, banner } = stream;
+
+  const [avatar, setAvatar] = useState(PlaceHolder);
+  const [banner, setBanner] = useState(PlaceHolder);
+
+  useEffect(() => {
+    UserService.getUserAvatar(stream.username)
+      .then(data => {
+        setAvatar(data);
+      })
+  }, [stream.username]);
+
+  useEffect(() => {
+    UserService.getUserBanner(stream.username)
+      .then(data => {
+        setBanner(data);
+      })
+  }, [stream.username]);
 
   return (
     <Link
-      to={`/stream/${username}`}
+      to={`/stream/${stream.username}`}
       className={
         styles.streamerCard
       } /*style={{ backgroundImage: `url(${banner})`}}*/
     >
       <div className={styles.streamerBackgroundImage}>
-        <img src={banner} alt={username} />
+        <img src={banner} alt={stream.username} />
         <div className={styles.streamImage}>
           <figure className={styles.imageBorder}>
-            <img src={avatar} alt={username} />
+            <img src={avatar} alt={stream.username} />
           </figure>
         </div>
-        <h3>{username}</h3>
+        <h3>{stream.username}</h3>
       </div>
     </Link>
   );

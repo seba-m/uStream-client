@@ -4,6 +4,10 @@ const getTopStreamers = () => {
     return get("/stream/top");
 }
 
+const getTopCategories = () => {
+    return get("/category/top");
+}
+
 const getStream = (streamerName) => {
     return get(`/stream/view/${streamerName}`);
 }
@@ -22,6 +26,7 @@ const search = (searchText) => {
 
 const GeneralService = {
     getTopStreamers,
+    getTopCategories,   
     getStream,
 
     searchCategory,

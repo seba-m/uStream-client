@@ -189,53 +189,6 @@
   }
 }
 
-.sideMenu {
-  grid-area: sidebar;
-  background: #1f1f23;
-  width: var(--sidebar-width);
-  height: 100%;
-  padding: 1.7rem 2rem;
-
-  a:hover {
-    color: white;
-  }
-}
-
-.sideMenu h2 {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 2rem;
-  margin: 0;
-
-  color: #ffffff;
-  padding-bottom: 2rem;
-}
-
-.sideMenu h3 {
-  margin: 0;
-}
-
-.sideMenuBox {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 6px;
-  width: 100%;
-  padding: 0.1rem;
-  margin-bottom: 2.2rem;
-  padding-top: 1.6rem;
-  padding-bottom: 1.6rem;
-}
-
-.menuText {
-  display: flex;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.5rem;
-  justify-content: center;
-  align-items: center;
-}
-
 .contentContainer {
   overflow-y: auto;
   overflow-x: hidden;

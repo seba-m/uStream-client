@@ -12,6 +12,7 @@ export function LandingGrid() {
     useEffect(() => {
         GeneralService.getTopStreamers().then((result) => {
             setData(result);
+            console.log(result)
             setIsLoading(false);
         });
     }, []);
