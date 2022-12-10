@@ -16,7 +16,6 @@ export function SideBar() {
   useEffect(() => {
     GeneralService.getTopCategories().then((result) => {
       setData(result);
-      console.log(result);
       setIsLoading(false);
     });
   }, []);

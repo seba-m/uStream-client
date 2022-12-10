@@ -4,8 +4,6 @@ import { VideoPlayer } from '../VideoPlayer';
 import UserService from "../../services/User.service";
 import { useEffect, useState } from 'react';
 
-import { getImg } from '../../utils/httpClient';
-
 export function OnlineStreamPlayer({ stream }) {
 
     const [avatar, setAvatar] = useState(null);
@@ -16,6 +14,7 @@ export function OnlineStreamPlayer({ stream }) {
                 setAvatar(data);
             })
     }, [stream.username]);
+
 
     return (
         <div className={styles.streamRoot}>
@@ -54,9 +53,8 @@ export function OnlineStreamPlayer({ stream }) {
                     </div>
                 </div>
                 <div className={styles.heroContainerRight}>
-
                     <button className={styles.followBox}>Follow</button>
-
+                   
                 </div>
 
             </div>

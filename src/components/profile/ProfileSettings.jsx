@@ -28,7 +28,6 @@ export function ProfileSettings({ user }) {
         formikHelpers.setSubmitting(true);
 
         setMessage("");
-        console.log(data.publicName)
         UserService.updateProfileSettings(changePublicName, changeAbout)
             .then(
                 (error) => {   

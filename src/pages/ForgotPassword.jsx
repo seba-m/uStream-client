@@ -66,7 +66,6 @@ export function ForgotPassword({ showForgot }) {
           initialValues={{ email: "" }}
           validate={(values) => {
             const errors = {};
-            console.log("otro mail " + mail);
             if (!mail) {
               errors.email = "Required";
             } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(mail)) {
