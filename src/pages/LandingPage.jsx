@@ -62,9 +62,7 @@ export default function LandingPage() {
       </div>
       <div className={styles.content}>
         <h2>Channels you might like</h2>
-        <div className={styles.streamsContainer}>
-          <LandingGrid />
-        </div>
+        <LandingGrid />
       </div>
     </div>
   );

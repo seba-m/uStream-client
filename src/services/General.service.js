@@ -1,7 +1,7 @@
 import { get } from '../utils/httpClient';
 
-const getTopStreamers = () => {
-    return get("/stream/top");
+const getTopStreamers = (page) => {
+    return get(`/stream/top?&page=${page}`);
 }
 
 const getTopCategories = () => {

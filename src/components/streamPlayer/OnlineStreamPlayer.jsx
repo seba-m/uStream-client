@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import { VideoPlayer } from '../VideoPlayer';
 import UserService from "../../services/User.service";
 import { useEffect, useState } from 'react';
-import {viewStreamer} from '';
-
-import { getImg } from '../../utils/httpClient';
 
 export function OnlineStreamPlayer({ stream }) {
 
