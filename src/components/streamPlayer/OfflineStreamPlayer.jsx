@@ -1,14 +1,16 @@
-import styles from './OfflineStreamPlayer.module.scss';
-import { Link } from "react-router-dom";
-import UserService from "../../services/User.service";
-
-import { getImg } from '../../utils/httpClient';
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+
+import styles from './OfflineStreamPlayer.module.scss';
+
+import UserService from "../../services/User.service";
+import GeneralService from '../../services/General.service';
 
 export function OfflineStreamPlayer({ stream }) {
-    const [tipo, setTipo] = useState(null);
     const [avatar, setAvatar] = useState(null);
     const [banner, setBanner] = useState(null);
+
+    const [isFollowing, setIsFollowing] = useState(null);
 
     useEffect(() => {
         UserService.getUserAvatar(stream.username)
@@ -24,7 +26,19 @@ export function OfflineStreamPlayer({ stream }) {
             })
     }, [stream.username]);
 
+    useEffect(() => {
+        GeneralService.isFollowing(stream.username)
+            .then(data => {
+                setIsFollowing(data);
+            })
+            .catch(err => {
+                setIsFollowing(null);
+            })
+    }, [stream.username]);
 
+    const handleFollow = (e) => {
+        e.preventDefault();
+    }
 
     return (
         <div>
@@ -47,6 +61,11 @@ export function OfflineStreamPlayer({ stream }) {
                         <h4 >Followers {stream.followers}</h4>
                     </div>
                 </div>
+                {isFollowing && (
+                    <div className={styles.heroContainerRight}>
+                        <button className={styles.followBox} onClick={handleFollow}>Follow</button>
+                    </div>
+                )}
             </div>
             <div>
                 <h2 className={styles.streamAbout}>About {stream.username}</h2>

@@ -1,12 +1,16 @@
-import styles from './OnlineStreamPlayer.module.scss';
-import { Link } from "react-router-dom";
-import { VideoPlayer } from '../VideoPlayer';
-import UserService from "../../services/User.service";
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+
+import styles from './OnlineStreamPlayer.module.scss';
+import { VideoPlayer } from '../VideoPlayer';
+
+import UserService from "../../services/User.service";
+import GeneralService from '../../services/General.service';
 
 export function OnlineStreamPlayer({ stream }) {
 
     const [avatar, setAvatar] = useState(null);
+    const [isFollowing, setIsFollowing] = useState(null);
 
     useEffect(() => {
         UserService.getUserAvatar(stream.username)
@@ -15,6 +19,19 @@ export function OnlineStreamPlayer({ stream }) {
             })
     }, [stream.username]);
 
+    useEffect(() => {
+        GeneralService.isFollowing(stream.username)
+            .then(data => {
+                setIsFollowing(data);
+            })
+            .catch(err => {
+                setIsFollowing(null);
+            })
+    }, [stream.username]);
+
+    const handleFollow = (e) => {
+        e.preventDefault();
+    }
 
     return (
         <div className={styles.streamRoot}>
@@ -52,10 +69,11 @@ export function OnlineStreamPlayer({ stream }) {
 
                     </div>
                 </div>
-                <div className={styles.heroContainerRight}>
-                    <button className={styles.followBox}>Follow</button>
-                   
-                </div>
+                {isFollowing && (
+                    <div className={styles.heroContainerRight}>
+                        <button className={styles.followBox} onClick={handleFollow}>Follow</button>
+                    </div>
+                )}
 
             </div>
             <div>

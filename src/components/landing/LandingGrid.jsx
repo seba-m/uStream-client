@@ -21,6 +21,7 @@ export function LandingGrid() {
             setStreams(prevStreams => prevStreams.concat(data.streams));
             setHasMore(data.currentPage < data.totalPages);
             setIsLoading(false);
+            console.log(data)
         });
     }, [page]);
 
