@@ -21,8 +21,10 @@ import { SearchCategory } from "./pages/SearchCategory";
 import { NotFound } from "./pages/NotFound";
 import { Credentials } from "./pages/Credentials";
 
+
 import styles from "./App.module.scss";
 import { Search } from "./components/Search";
+import { SideBar } from "./components/landing/SideBar";
 
 import UserService from "./services/User.service";
 
@@ -175,45 +177,8 @@ export function App() {
             </div>
           )}
         </nav>
-
-        <aside className={styles.sideMenu}>
-          <h2>Top Games</h2>
-          <Link to="/game1">
-            <div className={styles.sideMenuBox}>
-              <h3 className={styles.menuText}>Game 1</h3>
-            </div>
-          </Link>
-          <Link to="/game2">
-            <div className={styles.sideMenuBox}>
-              <h3 className={styles.menuText}>Game 2</h3>
-            </div>
-          </Link>
-          <Link to="/game3">
-            <div className={styles.sideMenuBox}>
-              <h3 className={styles.menuText}>Game 3</h3>
-            </div>
-          </Link>
-          <Link to="/game4">
-            <div className={styles.sideMenuBox}>
-              <h3 className={styles.menuText}>Game 4</h3>
-            </div>
-          </Link>
-          <Link to="/game5">
-            <div className={styles.sideMenuBox}>
-              <h3 className={styles.menuText}>Game 5</h3>
-            </div>
-          </Link>
-          <Link to="/game6">
-            <div className={styles.sideMenuBox}>
-              <h3 className={styles.menuText}>Game 6</h3>
-            </div>
-          </Link>
-          <Link to="/game7">
-            <div className={styles.sideMenuBox}>
-              <h3 className={styles.menuText}>Game 7</h3>
-            </div>
-          </Link>
-        </aside>
+              
+        <SideBar/>
 
         <section className={styles.contentContainer}>
           <div className={styles.content}>
