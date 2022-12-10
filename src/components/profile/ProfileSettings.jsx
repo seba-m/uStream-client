@@ -82,7 +82,7 @@ export function ProfileSettings({ user }) {
                                 <p><span className={styles.followers}>{user.followers}</span><span className={styles.text}> followers</span></p>
                                 <div className={styles.aboutBox}>
                                     {values.about && values.about.trim() !== "" ? // if user.about is not empty
-                                        <span className={styles.textAbout}>{values.about}</span>
+                                        <span className={styles.textAbout}>{changeAbout}</span>
                                         :
                                         <span className={styles.textAbout}>Hello world!, im {values.publicName}.</span>
                                     }
