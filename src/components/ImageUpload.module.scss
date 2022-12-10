@@ -1,0 +1,26 @@
+.imgField {
+    display: flex;
+}
+
+.imgContainer {
+    padding-right: 2rem;
+}
+
+.imgProfile {
+    width: 9.6rem;
+    height: 9.6rem;
+    border-radius: 9000px;
+}
+
+.imgBanner {
+    height: 9.6rem;
+    max-width: 30rem;
+    border-radius: 0.4rem;
+}
+
+.imgUpdateButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+

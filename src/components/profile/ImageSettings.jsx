@@ -5,6 +5,8 @@ import { ImageUpload } from "../ImageUpload";
 import UserService from "../../services/User.service";
 import PlaceHolder from "../../placeholder.jpg";
 
+import styles from "./ImageSettings.module.scss";
+
 export function ImageSettings({ user }) {
   const [defaultAvatar, setDefaultAvatar] = useState(PlaceHolder);
   const [defaultBanner, setDefaultBanner] = useState(PlaceHolder);
@@ -30,22 +32,25 @@ export function ImageSettings({ user }) {
 
   return (
     <>
-      <h2>Image Settings</h2>
-      <div>
-        <h3>Profile Image</h3>
-        <ImageUpload
-          defaultImage={defaultAvatar}
-          onUpload={UserService.updateProfileImage}
-          onDelete={UserService.deleteProfileImage}
-        />
-      </div>
-      <div>
-        <h3>Profile Banner</h3>
-        <ImageUpload
-          defaultImage={defaultBanner}
-          onUpload={UserService.updateProfileBanner}
-          onDelete={UserService.deleteProfileBanner}
-        />
+      {/*<h2 >Image Settings</h2>*/}
+      <div className={styles.profileEditContainer}>
+        <h3 className={styles.subtitle}>Profile Image</h3>
+        <div className={styles.imageSection}> 
+            <ImageUpload
+              defaultImage={defaultAvatar}
+              onUpload={UserService.updateProfileImage}
+              onDelete={UserService.deleteProfileImage}
+              isBanner={false}/>
+        </div>
+
+        <h3 className={styles.subtitle}>Profile Banner</h3>
+        <div className={styles.imageSection}>
+            <ImageUpload
+              defaultImage={defaultBanner}
+              onUpload={UserService.updateProfileBanner}
+              onDelete={UserService.deleteProfileBanner}
+              isBanner={true}/>
+        </div>
       </div>
     </>
   );

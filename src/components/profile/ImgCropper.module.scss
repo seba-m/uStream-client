@@ -1,0 +1,79 @@
+
+
+.cropperContainer {
+  position: relative;
+  background-color: black;
+  width: 60rem;
+  height: 40rem;
+}
+
+.titleCropper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #18181b;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Inter";
+  border-bottom: solid 1px #303032;
+}
+
+.cropView {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: calc(100% - 9.1rem);
+  height: calc(100% - 9.1rem);
+  margin: 0 auto;
+}
+
+.controls {
+  background-color: #18181b;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 3rem;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .cancelButton{
+    background: #424247;
+    border-radius: 4px; 
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    border: none;
+    color: white;
+    padding: .5rem 1rem;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .saveButton{
+    background: #2ec5ce;
+    border-radius: 4px; 
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    border: none;
+    color: white;
+    padding: .5rem 1.5rem;
+
+    display: flex;
+    align-items: center;
+  }
+}
