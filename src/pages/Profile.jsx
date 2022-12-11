@@ -71,6 +71,8 @@ export function Profile() {
             <div>
               <ContactProfile user={user} />
             </div>
+          </Tab>
+          <Tab eventKey="stream" title="Stream settings">
             <div>
               <StreamSettings user={user} />
             </div>

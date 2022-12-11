@@ -9,7 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import styles from "./ImgCropper.module.scss";
 
 
-export function ImgCropper({ saveChanges, isBanner, newImg, imgSelect, def, show, onHide }) {
+export function ImgCropper({ saveChanges, banner, newImg, imgSelect, def, show, onHide }) {
     const [crop, setCrop] = useState({ x: 0, y: 0 })
     const [zoom, setZoom] = useState(1)
     const [rotation, setRotation] = useState(0)
@@ -19,6 +19,8 @@ export function ImgCropper({ saveChanges, isBanner, newImg, imgSelect, def, show
     const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
       setCroppedAreaPixels(croppedAreaPixels)
     }, [])
+
+    console.log(banner)
    
     const showCroppedImage = useCallback(async () => {
       try {
@@ -53,7 +55,7 @@ export function ImgCropper({ saveChanges, isBanner, newImg, imgSelect, def, show
             <h2 className={styles.titleCropper}>Update profile picture</h2>
          
             <div className={styles.cropView}>
-                {isBanner? 
+                {banner? 
                   <Cropper
                   image={imgSelect? URL.createObjectURL(imgSelect) : def}
                   crop={crop}

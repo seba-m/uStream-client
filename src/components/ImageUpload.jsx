@@ -13,6 +13,7 @@ export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
     const [newImage, setNewImage] = useState(null);
     const [isGif, setIsGif] = useState(false);
 
+    console.log(isBanner);
     
     function handleImgSelect(e) {
         setSelectedImage(e.target.files[0]);
@@ -108,8 +109,9 @@ export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
                     </button>
             </div>
             
-            <ImgCropper banner={isBanner} 
-                        //saveChanges={saveChanges}
+            <ImgCropper 
+                        saveChanges={saveChanges}
+                        banner={isBanner} 
                         newImg={setNewImage} 
                         imgSelect={selectedImage} 
                         def={defaultImage} 
