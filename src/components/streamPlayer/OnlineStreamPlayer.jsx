@@ -53,7 +53,7 @@ export function OnlineStreamPlayer({ stream }) {
                                         <div className={styles.tagsContainer}>
                                             {stream.tags.map((tag, index) =>
                                                 <div className={styles.tag} key={index}>
-                                                    <Link to={`/search/tag/${tag}`} className={styles.tagUrl}>
+                                                    <Link to={`/search/?term=${tag}&tag=true`} className={styles.tagUrl}>
                                                         <span>{tag}</span>
                                                     </Link>
                                                 </div>

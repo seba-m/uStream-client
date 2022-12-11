@@ -12,7 +12,7 @@ import { Empty } from '../Empty';
 
 import GeneralService from '../../services/General.service'
 
-export function StreamGrid({ search }) {
+export function StreamGrid({ search, isTag }) {
     const [streams, setStreams] = useState([])
     const [isLoading, setIsLoading] = useState(true);
 
@@ -22,12 +22,12 @@ export function StreamGrid({ search }) {
     useEffect(() => {
         setIsLoading(true);
 
-        GeneralService.searchStream(search, page).then((data) => {
+        GeneralService.searchStream(search, page, isTag).then((data) => {
             setStreams(prevStreams => prevStreams.concat(data.streams));
             setHasMore(data.page < data.total_pages);
             setIsLoading(false);
         })
-    }, [search, page]);
+    }, [search, isTag, page]);
 
     if (!isLoading && streams.length === 0) {
         return <Empty search={search} />

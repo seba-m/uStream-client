@@ -1,6 +1,8 @@
 import styles from './CategoryCard.module.scss';
 import placeHolder from '../../placeholder.jpg';
 
+import { Link } from "react-router-dom";
+
 export function CategoryCard({ category }) {
 	return (
 		<div className={styles.categoryCard}>
@@ -15,9 +17,9 @@ export function CategoryCard({ category }) {
 					<div className={styles.categoryTags}>
 						{category.tags.map((tag) =>
 							<div key={tag} className={styles.tag}>
-								<div className={styles.tagUrl}>
+								<Link to={`/search/?term=${tag}&tag=true`} className={styles.tagUrl}>
 									<span>{tag}</span>
-								</div>
+								</Link>
 							</div>
 						)}
 					</div>

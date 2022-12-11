@@ -12,12 +12,12 @@ const getStream = (streamerName) => {
     return get(`/stream/view/${streamerName}`);
 }
 
-const searchCategory = (categoryName, page) => {
-    return get(`/search/category?query=${categoryName}&page=${page}`);
+const searchCategory = (categoryName, page, isTag) => {
+    return get(`/search/category?query=${categoryName}&page=${page}&tag=${isTag}`);
 }
 
-const searchStream = (streamerName, page) => {
-    return get(`/search/stream?query=${streamerName}&page=${page}`);
+const searchStream = (streamerName, page, isTag) => {
+    return get(`/search/stream?query=${streamerName}&page=${page}&tag=${isTag}`);
 }
 
 const search = (searchText) => {
@@ -36,8 +36,8 @@ const unfollowStreamer = (streamerName) => {
     });
 }
 
-const getFollowing = () => {
-    return get("/stream/following");
+const getFollowing = (page) => {
+    return get(`/stream/following?page=${page}`);
 }
 
 const isFollowing = (streamerName) => {

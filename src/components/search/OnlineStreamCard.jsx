@@ -36,10 +36,9 @@ export function OnlineStreamCard({ stream }) {
                     <div className={styles.streamTags}>
                         {stream.tags.map((tag) =>
                             <div key={tag} className={styles.tag}>
-                                {/*<Link to={`/search/tag?term=${tag}`} className={styles.tagUrl}></Link>*/}
-                                <div className={styles.tagUrl}>
+                                <Link to={`/search/?term=${tag}&tag=true`} className={styles.tagUrl}>
                                     <span>{tag}</span>
-                                </div>
+                                </Link>
                             </div>
                         )}
                     </div>

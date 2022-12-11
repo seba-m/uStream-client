@@ -10,7 +10,7 @@ import { Empty } from '../Empty';
 import GeneralService from '../../services/General.service'
 import { CategoryCard } from './CategoryCard';
 
-export function CategoryGrid({ search }) {
+export function CategoryGrid({ search, isTag }) {
     const [category, setCategory] = useState([])
     const [isLoading, setIsLoading] = useState(true);
 
@@ -20,13 +20,13 @@ export function CategoryGrid({ search }) {
     useEffect(() => {
         setIsLoading(true);
 
-        GeneralService.searchCategory(search, page)
+        GeneralService.searchCategory(search, page, isTag)
             .then((data) => {
                 setCategory(prevCategories => prevCategories.concat(data.categories));
                 setHasMore(data.currentPage < data.totalPages);
                 setIsLoading(false);
             })
-    }, [search, page]);
+    }, [search, isTag, page]);
 
     if (!isLoading && category.length === 0) {
         return <Empty search={search} />

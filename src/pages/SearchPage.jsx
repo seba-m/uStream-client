@@ -16,6 +16,7 @@ import GeneralService from '../services/General.service'
 export function SearchPage() {
     const query = useQuery();
     const search = query.get('term');
+    const isTag = query.get('tag');
 
     const debouncedSearch = useDebounce(search, 500);
 
@@ -30,7 +31,7 @@ export function SearchPage() {
             //first page to get best results,
             const page = 1;
             
-            GeneralService.searchStream(debouncedSearch, page).then((data) => {
+            GeneralService.searchStream(debouncedSearch, page, isTag).then((data) => {
                 if (data?.streams) {
                     setStreams(data.streams);
                 } else {
@@ -40,7 +41,7 @@ export function SearchPage() {
                 setStreams(null);
             })
 
-            GeneralService.searchCategory(debouncedSearch, page).then((data) => {
+            GeneralService.searchCategory(debouncedSearch, page, isTag).then((data) => {
                 if (data?.categories) {
                     setCategories(data.categories);
                 } else {
@@ -56,7 +57,7 @@ export function SearchPage() {
             setStreams(null)
             setCategories(null)
         }
-    }, [debouncedSearch]);
+    }, [debouncedSearch, isTag]);
 
     if (isLoading) {
         return <Spinner />

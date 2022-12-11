@@ -15,11 +15,11 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { StreamDetails } from "./pages/StreamDetails";
 import { SearchPage } from "./pages/SearchPage";
 import { Profile } from "./pages/Profile";
-import { SearchTag } from "./pages/SearchTag";
 import { SearchStream } from "./pages/SearchStream";
 import { SearchCategory } from "./pages/SearchCategory";
 import { NotFound } from "./pages/NotFound";
 import { Credentials } from "./pages/Credentials";
+import { Following } from "./pages/Following";
 
 
 import styles from "./App.module.scss";
@@ -113,7 +113,11 @@ export function App() {
               <Link to="/search">
                 <h2 className={styles.textNav}>Categories</h2>
               </Link>
+
             </div>
+            <Link to="/following">
+              <h2 className={styles.textNav}>Following</h2>
+            </Link>
           </div>
           <div className={styles.center}>
             <Search />
@@ -186,7 +190,6 @@ export function App() {
               <Route path="/" element={<LandingPage />} />
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route exact path="/search" element={<SearchPage />}></Route>
-              <Route exact path="/search/tag" element={<SearchTag />}></Route>
               <Route
                 exact
                 path="/search/category"
@@ -202,6 +205,7 @@ export function App() {
                 path="/stream/:streamerName"
                 element={<StreamDetails />}
               ></Route>
+              <Route path="/following" element={<Following />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
