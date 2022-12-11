@@ -40,7 +40,7 @@ export function LandingGrid() {
             >
                 <div className={styles.streamsContainer}>
                     {streams && streams.map((stream) => {
-                        return <LandingCard key={stream.userName} stream={stream} />;
+                        return <LandingCard key={stream.username} stream={stream} />;
                     })}
                 </div>
             </InfiniteScroll>

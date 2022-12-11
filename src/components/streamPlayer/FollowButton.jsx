@@ -11,8 +11,6 @@ export function FollowButton({ stream }) {
         const getFollowing = async () => {
             try {
                 const data = await GeneralService.isFollowing(stream.username);
-                console.log(data);
-                console.log(stream.username);
                 return data.isFollowing;
             } catch (err) {
                 return false;

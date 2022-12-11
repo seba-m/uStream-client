@@ -4,7 +4,6 @@
 
 .searchContainer {
     display: flex;
-    flex-grow: 1;
     justify-content: center;
 }
 
@@ -21,7 +20,6 @@
     color: #fff;
     background-color: #464649;
     border: 2px solid #464649;
-
     outline: none;
     font-size: 1.5rem;
 }
@@ -44,7 +42,6 @@
     border-top-right-radius: .5rem;
     border-bottom-right-radius: .5rem;
     box-sizing: content-box;
-
 }
 
 .searchButton:hover {
@@ -60,5 +57,26 @@
     color: #efeff1;
 }
 
+@media screen and (max-width: 768px) {
+    .searchInput {
+        width: 18rem;
+    }
+}
 
+@media screen and (max-width: 630px) {
+    .searchInput {
+        width: 25rem;
+    }
+}
 
+@media screen and (max-width: 480px) {
+    .searchInput {
+        width: 15rem;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .searchInput {
+        width: 10rem;
+    }
+}

@@ -12,8 +12,6 @@ export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
     const [modalShow, setModalShow] = useState(false);
     const [newImage, setNewImage] = useState(null);
     const [isGif, setIsGif] = useState(false);
-
-    console.log(isBanner);
     
     function handleImgSelect(e) {
         setSelectedImage(e.target.files[0]);

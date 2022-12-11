@@ -14,14 +14,22 @@ export function LandingCard({ stream }) {
   useEffect(() => {
     UserService.getUserAvatar(stream.username)
       .then(data => {
-        setAvatar(data);
+        if (data) {
+          setAvatar(data);
+        } else {
+          setAvatar(PlaceHolder);
+        }
       })
   }, [stream.username]);
 
   useEffect(() => {
     UserService.getUserBanner(stream.username)
       .then(data => {
-        setBanner(data);
+        if (data) {
+          setBanner(data);
+        } else {
+          setBanner(PlaceHolder);
+        }
       })
   }, [stream.username]);
 

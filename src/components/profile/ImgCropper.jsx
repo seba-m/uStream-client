@@ -19,8 +19,6 @@ export function ImgCropper({ saveChanges, banner, newImg, imgSelect, def, show, 
     const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
       setCroppedAreaPixels(croppedAreaPixels)
     }, [])
-
-    console.log(banner)
    
     const showCroppedImage = useCallback(async () => {
       try {

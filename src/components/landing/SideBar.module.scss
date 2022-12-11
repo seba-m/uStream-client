@@ -77,3 +77,10 @@
   font-size: 1.5rem;
  
 }
+
+/*hide on mobile display, use mixin created*/
+@media (max-width: 480px) {
+  .sideMenu {
+    display: none;
+  }
+}
