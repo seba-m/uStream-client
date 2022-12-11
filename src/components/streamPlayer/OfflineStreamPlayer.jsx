@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import styles from './OfflineStreamPlayer.module.scss';
 
 import UserService from "../../services/User.service";
-import GeneralService from '../../services/General.service';
+import AuthService from "../../services/Auth.service";
+
+import { FollowButton } from './FollowButton';
 
 export function OfflineStreamPlayer({ stream }) {
     const [avatar, setAvatar] = useState(null);
     const [banner, setBanner] = useState(null);
 
-    const [isFollowing, setIsFollowing] = useState(null);
+    const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(() => {
         UserService.getUserAvatar(stream.username)
@@ -27,18 +29,12 @@ export function OfflineStreamPlayer({ stream }) {
     }, [stream.username]);
 
     useEffect(() => {
-        GeneralService.isFollowing(stream.username)
-            .then(data => {
-                setIsFollowing(data);
-            })
-            .catch(err => {
-                setIsFollowing(null);
-            })
-    }, [stream.username]);
+        const user = AuthService.getCurrentUser();
 
-    const handleFollow = (e) => {
-        e.preventDefault();
-    }
+        if (user) {
+            setCurrentUser(user);
+        }
+    }, []);
 
     return (
         <div>
@@ -61,11 +57,13 @@ export function OfflineStreamPlayer({ stream }) {
                         <h4 >Followers {stream.followers}</h4>
                     </div>
                 </div>
-                {isFollowing && (
-                    <div className={styles.heroContainerRight}>
-                        <button className={styles.followBox} onClick={handleFollow}>Follow</button>
+
+                {currentUser && currentUser?.userName !== stream.username && (
+                    <div style={styles.heroContainerRight}>
+                        <FollowButton stream={stream} />
                     </div>
                 )}
+
             </div>
             <div>
                 <h2 className={styles.streamAbout}>About {stream.username}</h2>

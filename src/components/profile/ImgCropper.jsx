@@ -27,7 +27,6 @@ export function ImgCropper(props) {
           croppedAreaPixels,
           rotation
         )
-        console.log('donee', { croppedImage })
         setCroppedImage(croppedImage)
         props.newImg(croppedImage);
       } catch (e) {

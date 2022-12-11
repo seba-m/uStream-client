@@ -29,7 +29,6 @@ export function getImg(url) {
         })
         .then(response => response.data)
         .catch(error => {
-            console.log(error);
             return placeholder;
         });
 }

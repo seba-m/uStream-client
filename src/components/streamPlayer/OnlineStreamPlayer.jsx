@@ -2,15 +2,18 @@ import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 import styles from './OnlineStreamPlayer.module.scss';
+
 import { VideoPlayer } from '../VideoPlayer';
+import { FollowButton } from './FollowButton';
 
 import UserService from "../../services/User.service";
-import GeneralService from '../../services/General.service';
+import AuthService from "../../services/Auth.service";
 
 export function OnlineStreamPlayer({ stream }) {
 
     const [avatar, setAvatar] = useState(null);
-    const [isFollowing, setIsFollowing] = useState(null);
+
+    const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(() => {
         UserService.getUserAvatar(stream.username)
@@ -20,18 +23,12 @@ export function OnlineStreamPlayer({ stream }) {
     }, [stream.username]);
 
     useEffect(() => {
-        GeneralService.isFollowing(stream.username)
-            .then(data => {
-                setIsFollowing(data);
-            })
-            .catch(err => {
-                setIsFollowing(null);
-            })
-    }, [stream.username]);
+        const user = AuthService.getCurrentUser();
 
-    const handleFollow = (e) => {
-        e.preventDefault();
-    }
+        if (user) {
+            setCurrentUser(user);
+        }
+    }, []);
 
     return (
         <div className={styles.streamRoot}>
@@ -69,9 +66,9 @@ export function OnlineStreamPlayer({ stream }) {
 
                     </div>
                 </div>
-                {isFollowing && (
-                    <div className={styles.heroContainerRight}>
-                        <button className={styles.followBox} onClick={handleFollow}>Follow</button>
+                {currentUser && currentUser?.userName !== stream.username && (
+                    <div style={styles.heroContainerRight}>
+                        <FollowButton stream={stream} />
                     </div>
                 )}
 

@@ -29,7 +29,7 @@ export function SideBar() {
       <h2>For you</h2>
       <h3 className={styles.sideSubtitle}>RECOMENDED CATEGORIES</h3>
       {data.map((category) => {
-        return <SideBarCard category={category}/>;
+        return <SideBarCard key={category?.name} category={category}/>;
       })}
     </aside>
   );
