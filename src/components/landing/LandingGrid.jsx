@@ -28,24 +28,22 @@ export function LandingGrid() {
         return <Spinner />;
     }
 
-  //if (!streams) return null;
-
-  return (
-    <>
-          <InfiniteScroll
-              dataLength={streams.length}
-              hasMore={hasMore}
-              next={() => setPage((prevPage) => prevPage + 1)}
-              //height={"calc(100vh - 10rem)"}
-              style={{ overflow: 'hidden' }}
-              loader={<Spinner />}
-          >
-              <div className={styles.streamsContainer}>
-                  {streams.map((stream) => {
-                      return <LandingCard key={stream.userName} stream={stream} />;
-                  })}
-              </div>
-          </InfiniteScroll>
-    </>
-  );
+    return (
+        <>
+            <InfiniteScroll
+                dataLength={streams.length}
+                hasMore={hasMore}
+                next={() => setPage((prevPage) => prevPage + 1)}
+                //height={"calc(100vh - 10rem)"}
+                style={{ overflow: 'hidden' }}
+                loader={<Spinner />}
+            >
+                <div className={styles.streamsContainer}>
+                    {streams && streams.map((stream) => {
+                        return <LandingCard key={stream.userName} stream={stream} />;
+                    })}
+                </div>
+            </InfiniteScroll>
+        </>
+    );
 }

@@ -1,4 +1,4 @@
-import { get } from '../utils/httpClient';
+import { get, post } from '../utils/httpClient';
 
 const getTopStreamers = (page) => {
     return get(`/stream/top?&page=${page}`);
@@ -24,6 +24,26 @@ const search = (searchText) => {
     return get(`/search/?query=${searchText}`);
 }
 
+const followStreamer = (streamerName) => {
+    return post("/stream/follow", {
+        streamerName
+    });
+}
+
+const unfollowStreamer = (streamerName) => {
+    return post("/stream/unfollow", {
+        streamerName
+    });
+}
+
+const getFollowing = () => {
+    return get("/stream/following");
+}
+
+const isFollowing = (streamerName) => {
+    return get(`/stream/following/${streamerName}`);
+}
+
 const GeneralService = {
     getTopStreamers,
     getTopCategories,   
@@ -31,7 +51,12 @@ const GeneralService = {
 
     searchCategory,
     searchStream,
-    search
+    search,
+
+    followStreamer,
+    unfollowStreamer,
+    getFollowing,
+    isFollowing
 };
 
 export default GeneralService;

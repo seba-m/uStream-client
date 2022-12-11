@@ -190,7 +190,7 @@ export function Register() {
               </div>
 
               <p className={styles.termsAndConditions}>
-                By clicking Sign Up, you are indicating that you have read and acknowledge the <a href="https://www.google.cl" target="_blank">Terms of Service</a> and <a a href="https://www.uStream.tk" target="_blank">Privacy Policy.</a>
+                By clicking Sign Up, you are indicating that you have read and acknowledge the <a href="https://www.google.cl" target="_blank" rel="noreferrer">Terms of Service</a> and <a a href="https://www.uStream.tk" target="_blank" rel="noreferrer">Privacy Policy.</a>
               </p>
 
               <button type="submit" disabled={isSubmitting}>

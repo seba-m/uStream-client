@@ -1,12 +1,19 @@
-import styles from './OnlineStreamPlayer.module.scss';
-import { Link } from "react-router-dom";
-import { VideoPlayer } from '../VideoPlayer';
-import UserService from "../../services/User.service";
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+
+import styles from './OnlineStreamPlayer.module.scss';
+
+import { VideoPlayer } from '../VideoPlayer';
+import { FollowButton } from './FollowButton';
+
+import UserService from "../../services/User.service";
+import AuthService from "../../services/Auth.service";
 
 export function OnlineStreamPlayer({ stream }) {
 
     const [avatar, setAvatar] = useState(null);
+
+    const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(() => {
         UserService.getUserAvatar(stream.username)
@@ -15,6 +22,13 @@ export function OnlineStreamPlayer({ stream }) {
             })
     }, [stream.username]);
 
+    useEffect(() => {
+        const user = AuthService.getCurrentUser();
+
+        if (user) {
+            setCurrentUser(user);
+        }
+    }, []);
 
     return (
         <div className={styles.streamRoot}>
@@ -52,10 +66,11 @@ export function OnlineStreamPlayer({ stream }) {
 
                     </div>
                 </div>
-                <div className={styles.heroContainerRight}>
-                    <button className={styles.followBox}>Follow</button>
-                   
-                </div>
+                {currentUser && currentUser?.userName !== stream.username && (
+                    <div style={styles.heroContainerRight}>
+                        <FollowButton stream={stream} />
+                    </div>
+                )}
 
             </div>
             <div>
