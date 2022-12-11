@@ -35,7 +35,7 @@ export function ImageSettings({ user }) {
       {/*<h2 >Image Settings</h2>*/}
       <div className={styles.profileEditContainer}>
         <h3 className={styles.subtitle}>Profile Image</h3>
-        <div className={styles.imageSection}> 
+        <div> 
             <ImageUpload
               defaultImage={defaultAvatar}
               onUpload={UserService.updateProfileImage}
