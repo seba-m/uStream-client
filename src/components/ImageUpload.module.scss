@@ -1,9 +1,39 @@
-.imgField {
+.imageSectionBox {
+    width: 100%;
+    background: #18181b;
+    border: 1px solid #303032;
+    border-radius: 2px;
+    margin-bottom: 5rem;
+}
+
+.imgSubBox {
     display: flex;
+    flex-direction: row;
+    padding: 2rem 3.2rem;
+    border-bottom: 1px solid #303032;
+}
+
+.imgButton {
+    display: flex;
+    justify-content: flex-end;
+    background: #26262c;
+
+    button {
+        border-radius: 0.4rem;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        border: 0;
+        padding: 0.5rem 1rem;
+        background-color: var(--primary-color);
+        color: white;
+      }
 }
 
 .imgContainer {
-    padding-right: 2rem;
+    padding-right: 3rem;
 }
 
 .imgProfile {
@@ -23,4 +53,49 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.buttonsBox {
+    display: flex;
+    gap: 2rem;
+}
+
+.buttonFile {
+    border-radius: 0.4rem;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    border: 0;
+    padding: 0.5rem 3rem;
+    background: #2a2a2d;
+    color: white;
+
+    &:hover {
+        background: #363639;
+    }
+}
+
+.removeButton {
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 0.4rem;
+    color: #2ec5ce;
+    border: 0;
+    background: transparent;
+
+    &:hover {
+        background: #363639;
+    }
+
+    .iconTrash {
+        display: block;
+         
+        width: 100%;
+    }
+}
+
+
 

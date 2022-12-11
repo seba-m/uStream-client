@@ -86,7 +86,7 @@ export async function getCroppedImg(
   // As a blob
   return new Promise((resolve, reject) => {
     canvas.toBlob((file) => {
-      resolve(URL.createObjectURL(file))
+      resolve(file)
     }, 'image/jpeg')
   })
 }
