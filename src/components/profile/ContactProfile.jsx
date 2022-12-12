@@ -3,17 +3,39 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Spinner } from '../Spinner';
 
 import UserService from '../../services/User.service';
+import styles from './ContactProfile.module.scss';
 
 export function ContactProfile({ user }) {
 
     const [message, setMessage] = useState("");
+    const [changePassword, setChangePassword] = useState("");
+    const [changeNewPass, setChangeNewPass] = useState("");
+
+    function censorEmail(email) {
+        const censoredEmail = email.replace(/([^@]{1})([^@]*)(@)([^@.]*)(.*)/, "$1****$3****$5");
+        return censoredEmail;
+    }
+
+    const handlePassword = (e) => {
+        setChangePassword(e.target.value);
+    }
+    
+    const handleNewPassword = (e) => {
+        setChangeNewPass(e.target.value);
+    }
 
     const handleContact = (data, formikHelpers) => {
+
+        data.password = changePassword;
+        data.newPassword = changeNewPass;
+
+        //console.log(data);
+
         formikHelpers.setSubmitting(true);
 
         setMessage("");
 
-        UserService.updateContactSettings(data.email, data.password)
+        UserService.updateContactSettings(data.email, data.password, data.newPassword)
             .then(
                 (error) => {
                     const resMessage =
@@ -32,7 +54,7 @@ export function ContactProfile({ user }) {
         <>
             <Formik
                 initialValues={{ email: user.email, password: "", newPassword: "" }}
-                onsubmit={handleContact}
+                onSubmit={handleContact}
                 validate={values => {
 
                     const errors = {};
@@ -44,20 +66,20 @@ export function ContactProfile({ user }) {
                         errors.email = 'Invalid email address';
                     }
 
-                    if (!values.password) {
+                    if (!changePassword) {
                         errors.password = 'Required';
-                    } else if (values.password && values.password.length < 6) {
+                    } else if (changePassword && changePassword.length < 6) {
                         errors.password = 'Must be 6 characters or more';
-                    } else if (values.password && values.password.length > 40) {
+                    } else if (changePassword && changePassword.length > 40) {
                         errors.password = 'Must be 40 characters or less';
                     }
 
-                    if (!values.newPassword) {
+                    if (!changeNewPass) {
                         errors.newPassword = 'Required';
-                    } else if (values.newPassword && values.newPassword.length < 6) {
-                        errors.password = 'Must be 6 characters or more';
-                    } else if (values.newPassword && values.newPassword.length > 40) {
-                        errors.password = 'Must be 40 characters or less';
+                    } else if (changeNewPass && changeNewPass.length < 6) {
+                        errors.newPassword = 'Must be 6 characters or more';
+                    } else if (changeNewPass && changeNewPass.length > 40) {
+                        errors.newPassword = 'Must be 40 characters or less';
                     }
 
                     return errors;
@@ -72,31 +94,51 @@ export function ContactProfile({ user }) {
                                 </div>
                             </div>
                         )}
+                        <div className={styles.profileEditContainer}>
+                        <h2 className={styles.profileEditTittle}>Contact Settings</h2>
+                            <p className={styles.profileEditSubtittle}>Change your account identification data</p>
+                            <div className={styles.profileEditBox}>
+                                <div className={styles.profileEditSubBox}>
+                                    <div className={styles.editFieltTittle}>
+                                        <p>Email</p>
+                                    </div>
+                                    <div className={styles.profileEditField}>
+                                        <h2 className={styles.emailField}>{censorEmail(user.email)}</h2>
+                                        <span className={styles.helpField}>This email is linked to your account.</span>
+                                        <ErrorMessage className={styles.errorField} name="email" component="div" />
+                                    </div>
+                                </div>
+                                <div className={styles.profileEditSubBox}>
+                                    <div className={styles.editFieltTittle}>
+                                        <p>Password</p>
+                                    </div>
+                                    <div className={styles.profileEditField}>
+                                        <Field className={styles.fieldInput} value={changePassword} type="password" name="password" onChange={handlePassword}/>
+                                        <ErrorMessage className={styles.errorField} name="password" component="div" />
+                                    </div>
+                                </div>
+                                <div className={styles.profileEditSubBox}>
+                                    <div className={styles.editFieltTittle}>
+                                        <p>New Password</p>
+                                    </div>
+                                    <div className={styles.profileEditField}>
+                                        <Field className={styles.fieldInput} value={changeNewPass}  type="password" name="newPassword" onChange={handleNewPassword}/>
+                                        <ErrorMessage className={styles.errorField} name="newPassword" component="div" />
+                                    </div>
+                                </div>
 
-                        <h2>Contact Settings</h2>
-                        <div>
-                            <p>Email:</p>
-                            <Field type="email" name="email" />
-                            <ErrorMessage name="email" component="div" />
-                        </div>
-                        <div>
-                            <p>Password:</p>
-                            <Field type="password" name="password" />
-                            <ErrorMessage name="password" component="div" />
-                        </div>
-                        <div>
-                            <p>New Password:</p>
-                            <Field type="password" name="newPassword" />
-                            <ErrorMessage name="newPassword" component="div" />
-                        </div>
-
-                        <div className="form-group">
-                            <button type="submit" disabled={isSubmitting}>
-                                {isSubmitting && (
-                                    <Spinner />
-                                )}
-                                <span>Save Changes</span>
-                            </button>
+                                <div className={`${styles.profileEditSubBox} ${styles.profileEditButton}`}>
+                                    {"changeAbout" !== user.about || "changePublicName" !== user.streamData.name? 
+                                    <button type="submit">
+                                        <span>Save Changes</span>
+                                    </button>
+                                     : 
+                                    <button type="submit" disabled>
+                                        <span>Save Changes</span>
+                                    </button>
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </Form>
                 )}

@@ -102,5 +102,10 @@
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
     color: white;
+
+    &:disabled {
+      background-color: #36363b;
+      color: #636367;
+    }
   }
 }

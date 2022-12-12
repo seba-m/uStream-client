@@ -1,0 +1,124 @@
+.profileEditContainer {
+    max-width: 90rem;
+  }
+
+.profileEditTittle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 20px;
+    margin-bottom: 1rem;
+  }
+  
+  .profileEditSubtittle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 2rem;
+    
+  }
+  
+  .profileEditBox {
+    width: 100%;
+    background: #18181b;
+    border: 1px solid #303032;
+    border-radius: 2px;
+  
+    word-wrap: break-word;
+    overflow: auto;
+    margin-bottom: 5rem;
+  
+    .profileEditSubBox {
+      display: flex;
+      flex-direction: row;
+      padding: 2rem 3.2rem;
+      border-bottom: 1px solid #303032;
+  
+      .editFieltTittle {
+        padding-right: 2rem;
+        width: 18rem;
+      }
+  
+      .profileEditField {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        
+        .emailField {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 1.2rem;
+            /* or 100% */
+            
+            display: flex;
+            align-items: center;            
+        }
+
+        .fieldInput {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          outline: none;
+          border-radius: 0.3rem;
+          color: white;
+          background-color: #3d3d3f;
+          border: 2px solid #3d3d3f;
+          margin-bottom: 1rem;
+        }
+  
+        .disabledField {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+  
+        .textAreaResize {
+          resize: none;
+        }
+  
+        .helpField {
+          font-family: "Inter";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 1.3rem;
+        }
+        .errorField {
+          color: #df4545;
+          font-size: 1.3rem;
+          margin-top: 0.5rem;
+        }
+      }
+    }
+  
+    .fieldInput:focus {
+      border: 2px solid var(--primary-color) !important;
+    }
+  
+    .profileEditButton {
+      display: flex;
+      justify-content: flex-end;
+      background: #26262c;
+  
+      button {
+        border-radius: 0.4rem;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        border: 0;
+        padding: 0.5rem 1rem;
+        background-color: var(--primary-color);
+        color: white;
+  
+        &:disabled {
+          background-color: #36363b;
+          color: #636367;
+        }
+      }
+    }
+  }
+  

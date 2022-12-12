@@ -12,7 +12,10 @@ export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
     const [modalShow, setModalShow] = useState(false);
     const [newImage, setNewImage] = useState(null);
     const [isGif, setIsGif] = useState(false);
+    const [ isChanged, setIsChanged ] = useState(false);
     
+    
+
     function handleImgSelect(e) {
         setSelectedImage(e.target.files[0]);
         setModalShow(true);
@@ -64,9 +67,7 @@ export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
                 </div>
                 <div className={styles.imgUpdateButtons}>
                     <div className={styles.buttonsBox}>
-                        <button  className={styles.buttonFile} onClick={() => {document.querySelector("#selecter").click()}}>Update image</button> 
                         <input 
-                        hidden
                         id='selecter'
                         type="file"
                         name="photo"
@@ -101,10 +102,18 @@ export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
                 </div>              
             </div>
 
-            <div className={`${styles.imgSubBox} ${styles.imgButton}`} >
+
+            <div className={`${styles.imgSubBox} ${styles.imgButton}`}>
+                    {isChanged? 
                     <button onClick={saveChanges}>
-                        Save changes
+                        <span>Save Changes</span>
                     </button>
+                        : 
+                    <button disabled>
+                        <span>Save Changes</span>
+                    </button>
+                    }
+                                    
             </div>
             
             <ImgCropper 
@@ -114,6 +123,7 @@ export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
                         imgSelect={selectedImage} 
                         def={defaultImage} 
                         show={modalShow} 
+                        changes={setIsChanged}
                         onHide={() => setModalShow(false)}/>                
         </div>
     )

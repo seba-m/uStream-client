@@ -71,6 +71,21 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+::-webkit-file-upload-button {
+    border-radius: 0.4rem;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    border: 0;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;  
+    cursor: pointer;
+}
+
+
 .modal-content { 
     border-radius: 0;
     width: auto;

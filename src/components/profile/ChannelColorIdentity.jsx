@@ -39,8 +39,9 @@ export function ChannelColorIdentity({ user }) {
       UserService.getColor(user.userName).then((data) => {
         if (data) {
           setCurrentColor(data);
+          setColorUser(data);
         } else {
-          setColorUser("#2ec5ce");
+          setCurrentColor("#2ec5ce");
         }
       });
     }
@@ -69,8 +70,16 @@ export function ChannelColorIdentity({ user }) {
 
   return (
     <div className={styles.profileColorContainer}>
+      
       <h2 className={styles.subtitle}>Your Color Identity</h2>
       <div className={styles.colorSectionBox}>
+        {message && (
+            <div className="form-group">
+                <div className="alert alert-danger" role="alert">
+                    {message}
+                </div>
+            </div>
+        )}
         <div className={styles.colorSubBox}>
           <SketchPicker
           className={styles.clrPicker}
@@ -89,10 +98,16 @@ export function ChannelColorIdentity({ user }) {
           </div>
         </div>
         <div className={`${styles.colorSubBox} ${styles.colorButton}`}>
-          <button type="submit" onClick={handleProfile}>
-            <span>Save Changes</span>
-          </button>
-        </div>
+            {currentColor !== colorUser? 
+            <button onClick={handleProfile}>
+                <span>Save Changes</span>
+            </button>
+              : 
+            <button disabled>
+                <span>Save Changes</span>
+            </button>
+            }
+        </div>        
       </div>
       
     </div>
