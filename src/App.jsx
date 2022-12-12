@@ -10,11 +10,10 @@ import { SearchCategory } from "./pages/SearchCategory";
 import { NotFound } from "./pages/NotFound";
 import { Following } from "./pages/Following";
 
-
 import styles from "./App.module.scss";
 import { SideBar } from "./components/landing/SideBar";
 import { NavBar } from "./components/landing/NavBar";
-import LandingPage from "./pages/LandingPage";
+import { LandingPage } from "./pages/LandingPage";
 
 export function App() {
 

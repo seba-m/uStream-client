@@ -172,7 +172,7 @@
     }
 }
 
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 700px) {
     .navContainer {
         justify-content: space-around;
         gap: 0;
@@ -181,6 +181,13 @@
     .textNav {
         display: none;
     }
+}
+
+@media screen and (max-width: 850px) {
+    .userName, .uStream {
+        display: none;
+    }
+    
 }
 
 @media screen and (max-width: 1000px) {

@@ -57,6 +57,12 @@
     color: #efeff1;
 }
 
+@media screen and (max-width: 1000px) {
+    .searchInput {
+        width: 18rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .searchInput {
         width: 18rem;

@@ -93,7 +93,7 @@ export function NavBar() {
                                     </defs>
                                 </svg>
                             </div>
-                            <h1 className={styles.textNav}>uStream</h1>
+                            <h1 className={`${styles.textNav} ${styles.uStream}`}>uStream</h1>
                         </div>
                     </Link>
                     <div>
@@ -119,7 +119,7 @@ export function NavBar() {
                                         src={avatar}
                                         alt="user-img"
                                     />
-                                    <h2 className={styles.textNav}>{currentUser.userName}</h2>
+                                    <h2 className={`${styles.textNav} ${styles.userName}`}>{currentUser.userName}</h2>
                                 </div>
                             </Link>
                             <Dropdown as={ButtonGroup}>

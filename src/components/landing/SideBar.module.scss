@@ -78,9 +78,10 @@
  
 }
 
-/*hide on mobile display, use mixin created*/
-@media (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .sideMenu {
     display: none;
   }
 }
+
+
