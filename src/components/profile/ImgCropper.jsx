@@ -35,6 +35,7 @@ export function ImgCropper({ saveChanges, banner, newImg, imgSelect, def, show, 
         console.error(e)
       }
     }, [croppedAreaPixels, rotation])
+
     
     
   return (

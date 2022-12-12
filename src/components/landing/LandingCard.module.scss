@@ -33,21 +33,11 @@
     border-radius: 9000px;
     overflow: hidden;
     position: relative;
-    background-color: inherit;
     width: 13.5rem;
     height: 13.5rem;
 }
 
-.streamImage a {
-    display: inline-block;
-}
 
-.streamImage a img {
-    display: block;
-    border-radius: 9000px;
-    width: 100%;
-    border: 6px solid #24B2FF;
-}
 
 .streamerBackgroundImage {
     display: flex;
