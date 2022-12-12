@@ -1,6 +1,6 @@
 .profileEditContainer {
     max-width: 90rem;
-  }
+}
 
 .profileEditTittle {
     font-family: "Inter";
@@ -95,6 +95,7 @@
   
     .fieldInput:focus {
       border: 2px solid var(--primary-color) !important;
+      background-color: black !important;
     }
   
     .profileEditButton {

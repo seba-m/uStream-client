@@ -81,7 +81,8 @@ export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
                             var file = event.target.files[0];
                             if (file && file.type === "image/gif") {
                                 setIsGif(true);
-                                setNewImage(file);              
+                                setNewImage(file);
+                                setIsChanged(true);            
                             }else{
                                 handleImgSelect(event); 
                                 event.target.value = null;

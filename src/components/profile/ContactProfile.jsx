@@ -95,8 +95,8 @@ export function ContactProfile({ user }) {
                             </div>
                         )}
                         <div className={styles.profileEditContainer}>
-                        <h2 className={styles.profileEditTittle}>Contact Settings</h2>
-                            <p className={styles.profileEditSubtittle}>Change your account identification data</p>
+                            <h2 className={styles.profileEditTittle}>Contact Settings</h2>
+                            <p className={styles.profileEditSubtittle}>You can update your credentials to maintain the security of your account.</p>
                             <div className={styles.profileEditBox}>
                                 <div className={styles.profileEditSubBox}>
                                     <div className={styles.editFieltTittle}>
@@ -128,7 +128,7 @@ export function ContactProfile({ user }) {
                                 </div>
 
                                 <div className={`${styles.profileEditSubBox} ${styles.profileEditButton}`}>
-                                    {"changeAbout" !== user.about || "changePublicName" !== user.streamData.name? 
+                                    {changeNewPass.length > 0? 
                                     <button type="submit">
                                         <span>Save Changes</span>
                                     </button>
