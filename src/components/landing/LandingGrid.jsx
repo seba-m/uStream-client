@@ -22,6 +22,8 @@ export function LandingGrid() {
             setHasMore(data.currentPage < data.totalPages);
             setIsLoading(false);
         });
+
+        
     }, [page]);
 
     if (isLoading) {

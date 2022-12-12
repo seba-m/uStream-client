@@ -6,7 +6,7 @@ import PlaceHolder from "../../placeholder.jpg";
 
 import { Link } from "react-router-dom";
 
-export function LandingCard({ stream }) {
+export function LandingCard({ stream, color }) {
 
   const [avatar, setAvatar] = useState(PlaceHolder);
   const [banner, setBanner] = useState(PlaceHolder);
@@ -43,9 +43,7 @@ export function LandingCard({ stream }) {
       <div className={styles.streamerBackgroundImage}>
         <img src={banner} alt={stream.username} />
         <div className={styles.streamImage}>
-          <figure className={styles.imageBorder}>
-            <img src={avatar} alt={stream.username} />
-          </figure>
+            <img style={{outline: `solid .5rem ${color? color: stream.color}` }} className={styles.imageBorder} src={avatar} alt={stream.username} />
         </div>
         <h3>{stream.username}</h3>
       </div>

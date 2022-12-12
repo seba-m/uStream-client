@@ -1,0 +1,106 @@
+.profileColorContainer {
+  max-width: 90rem;
+
+}
+
+.subtitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 20px;
+  margin-bottom: 3rem;
+}
+
+.colorSectionBox {
+  width: 100%;
+  background: #18181b;
+  border: 1px solid #303032;
+  border-radius: 2px;
+  margin-bottom: 5rem;  
+}
+
+.colorSubBox {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem 3.2rem;
+  border-bottom: 1px solid #303032;
+  justify-content: space-between;
+
+
+  .clrPicker {
+    width: 30%;
+  }
+
+  .infoUser {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+    .infoUserColums {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+
+      .infoUserDiv {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+  
+        .imgeProfile {
+          width: 9.6rem;
+          height: 9.6rem;
+          border-radius: 9000px;
+        }
+  
+  
+        h2 {
+          font-family: "Inter";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 22px;
+          line-height: 20px;
+        }
+      }
+  
+      .textAbout {
+
+        background: #18181b;
+        word-wrap: break-word;
+        overflow: auto;
+      }
+
+    }
+
+    .ladingCard {
+      width: 100%;
+    }
+
+
+    
+    
+  }
+}
+
+.colorButton {
+  display: flex;
+  justify-content: flex-end;
+  background: #26262c;
+
+  button {
+    border-radius: 0.4rem;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    border: 0;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+  }
+}
