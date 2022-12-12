@@ -3,14 +3,18 @@ $size: 8rem;
 .heroContainer {
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: space-between;
+    flex-direction: row;
     background-color: #18181B;
+    max-height: 100%;
 }
 
 .heroContentLeft {
     padding-left: 10rem;
     display: flex;
     flex-direction: column;
+    max-height: 100%;
 
     & h3 {
         margin: 0;
@@ -43,17 +47,14 @@ $size: 8rem;
     font-family: 'IBM Plex Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 72px;
-    line-height: 98px;
+    font-size: 7.2rem;
+    line-height: 9.8rem;
 }
 
 .heroContentRight {
     position: relative;
     padding: 6rem 12rem;
-}
-
-.logoBox {
-    //idk?
+    max-height: 100%;
 }
 
 .logo {
@@ -142,25 +143,21 @@ $size: 8rem;
     }
 }
 
-@media screen and (max-width: 768px) {
-    $size: 5rem;
-
-    .heroContainer {
-        flex-direction: row;
-        justify-content: space-around;
-    }
+@media screen and (max-width: 1400px) {
+    $size: 7rem;
 
     .heroContentLeft {
-        padding-left: 1rem;
+        padding-left: 7rem;
+
         & h3 {
-            font-size: 1.5rem;
-            line-height: 2.4rem;
+            font-size: 1.6rem;
+            line-height: 3.2rem;
             margin-bottom: 2.4rem;
         }
 
         & .slogan {
-            font-size: 2.5rem;
-            line-height: 4rem;
+            font-size: 7.2rem;
+            line-height: 9.8rem;
         }
 
         & button {
@@ -179,8 +176,8 @@ $size: 8rem;
         }
 
         & .logo {
-            width: 70%;
-            height: 70%;
+            width: 100%;
+            height: 100%;
         }
 
         & .decoration {
@@ -189,8 +186,6 @@ $size: 8rem;
                 width: $size;
             }
         }
-
-        
     }
 
     .logo {
@@ -234,16 +229,58 @@ $size: 8rem;
     }
 }
 
-@media screen and (max-width: 280px) {
+@media screen and (max-width: 1024px) {
+    $size: 6rem;
 
-    $size: 8rem;
+    .heroContentLeft {
+        padding-left: 3rem;
+
+        & h3 {
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+            margin-bottom: 2.4rem;
+        }
+
+        & .slogan {
+            font-size: 4rem;
+            line-height: 5rem;
+        }
+
+        & button {
+            font-size: 1rem;
+            line-height: 1.6rem;
+            padding: 1rem 2rem;
+        }
+    }
 
     .heroContentRight {
-        display: none;
+        & .logoBox {
+            width: 100%;
+            height: 100%;
+        }
+
+        & .logo {
+            width: 100%;
+            height: 100%;
+        }
     }
-    
+}
+
+@media screen and (max-width: 768px) {
+    $size: 5rem;
+
+    .heroContainer {
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .heroContentLeft {
         padding-left: 1rem;
+        position: relative;
+        z-index: 2;
+        padding: 7rem;
+        width: 100%;
 
         & h3 {
             font-size: 1.5rem;
@@ -252,7 +289,7 @@ $size: 8rem;
         }
 
         & .slogan {
-            font-size: 3rem;
+            font-size: 2.5rem;
             line-height: 4rem;
         }
 
@@ -260,6 +297,31 @@ $size: 8rem;
             font-size: 1rem;
             line-height: 1.6rem;
             padding: 1rem 2rem;
+        }
+    }
+
+    .heroContentRight {
+        position: absolute;
+        z-index: 1;
+        padding-left: 5.5rem;
+        background-color: #000;
+        opacity: 0.4;
+        width: 100%;
+        height: 100%;
+
+        & .logoBox {
+            width: 90%;
+            height: 90%;
+            z-index: 0;
+        }
+
+        & .logo {
+            width: 100%;
+            height: 100%;
+        }
+
+        & .decoration {
+            display: none;
         }
     }
 }

@@ -95,3 +95,9 @@
     color: white;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .inputsFields {
+    width: 20rem;
+  }
+}
