@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import mpegts from 'mpegts.js';
 
+import styles from './VideoPlayer.module.scss';
+
 export function VideoPlayer({ streamUrl }) {
 
 	const onLoad = (streamUrl) => {
@@ -25,6 +27,6 @@ export function VideoPlayer({ streamUrl }) {
 	}, [streamUrl]);
 
 	return (
-		<video id="videoElement" controls></video>
+		<video className={styles.player} id="videoElement" controls></video>
 	)
 }

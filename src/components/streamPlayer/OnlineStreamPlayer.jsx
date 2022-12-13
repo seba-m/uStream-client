@@ -32,21 +32,22 @@ export function OnlineStreamPlayer({ stream }) {
 
     return (
         <div className={styles.streamRoot}>
-            <div className={styles.streamVideo}>
-                <VideoPlayer streamUrl={stream.url} />
+            <div style={{ backgroundColor: stream.color }}>
+                <div className={styles.streamVideo}>
+                    <VideoPlayer streamUrl={stream.url} />
+                </div>
             </div>
-            <div className={styles.heroContainer}>
-                <div className={styles.heroContainerLeft}>
-                    <div className={styles.streamDetails}>
-                        <div className={styles.streamImage}>
-                            <Link to={`/stream/${stream.username}`}>
-                                <figure className={styles.imageBorder}>
-                                    <img src={avatar} alt={stream.title} />
-                                </figure>
-                            </Link>
-                            <div className={styles.streamInfo}>
-                                <h1 className={styles.streamUsername}>{stream.username}</h1>
-                                <h3 className={styles.streamTitle}>{stream.title}</h3>
+
+            <div className={styles.streamDetails}>
+                <div className={styles.heroContainer}>
+                    <div className={styles.streamImage}>
+                        <Link to={`/stream/${stream.username}`}>
+                            <figure className={styles.imageBorder} style={{ backgroundImage: `url(${avatar})`, backgroundSize: "cover" }}></figure>
+                        </Link>
+                        <div className={styles.aboutContainer}>
+                            <div className={styles.about}>
+                                <h1 >{stream.username}</h1>
+                                <h4 >Followers {stream.followers}</h4>
                                 <div>
                                     <p className={`${styles.streamCategory}`}>{stream.category}</p>
                                     {stream.tags.length > 0 && (
@@ -62,21 +63,19 @@ export function OnlineStreamPlayer({ stream }) {
                                     )}
                                 </div>
                             </div>
+                            {currentUser && currentUser?.userName?.toLowerCase() !== stream.username.toLowerCase() && (
+                                <div className={styles.heroContainerRight}>
+                                    <FollowButton username={stream.username} />
+                                </div>
+                            )}
                         </div>
-
                     </div>
                 </div>
-                {currentUser && currentUser?.userName?.toLowerCase() !== stream.username.toLowerCase() && (
-                    <div className={styles.heroContainerRight}>
-                        <FollowButton username={stream.username} />
+                <div className={styles.aboutSection}>
+                    <h2 className={styles.aboutTittle}>About {stream.name}</h2>
+                    <div className={styles.aboutBox}>
+                        <span className={styles.textAbout}>{stream.about}</span>
                     </div>
-                )}
-
-            </div>
-            <div>
-                <div>
-                    <h2 className={styles.streamAbout}>About {stream.username}</h2>
-                    <p className={styles.streamDescriptionAbout}>{stream.about}</p>
                 </div>
             </div>
         </div>
