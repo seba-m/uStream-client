@@ -154,3 +154,12 @@
     }
   }
 }
+
+
+@media screen and (max-width: 1200px) {
+
+
+  .profileEditSubBox {
+    flex-direction: column !important;
+  }
+}

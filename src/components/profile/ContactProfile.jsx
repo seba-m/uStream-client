@@ -91,7 +91,7 @@ export function ContactProfile({ user }) {
                             <h2 className={styles.profileEditTittle}>Contact Settings</h2>
                             <p className={styles.profileEditSubtittle}>You can update your credentials to maintain the security of your account.</p>
                             <div className={styles.profileEditBox}>
-                                <div className={styles.profileEditSubBox}>
+                                <div className={`${styles.profileEditSubBox} ${styles.profileEmail}`}>
                                     <div className={styles.editFieltTittle}>
                                         <p>Email</p>
                                     </div>

@@ -1,16 +1,41 @@
+import React, { useState, useEffect } from 'react'
+
 import styles from './Hero.module.scss'
+import { Credentials } from "../../pages/Credentials";
+import AuthService from "../../services/Auth.service";
+
 
 export function Hero() {
+    const [modalShow, setModalShow] = useState(false);
+    const [currentUser, setCurrentUser] = useState(false);
+
+    useEffect(() => {
+        const user = AuthService.getCurrentUser();
+
+        if (user) {
+            setCurrentUser(user);
+        }
+    }, []);
+
     return (
         <div className={styles.heroContainer}>
             <div className={styles.heroContentLeft}>
                 <h2 className={styles.slogan}>
                     Enjoy the
-                    <br />
+                    <br/>
                     experience
                 </h2>
-                <h3>Share your favorite things with others!</h3>
-                <button>Get started</button>
+                {currentUser?   
+                <div>
+                    <h3 style={{ marginBottom:0 }}>Share your favorite things with others!</h3>
+                </div> :
+                <div>
+                    <h3>Share your favorite things with others!</h3>
+                    <button onClick={() => {
+                                    setModalShow(true);
+                                }} >Get started</button>
+                </div>}
+                
             </div>
             <div className={styles.heroContentRight}>
                 <div className={styles.logoBox}>
@@ -56,6 +81,8 @@ export function Hero() {
                     </div>
                 </div>
             </div>
+            <Credentials show={modalShow} onHide={() => setModalShow(false)} />
+
         </div>
     )
 }
