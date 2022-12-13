@@ -25,7 +25,6 @@
   background: #18181b;
   border: 1px solid #303032;
   border-radius: 2px;
-  padding: 2rem 3.2rem;
 
   word-wrap: break-word;
   overflow: auto;
@@ -33,14 +32,19 @@
 
   .profileEditSubCaja {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    
+    .contenedor {
+      border-bottom: .1rem solid #3d3d3f !important;
+      padding: 2rem 3.2rem;
+    }
 
     .fieldsBox {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
       padding-right: 1rem;
-
+      
       
 
       .profileEditField {
@@ -94,6 +98,7 @@
   }
 
   .profileEditButton {
+    display: flex;
     gap: 1.5rem;
   }
 }
