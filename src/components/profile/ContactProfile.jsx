@@ -35,7 +35,7 @@ export function ContactProfile({ user }) {
 
         setMessage("");
 
-        UserService.updateContactSettings(data.email, data.password, data.newPassword)
+        UserService.updateContactSettings(data.password, data.newPassword)
             .then(
                 (error) => {
                     const resMessage =
@@ -58,13 +58,6 @@ export function ContactProfile({ user }) {
                 validate={values => {
 
                     const errors = {};
-                    if (!values.email) {
-                        errors.email = 'Required';
-                    } else if (
-                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                    ) {
-                        errors.email = 'Invalid email address';
-                    }
 
                     if (!changePassword) {
                         errors.password = 'Required';
@@ -95,8 +88,8 @@ export function ContactProfile({ user }) {
                             </div>
                         )}
                         <div className={styles.profileEditContainer}>
-                        <h2 className={styles.profileEditTittle}>Contact Settings</h2>
-                            <p className={styles.profileEditSubtittle}>Change your account identification data</p>
+                            <h2 className={styles.profileEditTittle}>Contact Settings</h2>
+                            <p className={styles.profileEditSubtittle}>You can update your credentials to maintain the security of your account.</p>
                             <div className={styles.profileEditBox}>
                                 <div className={styles.profileEditSubBox}>
                                     <div className={styles.editFieltTittle}>
@@ -128,7 +121,7 @@ export function ContactProfile({ user }) {
                                 </div>
 
                                 <div className={`${styles.profileEditSubBox} ${styles.profileEditButton}`}>
-                                    {"changeAbout" !== user.about || "changePublicName" !== user.streamData.name? 
+                                    {changeNewPass.length > 0? 
                                     <button type="submit">
                                         <span>Save Changes</span>
                                     </button>

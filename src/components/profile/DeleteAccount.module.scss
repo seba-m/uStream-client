@@ -1,0 +1,57 @@
+.profileEditContainer {
+  max-width: 90rem;
+}
+
+.profileEditTittle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+}
+
+.profileEditSubtittle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 2rem;
+}
+
+.profileEditBox {
+  width: 100%;
+  background: #18181b;
+  border: 1px solid #303032;
+  border-radius: 2px;
+
+  word-wrap: break-word;
+  overflow: auto;
+  margin-bottom: 5rem;
+
+  .profileEditSubBox {
+    display: flex;
+    flex-direction: row;
+	justify-content: space-between;
+    padding: 2rem 3.2rem;
+
+    .editFieltTittle {
+      padding-right: 2rem;
+      width: 18rem;
+    }
+  }
+}
+
+.buttonDeleteAccount {
+  border-radius: 0.4rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  border: 0;
+  padding: 0.5rem 1rem;
+  background-color: red;
+  color: white;
+}

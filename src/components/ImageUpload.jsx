@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
+
+
 export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
     const [selectedImage, setSelectedImage] = useState(null);
     const [message, setMessage] = useState("");
@@ -81,7 +83,8 @@ export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
                             var file = event.target.files[0];
                             if (file && file.type === "image/gif") {
                                 setIsGif(true);
-                                setNewImage(file);              
+                                setNewImage(file);
+                                setIsChanged(true);            
                             }else{
                                 handleImgSelect(event); 
                                 event.target.value = null;

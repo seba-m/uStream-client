@@ -1,0 +1,63 @@
+.deleteContainer {
+  position: relative;
+  background-color: #18181b;
+  padding: 3rem;
+}
+
+.deleteTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.lineDelete {
+  border-top: 1px solid #2a2a2d;
+  padding-bottom: 1rem;
+}
+
+.deleteDescription {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  padding-bottom: 5rem;
+
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.cancelButton {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  background-color: #2a2a2d;
+  border: 0;
+  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.deleteButton {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  background-color: #ff0000;
+  border: 0;
+  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
