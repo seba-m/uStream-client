@@ -63,7 +63,6 @@ export function StreamSettings({ user }) {
                                     {isCopySv? <button disabled className={styles.buttonSettings} onClick={copyTextSv}>{textCopySv}</button>
                                     : <button className={styles.buttonSettings} onClick={copyTextSv}>Copy</button>}
                                     
-                                    <button className={`${styles.buttonSettings} ${styles.buttonNewKey}`} onClick={generateNewKey}>Generate New Key</button>
                                 </div>
                             </div>
 
