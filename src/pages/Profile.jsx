@@ -34,7 +34,7 @@ export function Profile() {
         setIsLoading(false);
       });
     } else {
-      navigate("/login");
+      navigate("/");
     }
   }, [navigate]);
 

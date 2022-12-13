@@ -43,7 +43,7 @@ export function Register() {
     )
       .then(
         () => {
-          navigate("/login");
+          navigate("/");
           window.location.reload();
         },
         (error) => {
