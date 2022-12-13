@@ -29,5 +29,18 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .containerSettings {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .containerSettings {
+    padding: 1rem 3rem;
+  }
+}
+
+
 
 

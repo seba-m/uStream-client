@@ -37,7 +37,7 @@ export function StreamSettings({ user }) {
             <h2 className={styles.profileEditTittle}>Stream Settings</h2>
             <p className={styles.profileEditSubtittle}>Information about the transmission key</p>
             <div className={styles.profileEditBox}>
-                <div className={styles.profileEditSubBox}>
+                <div className={styles.profileEditSubCaja}>
                     <div className={styles.editFieltTittle}>
                         <p>Stream Key</p>
                     </div>
@@ -51,7 +51,9 @@ export function StreamSettings({ user }) {
                                 <button className={`${styles.buttonSettings} ${styles.buttonNewKey}`} onClick={generateNewKey}>Generate New Key</button>
                             </div>
                         </div>
-                        <button className={`${styles.buttonSettings} ${styles.buttonShow}`} onClick={togglePassword}>Show Key</button>
+                        <div className={styles.settingButton}>
+                            <button className={`${styles.buttonSettings} ${styles.buttonShow}`} onClick={togglePassword}>Show Key</button>
+                        </div>
 
                     </div>
 

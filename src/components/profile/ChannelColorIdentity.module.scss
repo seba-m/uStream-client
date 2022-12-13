@@ -54,6 +54,8 @@
         .imgeProfile {
           width: 9.6rem;
           height: 9.6rem;
+          -webkit-border-radius: 9000px;
+          -moz-border-radius: 9000px;
           border-radius: 9000px;
         }
   
@@ -107,5 +109,59 @@
       background-color: #36363b;
       color: #636367;
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .colorSubBox {
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .clrPicker {
+    width: 100% !important;
+  }
+
+  .infoUser {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .infoUserDiv {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .infoUserColums {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  
+  .colorSubBox {
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .clrPicker {
+    width: 60% ;
+  }
+
+
+  .infoUser {
+    display: grid;
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .infoUserColums {
+    width: 100% !important;
   }
 }

@@ -55,3 +55,24 @@
   background-color: red;
   color: white;
 }
+
+@media screen and (max-width: 800px) {
+
+  .profileEditSubBox {
+    flex-direction: column !important;
+    gap: 2rem;
+  }
+
+  .buttonDeleteAccount {
+    width: fit-content !important;
+  }
+
+}
+
+@media screen and (max-width: 380px) {
+
+  .buttonDeleteAccount {
+    width: 100% !important;
+  }
+
+}
