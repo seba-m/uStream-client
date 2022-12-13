@@ -10,40 +10,39 @@
   word-wrap: break-word;
   overflow: auto;
   margin-bottom: 5rem;
-}
 
-.aboutSection .aboutTittle {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 20px;
-}
+  & .aboutTittle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 20px;
+  }
 
-.aboutSection .followers {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-}
+  & .followers {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+  }
 
-.aboutSection .text {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  &.text {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
 
-  font-feature-settings: "salt" on, "liga" off;
-}
+    font-feature-settings: "salt" on, "liga" off;
+  }
+  &.aboutBox {
+    overflow: auto;
+  }
 
-.aboutSection .aboutBox {
-  overflow: auto;
-}
-
-.aboutSection .textAbout {
-  width: auto;
+  &.textAbout {
+    width: auto;
+  }
 }
 
 .profileEditTittle {
@@ -62,7 +61,6 @@
   font-size: 14px;
   line-height: 20px;
   margin-bottom: 2rem;
-  
 }
 
 .profileEditBox {

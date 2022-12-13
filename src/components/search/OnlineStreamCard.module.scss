@@ -131,3 +131,18 @@
         }
     }
 }
+
+.followButton {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .followButton {
+        display: none;
+    }
+
+    .streamInfo {
+        margin-left: 2rem;
+    }
+}

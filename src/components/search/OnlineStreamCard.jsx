@@ -1,25 +1,42 @@
 import { useEffect, useState } from 'react';
 import styles from './OnlineStreamCard.module.scss';
 import { Link } from "react-router-dom";
-import UserService from '../../services/User.service'
+
+import UserService from "../../services/User.service";
+import AuthService from "../../services/Auth.service";
+
+import { FollowButton } from '../FollowButton';
+import PlaceHolder from "../../placeholder.jpg";
 
 export function OnlineStreamCard({ stream }) {
-    const [avatar, setAvatar] = useState(null);
+    const [avatar, setAvatar] = useState(PlaceHolder);
+
+    const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(() => {
         UserService.getUserAvatar(stream.username)
             .then(data => {
-                setAvatar(data);
+                if (data) {
+                    setAvatar(data);
+                } else {
+                    setAvatar(PlaceHolder);
+                }
             })
     }, [stream.username]);
+
+    useEffect(() => {
+        const user = AuthService.getCurrentUser();
+
+        if (user) {
+            setCurrentUser(user);
+        }
+    }, []);
 
     return (
         <li className={styles.streamCard}>
             <div className={styles.streamImage}>
                 <Link to={`/stream/${stream.username}`}>
-                    <figure className={styles.imageBorder}>
-                        <img src={avatar} alt={stream.title} />
-                    </figure>
+                    <figure className={styles.imageBorder} style={{ backgroundImage: `url(${avatar})`, backgroundSize: "cover" }}></figure>
                 </Link>
             </div>
 
@@ -44,6 +61,12 @@ export function OnlineStreamCard({ stream }) {
                     </div>
                 )}
             </div>
+
+            {currentUser && currentUser?.userName?.toLowerCase() !== stream.username.toLowerCase() && (
+                <div className={styles.followButton}>
+                    <FollowButton username={stream.username} />
+                </div>
+            )}
         </li>
     )
 }

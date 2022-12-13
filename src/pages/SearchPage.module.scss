@@ -1,0 +1,42 @@
+
+.title {
+    padding-top: 1rem;
+    margin-left: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.subTitle {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-bottom: 0.1rem solid #272728;
+    padding-bottom: 1rem;
+}
+
+.showAll {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.notFound {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.content {
+    padding-top: 1rem;
+}
+
+.subTitleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

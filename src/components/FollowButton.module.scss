@@ -1,0 +1,47 @@
+.followBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    border: 0;
+    margin-right: 3rem;
+    height: 34px;
+    color: white;
+
+    /* Brand / Turquoise */
+
+    background: #2ec5ce;
+    border-radius: 3px;
+}
+
+.followIcon, .unfollowIcon{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    border: 0;
+    margin-right: 3rem;
+    height: 34px;
+    color: white;
+
+    /* Brand / Turquoise */
+
+    background: #2ec5ce;
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 730px) {
+    .followBox {
+        display: none;
+    }
+
+    .followIcon {
+        display: flex;
+    }
+
+    .unfollowIcon {
+        display: flex;
+    }
+}

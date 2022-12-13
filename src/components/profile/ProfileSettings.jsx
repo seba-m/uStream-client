@@ -115,7 +115,7 @@ export function ProfileSettings({ user }) {
                                         <p>About Me</p> 
                                     </div>
                                     <div className={styles.profileEditField}>
-                                        <Field className={`${styles.fieldInput} ${styles.textAreaResize}`} value={changeAbout} name="about" as="textarea" maxlength="300" onChange={handleAbout} />
+                                        <Field className={`${styles.fieldInput} ${styles.textAreaResize}`} value={changeAbout} name="about" as="textarea" maxLength="300" onChange={handleAbout} />
                                         <span className={styles.helpField}>The description in the "About" panel of your channel must be less than 300 characters.</span>
                                         <ErrorMessage className={styles.errorField} name="about" component="div" /> 
                                     </div>

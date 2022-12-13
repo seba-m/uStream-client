@@ -29,6 +29,7 @@ export function Following() {
 
   return (
     <>
+      <h1 className={styles.title}>Followed channels</h1>
       <InfiniteScroll
         dataLength={streams.length}
         hasMore={hasMore}

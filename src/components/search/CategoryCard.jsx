@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 export function CategoryCard({ category }) {
 	return (
-		<div className={styles.categoryCard}>
+		<li className={styles.categoryCard}>
 			<div className={styles.imageContainer}>
-				<img src={category.cover ?? placeHolder} alt={category.name} />
+				<figure className={styles.imageBorder} style={{ backgroundImage: `url(${category.cover ?? placeHolder})`, backgroundSize: "cover" }}></figure>
 			</div>
 			<div className={styles.informationContainer}>
 				<h1 className={styles.categoryName}>{category.name}</h1>
@@ -25,7 +25,7 @@ export function CategoryCard({ category }) {
 					</div>
 				)}
 			</div>
-		</div>
+		</li>
 	)
 }
 
