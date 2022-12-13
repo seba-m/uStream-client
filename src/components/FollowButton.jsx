@@ -57,14 +57,14 @@ export function FollowButton({ username }) {
         return (
             <>
                 <button className={styles.followBox} onClick={handleFollow}>Follow</button>
-                <FontAwesomeIcon className={styles.followIcon} icon={faUserPlus} />
+                <FontAwesomeIcon className={styles.followIcon} onClick={handleFollow} icon={faUserPlus} />
             </>
         )
     } else {
         return (
             <>
                 <button className={styles.followBox} onClick={handleUnfollow}>Unfollow</button>
-                <FontAwesomeIcon className={styles.unfollowIcon} icon={faUserMinus} />
+                <FontAwesomeIcon className={styles.unfollowIcon} onClick={handleUnfollow} icon={faUserMinus} />
             </>
         )
     }
