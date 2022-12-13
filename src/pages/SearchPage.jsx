@@ -12,6 +12,8 @@ import { Spinner } from '../components/Spinner';
 
 import GeneralService from '../services/General.service'
 
+import styles from './SearchPage.module.scss';
+
 
 export function SearchPage() {
     const query = useQuery();
@@ -69,62 +71,63 @@ export function SearchPage() {
 
     return (
         <>
-            <h1>Search results for {search}</h1>
+            <h1 className={styles.title}>Search results for '<b>{search}</b>'</h1>
 
             <div>
-                <h2>Channels</h2>
-                <div>
-                    {(streams && streams.length > 0) ? 
-                        <div>
-                            <div>
-                                {streams.slice(0,5).map((stream) => {
-                                    if (stream && stream.islive) {
-                                        return <OnlineStreamCard key={stream.username} stream={stream} />;
-                                    } else if (stream && stream.username) {
-                                        return <OfflineStreamCard key={stream.username} stream={stream} />;
-                                    }
-                                    return null;
-                                })}
-                            </div>
-                            {streams.length > 5 && (
-                                <div>
-                                    <Link to={`/search/stream?term=${search}`}>Show all</Link>
-                                </div>
-                            )}
-
-                        </div>
-                        : 
-                        <div>
-                            <h3>No channels found.</h3>
-                        </div>
-                    }
-                </div>
+                <h2 className={styles.subTitle}>
+                    Channels
+                    {streams && streams.length > 5 && (
+                        <>
+                            <span> -</span>
+                            <Link to={`/search/stream?term=${search}`} className={styles.showAll}>Show all</Link>
+                        </>
+                    )}
+                </h2>
+                {(streams && streams.length > 0) ? 
+                    <>
+                        <ul className={styles.content}>
+                            {streams.slice(0,5).map((stream) => {
+                                if (stream && stream.islive) {
+                                    return <OnlineStreamCard key={stream.username} stream={stream} />;
+                                } else if (stream && stream.username) {
+                                    return <OfflineStreamCard key={stream.username} stream={stream} />;
+                                }
+                                return null;
+                            })}
+                        </ul>
+                    </>
+                    : 
+                    <div>
+                        <h3 className={styles.notFound}>No channels found.</h3>
+                    </div>
+                }
             </div>
             <div>
-                <h2>Categories</h2>
-                <div>
-                    {(categories && categories.length > 0) ?
-                        <div>
-                            <div>
-                                {categories.slice(0, 5).map((category) => {
-                                    if (category && category.name) {
-                                        return <CategoryCard key={category.name} category={category} />;
-                                    }
-                                    return null;
-                                })}
-                            </div>
-                            {categories.length > 5 && (
-                                <div>
-                                    <Link to={`/search/category?term=${search}`}>Show all</Link>
-                                </div>
-                            )}
-                        </div>
-                        :
-                        <div>
-                            <h3>No categories found.</h3>
-                        </div>
-                    }
-                </div>
+                <h2 className={styles.subTitle}>
+                    Categories
+                    {categories && categories.length > 5 && (
+                        <>
+                            <span> -</span>
+                            <Link to={`/search/category?term=${search}`}> Show all</Link>
+                        </>
+                    )}
+                </h2>
+                {(categories && categories.length > 0) ?
+                    <>
+                        <ul className={styles.content}>
+                            {categories.slice(0, 5).map((category) => {
+                                if (category && category.name) {
+                                    return <CategoryCard key={category.name} category={category} />;
+                                }
+                                return null;
+                            })}
+                        </ul>
+                    </>
+                    :
+                    <div>
+                        <h3 className={styles.notFound}>No categories found.</h3>
+                    </div>
+                }
             </div>
         </>
     )

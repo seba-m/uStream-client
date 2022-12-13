@@ -38,7 +38,7 @@ export function NavBar() {
 
     useEffect(() => {
         if (currentUser?.userName) {
-            UserService.getUserAvatar(currentUser?.userName).then((data) => {
+            UserService.getUserAvatar(currentUser.userName).then((data) => {
                 if (data) {
                     setAvatar(data);
                 } else {

@@ -1,12 +1,21 @@
 .streamsContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-    grid-gap: 4rem;
+    grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+    grid-gap: 1.5rem;
+    padding-left: 2rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
 }
 
 @media (max-width: 480px) {
     .streamsContainer {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 }

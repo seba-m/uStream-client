@@ -23,9 +23,18 @@
     }
 }
 
+.imageBorder {
+    overflow: hidden;
+    position: relative;
+    background-color: inherit;
+    width: 12rem;
+    height: 15rem;
+}
+
 @media (max-width: 768px) {
     .categoryCard {
         flex-direction: column;
+        margin-left: 2rem;
     }
 
     .imageContainer {
@@ -62,6 +71,7 @@
 .categoryTags {
     padding-top: 1rem;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .categoryTags .tag {

@@ -1,12 +1,9 @@
 /*stream image*/
 
 .streamImage {
-    height: 7rem;
-    width: 10.4rem;
-    justify-content: center;
     flex-shrink: 0;
     align-self: flex-start;
-    margin-left: 10rem;
+    margin-left: 2rem;
     display: flex;
 
     &:hover {
@@ -25,12 +22,16 @@
 }
 
 .streamBanner {
-    //object-fit: cover;
-    max-width: 1300px;
-    max-height: 360px;
-    min-width: 1300px;
-    min-height: 360px;
-    overflow:hidden;
+    width: calc(100% - 4rem);
+    height: 45vh;
+}
+
+.streamFrontPageImage {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
 /*stream information*/
@@ -48,22 +49,15 @@
     }
 }
 
-.streamUsername {
+.aboutContainer {
     font-size: 2rem;
-    height: 7rem;
-    width: 10.4rem;
     font-weight: bold;
     color: rgb(201, 201, 201);
-    height: 7rem;
-    width: 10.4rem;
     vertical-align: middle;
-    justify-content: center;
-    margin-top: 5rem;
     margin-left: 2rem;
-
-    &:hover {
-        opacity: 0.8;
-    }
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .streamAbout {
@@ -87,33 +81,105 @@
     overflow: hidden;
 }
 
-@media (max-width: 768px) {
-    .streamCard {
-        flex-direction: column;
-    }
+.heroContainer {
+    margin-top: 3rem;
+    max-width: 100rem;
+    width: calc(100% - 4rem);
+}
 
-    .streamImage {
-        //center image
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
+.heroContainerRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
 
-    .streamInfo {
-        & * {
-            margin-top: 0%;
-            margin-bottom: 0%;
-            font-size: 1.4rem;
-        }
+    & button, svg {
+        margin: 0;
     }
 }
 
+.aboutSection {
+    background: #18181b;
+    border-radius: 2px;
+    padding: 3.2rem;
+    word-wrap: break-word;
+    overflow: auto;
+    margin: 2rem;
+    max-width: 100rem;
+    width: calc(100% - 4rem);
 
+    & .aboutTittle {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 20px;
+    }
 
-.heroContainer {
-    margin-top: 3rem;
+    & .followers {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &.text {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+
+        font-feature-settings: "salt" on, "liga" off;
+    }
+    &.aboutBox {
+        overflow: auto;
+    }
+
+    &.textAbout {
+        width: auto;
+    }
+}
+
+.streamDetails {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    //center items
     align-items: center;
-    justify-content: space-between;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 750px) {
+    .heroContainer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        & .aboutContainer {
+            margin: 0;
+
+        }
+    }
+
+    .streamImage {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .about {
+        display: flex;
+        flex-direction: column;
+    }
 }

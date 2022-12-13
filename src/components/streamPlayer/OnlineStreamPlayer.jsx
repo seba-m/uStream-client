@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styles from './OnlineStreamPlayer.module.scss';
 
 import { VideoPlayer } from '../VideoPlayer';
-import { FollowButton } from './FollowButton';
+import { FollowButton } from '../FollowButton';
 
 import UserService from "../../services/User.service";
 import AuthService from "../../services/Auth.service";
@@ -66,9 +66,9 @@ export function OnlineStreamPlayer({ stream }) {
 
                     </div>
                 </div>
-                {currentUser && currentUser?.userName !== stream.username && (
-                    <div style={styles.heroContainerRight}>
-                        <FollowButton stream={stream} />
+                {currentUser && currentUser?.userName?.toLowerCase() !== stream.username.toLowerCase() && (
+                    <div className={styles.heroContainerRight}>
+                        <FollowButton username={stream.username} />
                     </div>
                 )}
 
