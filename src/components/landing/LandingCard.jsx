@@ -43,7 +43,7 @@ export function LandingCard({ stream, color }) {
       <div className={styles.streamerBackgroundImage}>
         <img src={banner} alt={stream.username} />
         <div className={styles.streamImage}>
-            <img style={{outline: `solid .5rem ${color? color: stream.color}` }} className={styles.imageBorder} src={avatar} alt={stream.username} />
+            <img style={{boxShadow: `0px 0px 0px 5px ${color? color : stream.color}`}} className={styles.imageBorder} src={avatar} alt={stream.username} />
         </div>
         <h3>{stream.username}</h3>
       </div>

@@ -89,7 +89,7 @@ export function ChannelColorIdentity({ user }) {
           <div className={styles.infoUser}>
             <div className={styles.infoUserColums}>
               <div className={styles.infoUserDiv}>
-                <img style={{boxShadow: `0px 0px 0px 5px ${currentColor}`, outline:`5px solid ${currentColor}`}} className={styles.imgeProfile} alt="" width={"250px"} src={defaultAvatar}/> 
+                <img style={{boxShadow: `0px 0px 0px 5px ${currentColor}`}} className={styles.imgeProfile} alt="" width={"250px"} src={defaultAvatar}/> 
                 <h2>{user.userName}</h2>
               </div>
               <span className={styles.textAbout}>{user.about}</span>
