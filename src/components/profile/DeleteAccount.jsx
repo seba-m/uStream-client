@@ -6,13 +6,19 @@ import UserService from "../../services/User.service";
 import { Spinner } from '../Spinner';
 import styles from './DeleteAccount.module.scss';
 
+import { DeleteConfirm } from './DeleteConfirm';
+
 export function DeleteAccount({ user }) {
 	const [message, setMessage] = useState("");
 	const [isDeleting, setIsDeleting] = useState(false);
+	const [modalShow, setModalShow] = useState(false);
+
 
 	const handleDelete = () => {
 		setIsDeleting(true);
 		setMessage("");
+
+		console.log("Delete account");
 
 		UserService.deleteAccount(user.id)
 			.then(
@@ -35,9 +41,7 @@ export function DeleteAccount({ user }) {
 	};
 
 	const askDelete = () => {
-		if (window.confirm(`Are you sure you want to delete your account?`)) {
-			handleDelete();
-		}
+		setModalShow(true);
 	};
 
 	return (
@@ -52,25 +56,20 @@ export function DeleteAccount({ user }) {
 			)}
 
 			<div className={styles.profileEditContainer}>
+				<h2 className={styles.profileEditTittle}>Delete your uStream account</h2>
+				<p className={styles.profileEditSubtittle}>Delete your account completely</p>
 				<div className={styles.profileEditBox}>
 					<div className={styles.profileEditSubBox}>
-						<div className={styles.editFieltTittle}>
-							<p>Delete account</p>
-						</div>
-						<div className={styles.profileEditField}>
-							<div className={styles.textDelete}>
-								<span className={styles.helpField}>If you want to delete your uStream account, you can do so by clicking on the following button.</span>
-							</div>
-							<button className={styles.buttonDeleteAccount} onClick={askDelete}>
-								Delete Account
-							</button>
-						</div>
+						<span className={styles.helpField}>If you want to delete your uStream account, you can do so by clicking on the following button.</span>
+						<button className={styles.buttonDeleteAccount} onClick={askDelete}>Delete Account</button>
 					</div>
-				 
 				</div>
 			</div>
 
-			
+			<DeleteConfirm 
+                        show={modalShow} 
+                        onHide={() => setModalShow(false)}
+						handleDelete={handleDelete}/>  
 		</>
 	)
 }

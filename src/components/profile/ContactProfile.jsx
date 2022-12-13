@@ -35,7 +35,7 @@ export function ContactProfile({ user }) {
 
         setMessage("");
 
-        UserService.updateContactSettings(data.email, data.password, data.newPassword)
+        UserService.updateContactSettings(data.password, data.newPassword)
             .then(
                 (error) => {
                     const resMessage =
@@ -58,13 +58,6 @@ export function ContactProfile({ user }) {
                 validate={values => {
 
                     const errors = {};
-                    if (!values.email) {
-                        errors.email = 'Required';
-                    } else if (
-                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                    ) {
-                        errors.email = 'Invalid email address';
-                    }
 
                     if (!changePassword) {
                         errors.password = 'Required';

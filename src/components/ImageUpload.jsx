@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
+
+
 export function ImageUpload({ defaultImage, onUpload, onDelete, isBanner }) {
     const [selectedImage, setSelectedImage] = useState(null);
     const [message, setMessage] = useState("");

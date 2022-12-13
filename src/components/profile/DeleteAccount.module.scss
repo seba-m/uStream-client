@@ -33,61 +33,25 @@
   .profileEditSubBox {
     display: flex;
     flex-direction: row;
+	justify-content: space-between;
     padding: 2rem 3.2rem;
 
     .editFieltTittle {
       padding-right: 2rem;
       width: 18rem;
     }
-
-    .profileEditField {
-      display: flex;
-      flex-direction: row;
-      flex-grow: 1 !important;
-
-	  .textDelete {
-		font-family: "Inter";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 1.3rem;
-		height: auto;
-  		word-wrap: break-word;
-	  }
-    }
-  }
-
-  .fieldInput:focus {
-    border: 2px solid var(--primary-color) !important;
-    background-color: black !important;
-  }
-
-  .profileEditButton {
-    display: flex;
-    justify-content: flex-end;
-    background: #26262c;
-
-    button {
-      border-radius: 0.4rem;
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 20px;
-      border: 0;
-      padding: 0.5rem 1rem;
-      background-color: var(--primary-color);
-      color: white;
-
-      &:disabled {
-        background-color: #36363b;
-        color: #636367;
-      }
-    }
   }
 }
 
 .buttonDeleteAccount {
-	  background-color: #df4545;
-	  width: fit-content;
-	  margin-left: 1rem;
+  border-radius: 0.4rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  border: 0;
+  padding: 0.5rem 1rem;
+  background-color: red;
+  color: white;
 }

@@ -49,10 +49,8 @@ const updateStreamDetails = (data) => {
     return post(API_URL + "/profile/stream", data);
 }
 
-const updateContactSettings = (email, password, newPassword) => {
-
+const updateContactSettings = (password, newPassword) => {
     return post(API_URL + "/profile/contact", {
-        email,
         password,
         newPassword
     });
