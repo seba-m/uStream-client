@@ -54,7 +54,7 @@ export function StreamSettings({ user }) {
                 <div className={styles.profileEditSubCaja}>
                     <div className={styles.contenedor}>
                         <div className={styles.editFieltTittle}>
-                            <p>Stream Key</p>
+                            <p>Stream Server</p>
                         </div>
                         <div className={styles.fieldsBox}>
                             <div className={styles.profileEditField}>
