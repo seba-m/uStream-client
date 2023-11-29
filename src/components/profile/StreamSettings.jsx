@@ -58,15 +58,13 @@ export function StreamSettings({ user }) {
                         </div>
                         <div className={styles.fieldsBox}>
                             <div className={styles.profileEditField}>
-                                <input id="input-text-sv" readOnly className={styles.fieldInput} type={"text"} defaultValue={"rtmp://api.ustream.tk/app"} />
+                                <input id="input-text-sv" readOnly className={styles.fieldInput} type={"text"} defaultValue={"rtmp://ustream.api.sebamorgado.com/app"} />
                                 <div className={`${styles.profileEditSubBox} ${styles.profileEditButton}`}>
                                     {isCopySv? <button disabled className={styles.buttonSettings} onClick={copyTextSv}>{textCopySv}</button>
                                     : <button className={styles.buttonSettings} onClick={copyTextSv}>Copy</button>}
                                     
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                     
